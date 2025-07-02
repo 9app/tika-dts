@@ -1,0 +1,280 @@
+# React Native/Expo mise template configuration
+[tools]
+node = "20.12.0"
+python = "3.11.7"
+java = "17.0.2"
+
+[env]
+# Android Development - adjust path based on your OS
+# macOS: ~/Library/Android/sdk
+# Linux: ~/Android/Sdk  
+# Windows: %LOCALAPPDATA%\Android\Sdk
+ANDROID_HOME = "~/Library/Android/sdk"
+ANDROID_SDK_ROOT = "{{env.ANDROID_HOME}}"
+
+# React Native
+NODE_ENV = "development"
+REACT_NATIVE_PACKAGER_HOSTNAME = "localhost"
+
+# iOS Development (macOS only)
+IOS_SIMULATOR_UDID = ""
+
+# Build configurations
+GRADLE_OPTS = "-Xmx4g -XX:MaxMetaspaceSize=512m"
+GRADLE_USER_HOME = ".gradle"
+
+# Paths
+_.path = [
+  "{{env.ANDROID_HOME}}/platform-tools",
+  "{{env.ANDROID_HOME}}/tools",
+  "{{env.ANDROID_HOME}}/tools/bin",
+  "./node_modules/.bin"
+]
+
+[tasks.setup]
+description = "Initial React Native/Expo project setup"
+run = "./scripts/setup-rn.sh"
+
+[tasks.verify]
+description = "Verify React Native/Expo development environment"
+run = "./scripts/verify-rn.sh"
+
+[tasks.doctor]
+description = "Check React Native/Expo environment health"
+run = """
+echo "🔍 Checking React Native/Expo development environment..."
+npx expo-doctor || echo "Expo doctor not available - installing..."
+npx @expo/cli@latest doctor || echo "Expo CLI doctor not available"
+node --version
+npm --version
+java -version
+echo "✅ Environment check complete"
+"""
+
+# Development tasks
+[tasks.dev]
+description = "Start React Native development server"
+run = "npm start"
+
+[tasks.android]
+description = "Run React Native app on Android"
+run = "npm run android"
+
+[tasks.ios]
+description = "Run React Native app on iOS (macOS only)"
+run = "npm run ios"
+
+[tasks.web]
+description = "Run React Native app on Web"
+run = "npm run web"
+
+[tasks.tunnel]
+description = "Start development server with tunnel"
+run = "npx expo start --tunnel"
+
+[tasks.localhost]
+description = "Start development server on localhost"
+run = "npx expo start --localhost"
+
+# Testing tasks
+[tasks.test]
+description = "Run React Native tests"
+run = "npm test"
+
+[tasks."test:watch"]
+description = "Run React Native tests in watch mode"
+run = "npm run test:watch"
+
+[tasks."test:coverage"]
+description = "Run React Native tests with coverage"
+run = "npm run test:coverage"
+
+[tasks."test:android"]
+description = "Run Android instrumentation tests"
+run = """
+cd android
+./gradlew connectedAndroidTest
+"""
+
+[tasks."test:ios"]
+description = "Run iOS tests (macOS only)"
+run = """
+cd ios
+xcodebuild test -workspace *.xcworkspace -scheme * -destination 'platform=iOS Simulator,name=iPhone 15'
+"""
+
+# EAS Build tasks
+[tasks."build:eas:android"]
+description = "Build Android app with EAS"
+run = "eas build --platform android"
+
+[tasks."build:eas:ios"]
+description = "Build iOS app with EAS (macOS only)"
+run = "eas build --platform ios"
+
+[tasks."build:eas:all"]
+description = "Build for all platforms with EAS"
+run = "eas build --platform all"
+
+[tasks."build:eas:preview"]
+description = "Build preview version with EAS"
+run = "eas build --profile preview"
+
+[tasks."build:eas:production"]
+description = "Build production version with EAS"
+run = "eas build --profile production"
+
+# Local builds
+[tasks."build:android"]
+description = "Build Android APK locally"
+run = """
+echo "📱 Building Android APK locally..."
+npx expo run:android --variant release
+"""
+
+[tasks."build:ios"]
+description = "Build iOS app locally (macOS only)"
+run = """
+echo "📱 Building iOS app locally..."
+npx expo run:ios --configuration Release
+"""
+
+# EAS Submit tasks
+[tasks."submit:eas:android"]
+description = "Submit Android app to Google Play with EAS"
+run = "eas submit --platform android"
+
+[tasks."submit:eas:ios"]
+description = "Submit iOS app to App Store with EAS"
+run = "eas submit --platform ios"
+
+# Maintenance tasks
+[tasks.clean]
+description = "Clean all build artifacts and dependencies"
+run = """
+echo "🧹 Cleaning React Native/Expo project..."
+# Clear npm cache and node_modules
+npm run clean || echo "No npm clean script"
+rm -rf node_modules
+# Clear platform-specific build artifacts
+rm -rf android/build
+rm -rf android/app/build
+rm -rf ios/build
+# Clear Expo cache
+npx expo r -c || echo "Expo clear cache failed"
+# Reinstall dependencies
+npm install
+echo "✅ Project cleaned and dependencies reinstalled"
+"""
+
+[tasks."clean:cache"]
+description = "Clean all caches (npm, Expo, Metro)"
+run = """
+echo "🧹 Cleaning caches..."
+npm cache clean --force
+npx expo r -c
+npx react-native start --reset-cache
+echo "✅ Caches cleaned"
+"""
+
+[tasks."clean:android"]
+description = "Clean Android build artifacts"
+run = """
+echo "🧹 Cleaning Android..."
+cd android && ./gradlew clean && cd ..
+rm -rf android/build
+rm -rf android/app/build
+"""
+
+[tasks."clean:ios"]
+description = "Clean iOS build artifacts"
+run = """
+echo "🧹 Cleaning iOS..."
+rm -rf ios/build
+"""
+
+# Setup tasks
+[tasks."setup:android"]
+description = "Setup Android development environment"
+run = "./scripts/setup-android.sh"
+
+[tasks."setup:ios"]
+description = "Setup iOS development environment (macOS only)"
+run = "./scripts/setup-ios.sh"
+
+[tasks."setup:eas"]
+description = "Setup EAS CLI and configure project"
+run = """
+echo "🔧 Setting up EAS..."
+npm install -g @expo/eas-cli
+eas login
+eas build:configure
+echo "✅ EAS setup complete"
+"""
+
+# Utility tasks
+[tasks.lint]
+description = "Run ESLint"
+run = "npm run lint"
+
+[tasks."lint:fix"]
+description = "Run ESLint with fix"
+run = "npm run lint:fix"
+
+[tasks.format]
+description = "Format code with Prettier"
+run = "npm run format"
+
+[tasks.deps]
+description = "Install/update dependencies"
+run = """
+echo "📦 Installing React Native/Expo dependencies..."
+npm install
+echo "✅ Dependencies installed"
+"""
+
+[tasks."deps:upgrade"]
+description = "Upgrade dependencies"
+run = """
+echo "📦 Upgrading dependencies..."
+npm update
+npx expo install --fix
+echo "✅ Dependencies upgraded"
+"""
+
+[tasks.simulator]
+description = "Open iOS Simulator (macOS only)"
+run = "open -a Simulator"
+
+[tasks.emulator]
+description = "Start Android emulator"
+run = """
+emulator -list-avds
+echo "Starting default Android emulator..."
+emulator @Pixel_4_API_30 &
+"""
+
+# Expo specific tasks
+[tasks."expo:eject"]
+description = "Eject from Expo managed workflow"
+run = "npx expo eject"
+
+[tasks."expo:prebuild"]
+description = "Generate native code with Expo prebuild"
+run = "npx expo prebuild"
+
+[tasks."expo:install"]
+description = "Install and configure native dependencies"
+run = "npx expo install"
+
+[tasks."expo:upgrade"]
+description = "Upgrade Expo SDK"
+run = "npx expo upgrade"
+
+[tasks."update:publish"]
+description = "Publish update to EAS Update"
+run = "eas update"
+
+[tasks."update:configure"]
+description = "Configure EAS Update"
+run = "eas update:configure"

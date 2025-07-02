@@ -1,0 +1,40 @@
+# This file tracks template properties and upgrade history
+# Used by template upgrade system to manage project versions
+# This file should be version controlled and not manually edited
+
+template:
+  name: "flutter-mise"
+  version: "1.1.0"
+  workspace_version: "2024.1"
+  created_at: "2025-07-01T02:34:09Z"
+  base_commit: "HEAD unknown"
+# Tracks upgrade history
+upgrade_history:
+  - from_version: 1.0.0
+    to_version: 1.1.0
+    workspace_version: "2024.2"
+    upgraded_at: "2025-07-01T02:34:59Z"
+    commit: |-
+      HEAD
+      unknown
+# User customizations that should be preserved during upgrades
+customizations:
+  # Files that have been modified by user
+  modified_files: []
+  # Custom tasks added by user  
+  custom_tasks: []
+  # Custom environment variables
+  custom_env: []
+# Files that should be ignored during upgrade (user-specific)
+unmanaged_files:
+  - "lib/main.dart" # User application code
+  - "assets/**" # User assets
+  - ".env.local" # Local environment config
+  - "ios/Runner.xcodeproj/project.pbxproj" # iOS project file
+  - "android/app/src/main/**" # Android application code
+# Compatibility information
+compatibility:
+  min_workspace_version: "2024.1"
+  max_workspace_version: "2025.1"
+  flutter_sdk_range: ">=3.30.0 <4.0.0"
+  dart_version_range: ">=3.6.0 <4.0.0"

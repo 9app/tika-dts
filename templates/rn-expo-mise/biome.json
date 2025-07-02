@@ -1,0 +1,75 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "complexity": {
+        "noForEach": "off"
+      },
+      "style": {
+        "useImportType": "error",
+        "useExportType": "error"
+      },
+      "suspicious": {
+        "noExplicitAny": "warn"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingComma": "es5",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded"
+    }
+  },
+  "json": {
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  },
+  "files": {
+    "include": [
+      "src/**/*",
+      "app/**/*",
+      "components/**/*",
+      "screens/**/*",
+      "hooks/**/*",
+      "utils/**/*",
+      "services/**/*",
+      "types/**/*",
+      "constants/**/*",
+      "navigation/**/*",
+      "store/**/*",
+      "assets/**/*",
+      "*.js",
+      "*.jsx",
+      "*.ts",
+      "*.tsx",
+      "*.json"
+    ],
+    "ignore": [
+      "node_modules/**/*",
+      ".expo/**/*",
+      ".expo-shared/**/*",
+      "dist/**/*",
+      "build/**/*",
+      ".next/**/*",
+      "coverage/**/*",
+      ".cache/**/*",
+      "*.d.ts"
+    ]
+  }
+}

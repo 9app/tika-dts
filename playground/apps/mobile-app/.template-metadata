@@ -1,0 +1,40 @@
+# This file tracks template properties and upgrade history
+# Used by template upgrade system to manage project versions
+# This file should be version controlled and not manually edited
+
+template:
+  name: "rn-expo-mise"
+  version: "1.0.0"
+  workspace_version: "2024.1"
+  created_at: "2025-07-01T02:34:17Z"
+  base_commit: "HEAD
+unknown"
+
+# Tracks upgrade history
+upgrade_history: []
+
+# User customizations that should be preserved during upgrades
+customizations:
+  # Files that have been modified by user
+  modified_files: []
+  
+  # Custom tasks added by user  
+  custom_tasks: []
+  
+  # Custom environment variables
+  custom_env: []
+
+# Files that should be ignored during upgrade (user-specific)
+unmanaged_files:
+  - "lib/main.dart"              # User application code
+  - "assets/**"                  # User assets
+  - ".env.local"                 # Local environment config
+  - "ios/Runner.xcodeproj/project.pbxproj"  # iOS project file
+  - "android/app/src/main/**"    # Android application code
+
+# Compatibility information
+compatibility:
+  min_workspace_version: "2024.1"
+  max_workspace_version: "2025.1"
+  node_version_range: ">=18.0.0 <22.0.0"
+  react_native_range: ">=0.74.0 <1.0.0"

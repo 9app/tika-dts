@@ -1,0 +1,209 @@
+# Flutter mise template configuration
+[tools]
+node = "20.12.0"
+python = "3.11.7"
+java = "17.0.2"
+
+# Flutter development
+flutter = "3.33.0-stable"
+# dart = "3.7.2" # Dart comes bundled with Flutter, use Flutter's version
+
+[env]
+# Android Development - adjust path based on your OS
+# macOS: ~/Library/Android/sdk
+# Linux: ~/Android/Sdk  
+# Windows: %LOCALAPPDATA%\Android\Sdk
+ANDROID_HOME = "~/Library/Android/sdk"
+ANDROID_SDK_ROOT = "{{env.ANDROID_HOME}}"
+
+# Build configurations
+GRADLE_OPTS = "-Xmx4g -XX:MaxMetaspaceSize=512m"
+GRADLE_USER_HOME = ".gradle"
+
+# Paths
+_.path = [
+  "{{env.ANDROID_HOME}}/platform-tools",
+  "{{env.ANDROID_HOME}}/tools",
+  "{{env.ANDROID_HOME}}/tools/bin"
+]
+
+[tasks.setup]
+description = "Initial Flutter project setup"
+run = "./scripts/setup-flutter.sh"
+
+[tasks.verify]
+description = "Verify Flutter development environment"
+run = "flutter doctor"
+
+[tasks.doctor]
+description = "Check Flutter environment health"
+run = """
+echo "🔍 Checking Flutter development environment..."
+flutter doctor -v
+java -version
+echo "✅ Environment check complete"
+"""
+
+# Development tasks
+[tasks.dev]
+description = "Run Flutter app in development mode"
+run = "flutter run"
+
+[tasks.android]
+description = "Run Flutter app on Android"
+run = "flutter run -d android"
+
+[tasks.ios]
+description = "Run Flutter app on iOS (macOS only)"
+run = "flutter run -d ios"
+
+[tasks.web]
+description = "Run Flutter app on Web"
+run = "flutter run -d web"
+
+# Testing tasks
+[tasks.test]
+description = "Run Flutter tests"
+run = "flutter test"
+
+[tasks."test:integration"]
+description = "Run Flutter integration tests"
+run = "flutter test integration_test/"
+
+[tasks."test:widget"]
+description = "Run Flutter widget tests"
+run = "flutter test test/widget_test/"
+
+[tasks."test:unit"]
+description = "Run Flutter unit tests"
+run = "flutter test test/unit_test/"
+
+# Build tasks
+[tasks."build:apk"]
+description = "Build Android APK"
+run = "flutter build apk"
+
+[tasks."build:appbundle"]
+description = "Build Android App Bundle"
+run = "flutter build appbundle"
+
+[tasks."build:ios"]
+description = "Build iOS app (macOS only)"
+run = "flutter build ios --no-codesign"
+
+[tasks."build:web"]
+description = "Build Flutter web app"
+run = "flutter build web"
+
+# Maintenance tasks
+[tasks.clean]
+description = "Clean Flutter build artifacts and dependencies"
+run = """
+echo "🧹 Cleaning Flutter project..."
+flutter clean
+flutter pub get
+echo "✅ Flutter project cleaned and dependencies reinstalled"
+"""
+
+[tasks.deps]
+description = "Install/update Flutter dependencies"
+run = """
+echo "📦 Installing Flutter dependencies..."
+flutter pub get
+echo "✅ Flutter dependencies installed"
+"""
+
+[tasks."deps:upgrade"]
+description = "Upgrade Flutter dependencies"
+run = """
+echo "📦 Upgrading Flutter dependencies..."
+flutter pub upgrade
+echo "✅ Flutter dependencies upgraded"
+"""
+
+# Setup tasks
+[tasks."setup:android"]
+description = "Setup Android development environment"
+run = """
+flutter doctor --android-licenses
+flutter config --enable-android
+echo "✅ Android setup complete"
+"""
+
+[tasks."setup:ios"]
+description = "Setup iOS development environment (macOS only)"
+run = """
+flutter config --enable-ios
+echo "✅ iOS setup complete"
+"""
+
+[tasks."setup:web"]
+description = "Setup web development environment"
+run = """
+flutter config --enable-web
+echo "✅ Web setup complete"
+"""
+
+# Utility tasks
+[tasks.lint]
+description = "Run Flutter linting"
+run = "flutter analyze"
+
+[tasks.format]
+description = "Format Flutter code"
+run = "dart format ."
+
+[tasks.simulator]
+description = "Open iOS Simulator (macOS only)"
+run = "open -a Simulator"
+
+[tasks.emulator]
+description = "Start Android emulator"
+run = """
+emulator -list-avds
+echo "Starting default Android emulator..."
+emulator @Pixel_4_API_30 &
+"""
+
+[tasks.precache]
+description = "Precache Flutter binaries"
+run = "flutter precache"
+
+[tasks.upgrade]
+description = "Upgrade Flutter SDK"
+run = "flutter upgrade"
+
+# New tasks added in v1.3.0
+[tasks."dev:hot-reload"]
+description = "Start app with optimized hot reload"
+run = """
+flutter run \
+  --hot \
+  --enable-experiment=non-nullable \
+  --dart-define=HOT_RELOAD_MODE=optimized
+"""
+
+[tasks."profile:performance"]
+description = "Profile app performance"
+run = """
+flutter run \
+  --profile \
+  --trace-startup \
+  --verbose-system-logs
+"""
+
+[tasks."test:integration:auto"]
+description = "Run integration tests with automation"
+run = """
+flutter test integration_test/ \
+  --coverage \
+  --test-randomize-ordering-seed=random
+"""
+
+[tasks."tools:organize"]
+description = "Organize and optimize project structure"
+run = """
+flutter analyze --suggestions
+dart format --set-exit-if-changed lib/
+dart fix --apply
+"""

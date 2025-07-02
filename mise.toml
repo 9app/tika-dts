@@ -1,0 +1,484 @@
+# Main project configuration
+[tools]
+node = "20.12.0"
+python = "3.11.7"
+  java = "17.0.2"
+
+# Mobile development tools - updated to latest stable versions
+flutter = "3.32.5-stable"
+# dart = "3.6.0" # Dart comes bundled with Flutter, use Flutter's version
+
+# Build tools
+# gradle = "8.7"
+
+# Development tools - can be installed via npm after node is available  
+# yarn = "1.22.22"
+
+[env]
+# Android Development - adjust path based on your OS
+# macOS: ~/Library/Android/sdk
+# Linux: ~/Android/Sdk  
+# Windows: %LOCALAPPDATA%\Android\Sdk
+ANDROID_HOME = "~/Library/Android/sdk"
+ANDROID_SDK_ROOT = "{{env.ANDROID_HOME}}"
+
+# Note: JAVA_HOME, FLUTTER_ROOT, DART_ROOT will be automatically set by mise
+# when the respective tools are installed
+
+# React Native
+NODE_ENV = "development"
+REACT_NATIVE_PACKAGER_HOSTNAME = "localhost"
+
+# iOS Development (macOS only)
+IOS_SIMULATOR_UDID = ""
+
+# Build configurations
+GRADLE_OPTS = "-Xmx4g -XX:MaxMetaspaceSize=512m"
+GRADLE_USER_HOME = ".gradle"
+
+# Paths
+_.path = [
+  "{{env.ANDROID_HOME}}/platform-tools",
+  "{{env.ANDROID_HOME}}/tools",
+  "{{env.ANDROID_HOME}}/tools/bin",
+  "./node_modules/.bin"
+]
+
+[tasks.setup]
+description = "Initial project setup for new developers"
+run = "./scripts/setup.sh"
+
+[tasks.verify]
+description = "Verify development environment setup"
+run = "./scripts/verify.sh"
+
+[tasks.doctor]
+description = "Check development environment health"
+run = """
+echo "🔍 Checking development environment..."
+flutter doctor
+echo "📱 Checking Expo environment..."
+cd apps/mobile-app
+npx expo-doctor || echo "Expo doctor not available"
+cd ../..
+node --version
+npm --version
+java -version
+echo "✅ Environment check complete"
+"""
+
+# Development tasks
+[tasks.dev]
+description = "Start React Native development server"
+run = """
+cd apps/mobile-app
+npm start
+"""
+
+[tasks.android]
+description = "Run React Native app on Android"
+run = """
+cd apps/mobile-app
+npm run android
+"""
+
+[tasks.ios]
+description = "Run React Native app on iOS (macOS only)"
+run = """
+cd apps/mobile-app
+npm run ios
+"""
+
+[tasks.web]
+description = "Run React Native app on Web"
+run = """
+cd apps/mobile-app
+npm run web
+"""
+
+[tasks.flutter]
+description = "Run Flutter app"
+run = """
+cd apps/flutter_app
+flutter run
+"""
+
+[tasks."flutter:android"]
+description = "Run Flutter app on Android"
+run = """
+cd apps/flutter_app
+flutter run -d android
+"""
+
+[tasks."flutter:ios"]
+description = "Run Flutter app on iOS (macOS only)" 
+run = """
+cd apps/flutter_app
+flutter run -d ios
+"""
+
+# Testing tasks
+[tasks.test]
+description = "Run all tests"
+run = """
+echo "🧪 Running React Native tests..."
+npm test
+echo "🧪 Running Flutter tests..."
+flutter test
+echo "✅ All tests completed"
+"""
+
+[tasks."test:rn"]
+description = "Run React Native tests only"
+run = """
+cd apps/mobile-app
+npm test
+"""
+
+[tasks."test:flutter"]
+description = "Run Flutter tests only"
+run = """
+cd apps/flutter_app
+flutter test
+"""
+
+[tasks."test:android"]
+description = "Run Android instrumentation tests"
+run = """
+cd android
+./gradlew connectedAndroidTest
+"""
+
+[tasks."test:ios"]
+description = "Run iOS tests (macOS only)"
+run = """
+cd ios
+xcodebuild test -workspace ProjectName.xcworkspace -scheme ProjectName -destination 'platform=iOS Simulator,name=iPhone 15'
+"""
+
+# Build tasks
+[tasks.build]
+description = "Build for production"
+run = "./scripts/build.sh"
+
+# [tasks."build:android"]
+# description = "Build Android APK/AAB"
+# run = """
+# echo "📱 Building Android app..."
+# cd android
+# ./gradlew assembleRelease
+# echo "✅ Android build complete - check android/app/build/outputs/"
+# """
+
+# [tasks."build:ios"]
+# description = "Build iOS app (macOS only)"
+# run = """
+# echo "📱 Building iOS app..."
+# cd ios
+# xcodebuild -workspace ProjectName.xcworkspace -scheme ProjectName -configuration Release
+# echo "✅ iOS build complete"
+# """
+
+[tasks."build:flutter"]
+description = "Build Flutter app for all platforms"
+run = """
+echo "📱 Building Flutter apps..."
+cd apps/flutter_app
+flutter build apk
+flutter build ios --no-codesign
+echo "✅ Flutter builds complete"
+"""
+
+# EAS Build tasks
+[tasks."build:eas:android"]
+description = "Build Android app with EAS"
+run = """
+cd apps/mobile-app
+eas build --platform android
+"""
+
+[tasks."build:eas:ios"]
+description = "Build iOS app with EAS (macOS only)"
+run = """
+cd apps/mobile-app
+eas build --platform ios
+"""
+
+[tasks."build:eas:all"]
+description = "Build for all platforms with EAS"
+run = """
+cd apps/mobile-app
+eas build --platform all
+"""
+
+# EAS Submit tasks
+[tasks."submit:eas:android"]
+description = "Submit Android app to Google Play with EAS"
+run = """
+cd apps/mobile-app
+eas submit --platform android
+"""
+
+[tasks."submit:eas:ios"]
+description = "Submit iOS app to App Store with EAS"
+run = """
+cd apps/mobile-app
+eas submit --platform ios
+"""
+
+# Maintenance tasks
+[tasks.clean]
+description = "Clean all build artifacts and dependencies"
+run = """
+echo "🧹 Cleaning project..."
+# React Native
+npm run clean || echo "No npm clean script"
+rm -rf node_modules
+cd android && ./gradlew clean && cd ..
+cd ios && rm -rf build && cd ..
+
+# Flutter  
+flutter clean
+
+# Reinstall dependencies
+npm install
+flutter pub get
+
+echo "✅ Project cleaned and dependencies reinstalled"
+"""
+
+[tasks."clean:rn"]
+description = "Clean React Native only"
+run = """
+echo "🧹 Cleaning React Native..."
+rm -rf node_modules
+cd android && ./gradlew clean && cd ..
+cd ios && rm -rf build && cd ..
+npm install
+"""
+
+[tasks."clean:flutter"] 
+description = "Clean Flutter only"
+run = """
+echo "🧹 Cleaning Flutter..."
+cd apps/flutter_app
+flutter clean
+flutter pub get
+"""
+
+# Setup tasks
+[tasks."setup:android"]
+description = "Setup Android development environment"
+run = "./scripts/setup-android.sh"
+
+[tasks."setup:ios"]
+description = "Setup iOS development environment (macOS only)"
+run = "./scripts/setup-ios.sh"
+
+[tasks."setup:flutter"]
+description = "Setup Flutter development"
+run = """
+flutter doctor --android-licenses
+flutter precache
+flutter config --enable-android
+flutter config --enable-ios
+"""
+
+# Utility tasks
+[tasks.lint]
+description = "Run linting for all platforms"
+run = """
+echo "🔍 Running linting..."
+npm run lint || echo "No npm lint script"
+flutter analyze
+echo "✅ Linting complete"
+"""
+
+[tasks.format]
+description = "Format code for all platforms"
+run = """
+echo "💅 Formatting code..."
+npm run format || npx prettier --write .
+flutter format .
+echo "✅ Code formatting complete"
+"""
+
+[tasks.deps]
+description = "Install/update all dependencies"
+run = """
+echo "📦 Installing all dependencies..."
+mise run deps:react-native
+mise run deps:flutter
+echo "✅ All dependencies installed"
+"""
+
+[tasks."deps:react-native"]
+description = "Install/update React Native dependencies"
+run = """
+echo "📦 Installing React Native dependencies..."
+if [ -f "package.json" ]; then
+  npm install
+  echo "✅ React Native dependencies installed"
+elif [ -f "apps/mobile-app/package.json" ]; then
+  cd apps/mobile-app
+  npm install
+  echo "✅ React Native dependencies installed in apps/mobile-app"
+else
+  echo "⚠️  No React Native package.json found. Skipping React Native dependencies."
+fi
+"""
+
+[tasks."deps:flutter"]
+description = "Install/update Flutter app dependencies"
+run = """
+echo "📦 Installing Flutter app dependencies..."
+cd apps/flutter_app
+flutter pub get
+echo "✅ Flutter dependencies installed"
+"""
+
+[tasks.simulator]
+description = "Open iOS Simulator (macOS only)"
+run = "open -a Simulator"
+
+[tasks.emulator]
+description = "Start Android emulator"
+run = """
+emulator -list-avds
+echo "Starting default Android emulator..."
+emulator @Pixel_4_API_30 &
+"""
+
+# Template and project management tasks
+[tasks."template:list"]
+description = "List all available project templates"
+run = "./scripts/manage-templates.sh list"
+
+[tasks."template:validate"]
+description = "Validate all project templates"
+run = "./scripts/manage-templates.sh validate"
+
+[tasks."template:sync"]
+description = "Sync templates with main configuration"
+run = "./scripts/manage-templates.sh sync"
+
+[tasks."template:backup"]
+description = "Create backup of templates"
+run = "./scripts/manage-templates.sh backup"
+
+# Template upgrade system tasks (git-integrated)
+[tasks."template:upgrade:status"]
+description = "Show current template status (run from project directory)"
+run = "../../scripts/template-upgrade-git.sh status"
+
+[tasks."template:upgrade:check"]
+description = "Check for available template upgrades (run from project directory)"
+run = "../../scripts/template-upgrade-git.sh check-upgrades"
+
+[tasks."template:upgrade:latest"]
+description = "Upgrade to latest template version (run from project directory)"
+run = "../../scripts/template-upgrade-git.sh upgrade --latest"
+
+[tasks."template:upgrade:version"]
+description = "Upgrade to specific template version (specify with -- <version>)"
+run = """
+if [ -z "$1" ]; then
+  echo "Usage: mise run template:upgrade:version -- <version>"
+  exit 1
+fi
+../../scripts/template-upgrade-git.sh upgrade --version "$1"
+"""
+
+[tasks."template:upgrade:init"]
+description = "Initialize template metadata for existing project (run from project directory)"
+run = "../../scripts/template-upgrade-git.sh init ."
+
+[tasks."template:upgrade:history"]
+description = "Show template upgrade history (run from project directory)"
+run = "../../scripts/template-upgrade-git.sh history"
+
+[tasks."template:upgrade:registry"]
+description = "Show template registry information"
+run = "./scripts/template-upgrade-git.sh registry list"
+
+[tasks."project:create"]
+description = "Create new project from template (interactive)"
+run = """
+echo "🚀 Project Creator"
+echo "Available templates: flutter, expo"
+read -p "Template (flutter/expo): " template
+read -p "Project name: " name
+read -p "Target path (default: current dir): " path
+./scripts/create-new-project.sh --template "$template" --name "$name" ${path:+--path "$path"}
+"""
+
+[tasks."project:create:flutter"]
+description = "Create new Flutter project (specify name with --name)"
+run = """
+if [ -z "$1" ]; then
+  echo "Usage: mise run project:create:flutter -- <project-name>"
+  exit 1
+fi
+./scripts/create-new-project.sh --template flutter --name "$1"
+"""
+
+[tasks."project:create:expo"]
+description = "Create new Expo project (specify name with --name)"
+run = """
+if [ -z "$1" ]; then
+  echo "Usage: mise run project:create:expo -- <project-name>"
+  exit 1
+fi
+./scripts/create-new-project.sh --template expo --name "$1"
+"""
+
+# Template management tasks (post-project creation) - git-integrated
+[tasks."template:status"]
+description = "Check current template version and status"
+run = "./scripts/template-upgrade-git.sh status"
+
+[tasks."template:check"]
+description = "Check for available template updates"
+run = "./scripts/template-upgrade-git.sh check-upgrades"
+
+[tasks."template:upgrade"]
+description = "Upgrade project to latest template version"
+run = "./scripts/template-upgrade-git.sh upgrade --latest"
+
+[tasks."template:upgrade:interactive"]
+description = "Interactive template upgrade with options"
+run = """
+echo "🔄 Template Upgrade Options:"
+echo "1. Check current status"
+echo "2. Check available upgrades"
+echo "3. Upgrade to latest"
+echo "4. Upgrade with dry-run preview"
+echo "5. View upgrade history"
+echo "6. Rollback last upgrade"
+read -p "Choose option (1-6): " choice
+case $choice in
+  1) ./scripts/template-upgrade-git.sh status ;;
+  2) ./scripts/template-upgrade-git.sh check-upgrades ;;
+  3) ./scripts/template-upgrade-git.sh upgrade --latest ;;
+  4) ./scripts/template-upgrade-git.sh upgrade --latest --dry-run ;;
+  5) ./scripts/template-upgrade-git.sh history ;;
+  6) ./scripts/template-upgrade-git.sh rollback ;;
+  *) echo "Invalid option" ;;
+esac
+"""
+
+[tasks."template:releases"]
+description = "View available template releases"
+run = "./scripts/template-upgrade-git.sh list-releases"
+
+[tasks."template:history"]
+description = "View template upgrade history"
+run = "./scripts/template-upgrade-git.sh history"
+
+[tasks."template:rollback"]
+description = "Rollback to previous template version"
+run = "./scripts/template-upgrade-git.sh rollback"
+
+[tasks."template:info"]
+description = "Show detailed template information"
+run = "./scripts/template-upgrade-git.sh info"

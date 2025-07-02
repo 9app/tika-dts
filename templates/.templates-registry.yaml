@@ -1,0 +1,132 @@
+# Template Registry
+# This file tracks all available templates and their versions
+# Used by the template upgrade system
+
+registry_version: "1.0.0"
+updated_at: "2025-01-01T00:00:00Z"
+
+templates:
+  flutter-mise:
+    name: "Flutter mise Template"
+    description: "Complete Flutter development environment with mise"
+    current_version: "1.3.0"
+    repository: "templates/flutter-mise"
+    supported_platforms: ["android", "ios", "web", "linux", "macos", "windows"]
+    
+    versions:
+      - version: "1.0.0"
+        created: "2024-12-01T00:00:00Z"
+        description: "Initial Flutter template"
+        breaking_changes: false
+        flutter_sdk: "3.30.0"
+        dart_sdk: "3.6.0"
+        minimum_requirements:
+          mise: ">=2024.1"
+          android_sdk: ">=34"
+        
+      - version: "1.1.0"
+        created: "2024-12-15T00:00:00Z"
+        description: "Updated Flutter SDK, added new build tasks"
+        breaking_changes: false
+        flutter_sdk: "3.31.0"
+        dart_sdk: "3.6.5"
+        changes:
+          - "Updated Flutter to 3.31.0"
+          - "Added mise run build:profile task"
+          - "Improved Android emulator setup"
+          - "Added web development tasks"
+        
+      - version: "1.2.0"
+        created: "2025-01-01T00:00:00Z"
+        description: "Major Flutter SDK update and enhanced tooling"
+        breaking_changes: true
+        flutter_sdk: "3.32.5"
+        dart_sdk: "3.7.0"
+        changes:
+          - "Updated Flutter to 3.32.5-stable"
+          - "Restructured build tasks for better performance"
+          - "Added integration test automation"
+          - "Enhanced Android/iOS setup scripts"
+          - "Breaking: Renamed some task names for consistency"
+        migration_guide: "docs/migrations/flutter-1.1-to-1.2.md"
+        
+      - version: "1.3.0"
+        created: "2025-07-01T09:15:00Z"
+        description: "Performance improvements and new development tools"
+        breaking_changes: false
+        flutter_sdk: "3.33.0"
+        dart_sdk: "3.7.2"
+        changes:
+          - "Updated Flutter to 3.33.0-stable"
+          - "Added new hot reload optimization tasks"
+          - "Enhanced VS Code debug configuration"
+          - "Improved mise task organization"
+          - "Added automated testing workflows"
+          - "New performance profiling tools"
+        migration_guide: "docs/migrations/flutter-1.1-to-1.2.md"
+        minimum_requirements:
+          mise: ">=2024.2"
+          android_sdk: ">=34"
+          xcode: ">=15.0"
+
+  rn-expo-mise:
+    name: "React Native/Expo mise Template"
+    description: "React Native and Expo development with mise and EAS"
+    current_version: "1.1.0"
+    repository: "templates/rn-expo-mise"
+    supported_platforms: ["android", "ios", "web"]
+    
+    versions:
+      - version: "1.0.0"
+        created: "2024-12-01T00:00:00Z"
+        description: "Initial React Native/Expo template"
+        breaking_changes: false
+        expo_sdk: "51.0.0"
+        react_native: "0.74.0"
+        node_version: "20.12.0"
+        
+      - version: "1.1.0"
+        created: "2024-12-20T00:00:00Z"
+        description: "Updated Expo SDK and improved EAS configuration"
+        breaking_changes: false
+        expo_sdk: "51.0.8"
+        react_native: "0.74.5"
+        node_version: "20.12.0"
+        changes:
+          - "Updated Expo SDK to 51.0.8"
+          - "Enhanced EAS Build configuration"
+          - "Added OTA update automation"
+          - "Improved Metro bundler configuration"
+          - "Added TypeScript strict mode support"
+
+# Global compatibility matrix
+compatibility:
+  workspace_versions:
+    "2024.1":
+      supported_templates:
+        flutter-mise: ["1.0.0", "1.1.0"]
+        rn-expo-mise: ["1.0.0"]
+    "2024.2":
+      supported_templates:
+        flutter-mise: ["1.1.0", "1.2.0"]
+        rn-expo-mise: ["1.0.0", "1.1.0"]
+
+# Upgrade policies
+upgrade_policies:
+  default:
+    auto_upgrade_minor: true
+    auto_upgrade_major: false
+    preserve_customizations: true
+    backup_before_upgrade: true
+    
+  conservative:
+    auto_upgrade_minor: false
+    auto_upgrade_major: false
+    preserve_customizations: true
+    backup_before_upgrade: true
+    
+  aggressive:
+    auto_upgrade_minor: true
+    auto_upgrade_major: true
+    preserve_customizations: true
+    backup_before_upgrade: true
