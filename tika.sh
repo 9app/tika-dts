@@ -53,9 +53,9 @@ show_usage() {
     echo "  setup           Setup development environment (one-time)"
     echo "  create          Create a new mobile project from templates"
     echo
-    echo "🔧 Platform-Specific Setup:"
-    echo "  setup-android   Setup Android development tools"
-    echo "  setup-ios       Setup iOS development tools (macOS only)"
+    echo "🔧 Platform-Specific Setup (use mise):"
+    echo "  mise run setup:android   Setup Android development tools"
+    echo "  mise run setup:ios       Setup iOS development tools (macOS only)"
     echo
     echo "📦 Template Management:"
     echo "  template-status      Check current template version"
@@ -115,21 +115,7 @@ cmd_create() {
     exec "$SCRIPTS_DIR/create-new-project.sh" "$@"
 }
 
-# Setup Android command
-cmd_setup_android() {
-    print_command "Setting up Android development..."
-    exec "$SCRIPTS_DIR/setup-android.sh" "$@"
-}
 
-# Setup iOS command
-cmd_setup_ios() {
-    print_command "Setting up iOS development..."
-    if [[ "$OSTYPE" != "darwin"* ]]; then
-        print_error "iOS development setup is only available on macOS"
-        exit 1
-    fi
-    exec "$SCRIPTS_DIR/setup-ios.sh" "$@"
-}
 
 # Template status command
 cmd_template_status() {
@@ -165,7 +151,7 @@ cmd_template_releases() {
 validate_command() {
     local cmd="$1"
     case "$cmd" in
-        create|setup|setup-android|setup-ios|template-status|template-check|template-upgrade|template-rollback|template-releases|version|help)
+        create|setup|template-status|template-check|template-upgrade|template-rollback|template-releases|version|help)
             return 0
             ;;
         *)
@@ -218,12 +204,6 @@ main() {
             ;;
         setup)
             cmd_setup "$@"
-            ;;
-        setup-android)
-            cmd_setup_android "$@"
-            ;;
-        setup-ios)
-            cmd_setup_ios "$@"
             ;;
         template-status)
             cmd_template_status "$@"
