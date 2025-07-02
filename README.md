@@ -1,4 +1,4 @@
-# Tika - Mobile Development Template System
+# Tika - Development Template System
 
 **Tika CLI** is a unified command-line interface for cross-platform mobile development with Flutter and React Native. It streamlines environment setup, project creation, and template management.
 
