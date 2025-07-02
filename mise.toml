@@ -475,10 +475,6 @@ run = "./scripts/template-upgrade-git.sh list-releases"
 description = "View template upgrade history"
 run = "./scripts/template-upgrade-git.sh history"
 
-[tasks."template:rollback"]
-description = "Rollback to previous template version"
-run = "./scripts/template-upgrade-git.sh rollback"
-
 [tasks."template:info"]
 description = "Show detailed template information"
 run = "./scripts/template-upgrade-git.sh info"

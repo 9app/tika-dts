@@ -61,8 +61,6 @@ show_usage() {
     echo "  template-status      Check current template version"
     echo "  template-check       Check for available template upgrades"
     echo "  template-upgrade     Upgrade to latest template version"
-    echo "  template-rollback    Rollback to previous template version"
-    echo "  template-releases    List all available template releases"
     echo
     echo "📖 Information:"
     echo "  version         Show version information"
