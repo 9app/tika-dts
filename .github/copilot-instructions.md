@@ -48,5 +48,11 @@ grep -r "another_pattern" scripts/
 - Use built-in VS Code tools first
 - Break complex tasks into simple steps
 
----
-*Follow these guidelines for reliable AI assistance in the tika project.*
+## 📋 Commit Guidelines
+
+WHEN file changes are COMPLETE:
+- Stage your changes with git add <changed_files>
+- Commit them with an short generated message describing the changes starting with the step number, e.g. STEP #1 - <short description of changes>
+- Do this within a single terminal command using &&
+
+ONLY do this if you create or edit a file during the turn.
