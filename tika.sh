@@ -53,11 +53,6 @@ show_usage() {
     echo "  setup           Setup development environment (one-time)"
     echo "  create          Create a new mobile project from templates"
     echo
-    echo "📦 Template Management:"
-    echo "  template-status      Check current template version"
-    echo "  template-check       Check for available template upgrades"
-    echo "  template-upgrade     Upgrade to latest template version"
-    echo
     echo "📖 Information:"
     echo "  version         Show version information"
     echo "  help            Show this help message"
@@ -66,15 +61,10 @@ show_usage() {
     echo "  $0 setup                                    # Initial environment setup"
     echo "  $0 create --template flutter --name my-app # Create Flutter project"
     echo "  $0 create --template expo --name my-app    # Create React Native/Expo project"
-    echo "  $0 template-check                          # Check for template updates"
-    echo "  $0 template-upgrade --dry-run              # Preview template upgrade"
-    echo "  $0 template-upgrade                        # Apply template upgrade"
     echo
-    echo "📋 Alternative: Use mise for ongoing operations within project:"
-    echo "  mise doctor                                 # Verify environment"
-    echo "  mise run template:status                    # Check template version"
-    echo "  mise run template:upgrade                   # Upgrade template"
-    echo "  mise run template:releases                  # View available releases"
+    echo "📋 For ongoing development, use mise commands inside the project directory:"
+    echo "  mise run dev                                # Start development server"
+    echo "  mise run test                               # Run tests"
     echo
     echo "For detailed help on specific commands:"
     echo "  $0 <command> --help"
@@ -88,11 +78,6 @@ show_version() {
     echo ""
     echo "Purpose: Initial setup and project creation"
     echo "Built with ❤️  for Flutter and React Native development"
-    echo ""
-    echo "Usage workflow:"
-    echo "  1. tika.sh setup          # One-time environment setup"
-    echo "  2. tika.sh create         # Create new projects"
-    echo "  3. mise run <commands>    # Ongoing development operations"
 }
 
 # Setup command
@@ -109,43 +94,11 @@ cmd_create() {
     exec "$SCRIPTS_DIR/create-new-project.sh" "$@"
 }
 
-
-
-# Template status command
-cmd_template_status() {
-    print_command "Checking template status..."
-    exec "$SCRIPTS_DIR/template-upgrade-git.sh" status "$@"
-}
-
-# Template check command
-cmd_template_check() {
-    print_command "Checking for template upgrades..."
-    exec "$SCRIPTS_DIR/template-upgrade-git.sh" check-upgrades "$@"
-}
-
-# Template upgrade command
-cmd_template_upgrade() {
-    print_command "Upgrading template..."
-    exec "$SCRIPTS_DIR/template-upgrade-git.sh" upgrade "$@"
-}
-
-# Template rollback command
-cmd_template_rollback() {
-    print_command "Rolling back template..."
-    exec "$SCRIPTS_DIR/template-upgrade-git.sh" rollback "$@"
-}
-
-# Template releases command
-cmd_template_releases() {
-    print_command "Listing template releases..."
-    exec "$SCRIPTS_DIR/template-upgrade-git.sh" list-releases "$@"
-}
-
 # Command validation
 validate_command() {
     local cmd="$1"
     case "$cmd" in
-        create|setup|template-status|template-check|template-upgrade|template-rollback|template-releases|version|help)
+        create|setup|version|help)
             return 0
             ;;
         *)
@@ -198,21 +151,6 @@ main() {
             ;;
         setup)
             cmd_setup "$@"
-            ;;
-        template-status)
-            cmd_template_status "$@"
-            ;;
-        template-check)
-            cmd_template_check "$@"
-            ;;
-        template-upgrade)
-            cmd_template_upgrade "$@"
-            ;;
-        template-rollback)
-            cmd_template_rollback "$@"
-            ;;
-        template-releases)
-            cmd_template_releases "$@"
             ;;
     esac
 }
