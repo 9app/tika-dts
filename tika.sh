@@ -116,7 +116,7 @@ main() {
     fi
 
     local command="$1"
-    shif
+    shift
 
     # Handle help and version
     case "$command" in
