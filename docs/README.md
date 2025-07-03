@@ -14,6 +14,7 @@ This directory contains comprehensive documentation for the Tika mobile developm
 - **[Template Upgrade Quickstart](./template-upgrade-quickstart.md)** - Quick guide to template upgrades
 - **[Template Upgrade System](./template-upgrade-system.md)** - Technical details of upgrade system
 - **[Template Upgrade Comparison](./template-upgrade-comparison.md)** - Native vs Git-integrated approaches
+- **[Template Snapshot & Versioning](./template-snapshot-versioning.md)** - Selective version upgrades and snapshot storage
 
 ### 🔄 Migration Guides
 - **[Git Upgrade Migration](./git-upgrade-migration.md)** - Migration to git-integrated system

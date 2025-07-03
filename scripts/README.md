@@ -14,6 +14,7 @@ This directory contains all operational scripts for the Tika mobile development 
 - **[template-upgrade-git.sh](./template-upgrade-git.sh)** - ✅ **Current**: Git-integrated template upgrade system
 - **[template-upgrade.sh](./template-upgrade.sh)** - Template upgrade dispatcher script
 - **[template-upgrade-native.sh](./template-upgrade-native.sh)** - ⚠️ **Deprecated**: Backup-based upgrade system
+- **[demo-selective-upgrade.sh](./demo-selective-upgrade.sh)** - 🎯 **Demo**: Selective version upgrade demonstration
 
 ### 🛠️ Development Operations
 - **[build.sh](./build.sh)** - Build projects and manage build processes
