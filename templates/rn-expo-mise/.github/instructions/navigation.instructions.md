@@ -38,7 +38,7 @@ const Drawer = createDrawerNavigator();
 const AppNavigator: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator 
+      <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
           headerStyle: {
@@ -50,20 +50,20 @@ const AppNavigator: React.FC = () => {
           },
         }}
       >
-        <Stack.Screen 
-          name="Home" 
+        <Stack.Screen
+          name="Home"
           component={HomeScreen}
           options={{ title: 'Home Screen' }}
         />
-        <Stack.Screen 
-          name="Profile" 
+        <Stack.Screen
+          name="Profile"
           component={ProfileScreen}
-          options={({ route }) => ({ 
-            title: `Profile ${route.params.userId}` 
+          options={({ route }) => ({
+            title: `Profile ${route.params.userId}`
           })}
         />
-        <Stack.Screen 
-          name="Settings" 
+        <Stack.Screen
+          name="Settings"
           component={SettingsScreen}
           options={{
             presentation: 'modal',
@@ -104,18 +104,18 @@ const TabNavigator: React.FC = () => {
         headerShown: false,
       })}
     >
-      <Tab.Screen 
-        name="HomeTab" 
+      <Tab.Screen
+        name="HomeTab"
         component={HomeScreen}
         options={{ tabBarLabel: 'Home' }}
       />
-      <Tab.Screen 
-        name="ProfileTab" 
+      <Tab.Screen
+        name="ProfileTab"
         component={ProfileScreen}
         options={{ tabBarLabel: 'Profile' }}
       />
-      <Tab.Screen 
-        name="SettingsTab" 
+      <Tab.Screen
+        name="SettingsTab"
         component={SettingsScreen}
         options={{ tabBarLabel: 'Settings' }}
       />
@@ -255,13 +255,13 @@ const ConditionalNavigator: React.FC = () => {
       ) : (
         // Authentication stack
         <>
-          <Stack.Screen 
-            name="Login" 
+          <Stack.Screen
+            name="Login"
             component={LoginScreen}
             options={{ headerShown: false }}
           />
-          <Stack.Screen 
-            name="Register" 
+          <Stack.Screen
+            name="Register"
             component={RegisterScreen}
             options={{ headerShown: false }}
           />
@@ -318,8 +318,8 @@ const CustomHeader: React.FC<{ title: string }> = ({ title }) => {
 };
 
 // Usage in screen options
-<Stack.Screen 
-  name="Profile" 
+<Stack.Screen
+  name="Profile"
   component={ProfileScreen}
   options={{
     header: ({ route }) => (

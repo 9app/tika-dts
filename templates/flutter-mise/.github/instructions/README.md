@@ -66,7 +66,7 @@ This directory contains comprehensive instructions for GitHub Copilot when worki
 
 ---
 
-### 🛡️ [AI Terminal Safety](./ai-in-terminal.instructions.md)
+### 🛡️ [AI Terminal Safety](../../../.github/instructions/ai-in-terminal.instructions.md)
 **Guidelines for safe AI-assisted terminal operations**
 
 - **Command Safety**: Avoid complex regex and chained operations

@@ -161,7 +161,7 @@ const useUsers = (filters?: UserFilters) => {
 // Mutation hooks for data modification
 const useCreateUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: (userData: CreateUserRequest) => userService.createUser(userData),
     onSuccess: (newUser) => {
@@ -175,7 +175,7 @@ const useCreateUser = () => {
 
 const useUpdateUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useMutation({
     mutationFn: ({ id, userData }: { id: string; userData: Partial<User> }) =>
       userService.updateUser(id, userData),
@@ -253,20 +253,20 @@ const AppNavigator: React.FC = () => {
 describe('UserComponent', () => {
   it('should render user name correctly', () => {
     const mockUser = { id: '1', name: 'John Doe', email: 'john@example.com' };
-    
+
     render(<UserComponent user={mockUser} />);
-    
+
     expect(screen.getByText('John Doe')).toBeTruthy();
   });
 
   it('should call onPress when pressed', () => {
     const mockOnPress = jest.fn();
     const mockUser = { id: '1', name: 'John Doe', email: 'john@example.com' };
-    
+
     render(<UserComponent user={mockUser} onPress={mockOnPress} />);
-    
+
     fireEvent.press(screen.getByText('John Doe'));
-    
+
     expect(mockOnPress).toHaveBeenCalledWith(mockUser);
   });
 });

@@ -21,7 +21,7 @@ class CounterWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final counter = ref.watch(counterProvider);
-    
+
     return Column(
       children: [
         Text('Count: $counter'),
@@ -52,7 +52,7 @@ class UserNotifier extends StateNotifier<UserState> {
 
   Future<void> loadUsers() async {
     state = const UserState.loading();
-    
+
     try {
       final users = await _repository.getUsers();
       state = UserState.loaded(users);
@@ -80,7 +80,7 @@ class UserListWidget extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final usersAsync = ref.watch(userFutureProvider);
-    
+
     return usersAsync.when(
       data: (users) => ListView.builder(
         itemCount: users.length,
@@ -128,7 +128,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     Emitter<AuthState> emit,
   ) async {
     emit(const AuthState.loading());
-    
+
     try {
       final user = await _authRepository.login(event.email, event.password);
       emit(AuthState.authenticated(user));

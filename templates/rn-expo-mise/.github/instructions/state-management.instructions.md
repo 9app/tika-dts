@@ -76,12 +76,12 @@ export const queryKeys = {
   users: () => [...queryKeys.all, 'users'] as const,
   user: (id: string) => [...queryKeys.users(), id] as const,
   userProfile: (id: string) => [...queryKeys.user(id), 'profile'] as const,
-  userPosts: (id: string, filters?: PostFilters) => 
+  userPosts: (id: string, filters?: PostFilters) =>
     [...queryKeys.user(id), 'posts', filters] as const,
   posts: () => [...queryKeys.all, 'posts'] as const,
   post: (id: string) => [...queryKeys.posts(), id] as const,
   infinite: {
-    posts: (filters?: PostFilters) => 
+    posts: (filters?: PostFilters) =>
       [...queryKeys.posts(), 'infinite', filters] as const,
   },
 } as const;
@@ -214,7 +214,7 @@ export const useSuspenseUser = (userId: string) => {
 // Prefetch query for performance optimization
 export const usePrefetchUser = () => {
   const queryClient = useQueryClient();
-  
+
   return useCallback(
     (userId: string) => {
       queryClient.prefetchQuery({
@@ -230,7 +230,7 @@ export const usePrefetchUser = () => {
 // Status-based hooks for better UX
 export const useUserStatus = (userId: string) => {
   const query = useUser(userId);
-  
+
   return {
     ...query,
     isEmpty: !query.data,
@@ -287,19 +287,19 @@ export const useCreateUser = (
     onSuccess: (newUser, variables, context) => {
       // Replace temp user with real user
       queryClient.setQueryData<User[]>(queryKeys.users(), (old) => {
-        return old?.map(user => 
+        return old?.map(user =>
           user.id.startsWith('temp-') ? newUser : user
         );
       });
-      
+
       // Set individual user cache
       queryClient.setQueryData(queryKeys.user(newUser.id), newUser);
     },
     onSettled: (data, error, variables, context) => {
       // Always refetch to ensure consistency
-      queryClient.invalidateQueries({ 
+      queryClient.invalidateQueries({
         queryKey: queryKeys.users(),
-        refetchType: 'active' 
+        refetchType: 'active'
       });
     },
     ...options,
@@ -322,10 +322,10 @@ export const useUpdateUser = (
       // Optimistic update with validation
       queryClient.setQueryData<User>(queryKeys.user(id), (old) => {
         if (!old) return old;
-        return { 
-          ...old, 
-          ...data, 
-          updatedAt: new Date().toISOString() 
+        return {
+          ...old,
+          ...data,
+          updatedAt: new Date().toISOString()
         };
       });
 
@@ -339,7 +339,7 @@ export const useUpdateUser = (
     onSuccess: (updatedUser, { id }) => {
       // Update both individual and list caches
       queryClient.setQueryData(queryKeys.user(id), updatedUser);
-      
+
       queryClient.setQueryData<User[]>(queryKeys.users(), (old) => {
         return old?.map(user => user.id === id ? updatedUser : user);
       });
@@ -381,11 +381,11 @@ export const useDeleteUser = (
     onSuccess: (_, userId) => {
       // Remove from cache permanently
       queryClient.removeQueries({ queryKey: queryKeys.user(userId) });
-      
+
       // Invalidate related queries
-      queryClient.invalidateQueries({ 
+      queryClient.invalidateQueries({
         queryKey: queryKeys.users(),
-        refetchType: 'active' 
+        refetchType: 'active'
       });
     },
     ...options,
@@ -401,7 +401,7 @@ export const useBatchUpdateUsers = () => {
       const results = await Promise.allSettled(
         updates.map(({ id, data }) => userService.updateUser(id, data))
       );
-      
+
       return results.map((result, index) => ({
         id: updates[index].id,
         result: result.status === 'fulfilled' ? result.value : null,
@@ -415,7 +415,7 @@ export const useBatchUpdateUsers = () => {
           queryClient.setQueryData(queryKeys.user(id), result);
         }
       });
-      
+
       // Invalidate users list
       queryClient.invalidateQueries({ queryKey: queryKeys.users() });
     },
@@ -462,7 +462,7 @@ export const useUserWithPosts = (userId: string) => {
 // Dependent queries
 export const useUserProfile = (userId: string) => {
   const userQuery = useUser(userId);
-  
+
   const profileQuery = useQuery({
     queryKey: queryKeys.userProfile(userId),
     queryFn: () => userService.getUserProfile(userId),
@@ -483,7 +483,7 @@ export const useUserProfile = (userId: string) => {
 export const useInfiniteUsers = (filters?: UserFilters) => {
   return useInfiniteQuery({
     queryKey: queryKeys.infinite.users(filters),
-    queryFn: ({ pageParam }) => 
+    queryFn: ({ pageParam }) =>
       userService.getUsers({ ...filters, cursor: pageParam }),
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) => lastPage.nextCursor ?? undefined,
@@ -584,13 +584,13 @@ export const useOptimizedUserList = (filters?: UserFilters) => {
   return useQuery({
     queryKey: queryKeys.users(filters),
     queryFn: () => userService.getUsers(filters),
-    select: useMemo(() => 
+    select: useMemo(() =>
       (users: User[]) => users.map(user => ({
         id: user.id,
         name: user.name,
         email: user.email,
         // Only select necessary fields to reduce memory usage
-      })), 
+      })),
     []),
     // Enable structural sharing for better performance
     structuralSharing: true,

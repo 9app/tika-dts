@@ -107,7 +107,7 @@ template-upgrade-native.sh upgrade [options]
 
 Options:
   --git-integration     Use git branches for safe upgrade
-  --git-branch <name>   Custom branch name  
+  --git-branch <name>   Custom branch name
   --git-branch auto     Auto-generate branch name
   --no-git             Disable git integration (current behavior)
   --backup-only        Use backup system (legacy mode)
@@ -117,7 +117,7 @@ Options:
 
 Keep backup system for:
 - Non-git projects
-- Users who prefer backup approach  
+- Users who prefer backup approach
 - Emergency fallback
 
 ## 🎯 Migration Strategy
@@ -161,7 +161,7 @@ cp -r backups/project_20250701_120000/* .
 
 ### Proposed Git Workflow:
 ```bash
-# 1. Check upgrades  
+# 1. Check upgrades
 template-upgrade-native.sh check-upgrades
 
 # 2. Git-integrated upgrade
@@ -169,7 +169,7 @@ template-upgrade-native.sh upgrade --latest --git-integration
 
 # System automatically:
 # - Creates upgrade branch
-# - Applies changes  
+# - Applies changes
 # - Uses git merge for conflicts
 # - Provides VS Code merge interface
 

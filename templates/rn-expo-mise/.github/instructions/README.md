@@ -65,11 +65,11 @@ This directory contains comprehensive instructions for GitHub Copilot when worki
 
 ---
 
-### ⚠️ [AI Terminal Safety](./ai-in-terminal.instructions.md)
+### ⚠️ [AI Terminal Safety](../../../.github/instructions/ai-in-terminal.instructions.md)
 **Critical safety guidelines for AI assistants when using terminal commands**
 
 - **Safe Command Patterns**: Incremental commands, proper shell syntax
-- **Dangerous Patterns**: Complex regex, shell escaping, chained operations  
+- **Dangerous Patterns**: Complex regex, shell escaping, chained operations
 - **Tool Priority**: VS Code integrated tools over terminal when possible
 - **Error Prevention**: Testing commands, avoiding hangs, proper escaping
 

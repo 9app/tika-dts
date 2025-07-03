@@ -7,7 +7,7 @@
 **Tika** (`./tika.sh`) is your **one-stop mobile development toolkit** that provides:
 
 - 🚀 **Quick Environment Setup** - Automated development environment configuration
-- 📱 **Template-Based Project Creation** - Create Flutter and React Native projects from battle-tested templates  
+- 📱 **Template-Based Project Creation** - Create Flutter and React Native projects from battle-tested templates
 - 🔄 **Git-Integrated Template Upgrades** - Keep your projects up-to-date with latest best practices
 - 🛠️ **Cross-Platform Tool Management** - Unified interface for Android, iOS, and web development
 
@@ -32,7 +32,7 @@ echo 'eval "$(mise activate zsh)"' >> ~/.zshrc  # or ~/.bashrc for bash
 ./tika.sh setup-android            # Android development tools
 ./tika.sh setup-ios                # iOS development tools (macOS only)
 
-# PROJECT CREATION FROM TEMPLATES  
+# PROJECT CREATION FROM TEMPLATES
 ./tika.sh create --template flutter --name my-flutter-app
 ./tika.sh create --template expo --name my-expo-app
 
@@ -135,7 +135,7 @@ tika/
 #### 🎯 **`tika.sh`** - Main CLI Interface
 The primary command-line interface that orchestrates all operations:
 - Environment setup and configuration
-- Project creation from templates  
+- Project creation from templates
 - Template upgrade and management
 - Platform-specific tool installation
 
@@ -170,7 +170,7 @@ Template testing and validation environment:
 
 ### 📦 Included Development Tools
 - **Node.js 20.12.0** - JavaScript runtime for React Native development
-- **Flutter 3.33.0** - Google's UI toolkit for cross-platform development  
+- **Flutter 3.33.0** - Google's UI toolkit for cross-platform development
 - **Java 17.0.2** - Required for Android development and Gradle builds
 - **Python 3.11.7** - Used by build scripts and automation tools
 
@@ -241,13 +241,13 @@ mise doctor
 #### 🚀 Environment & Setup
 ```bash
 ./tika.sh setup                    # Complete development environment setup
-./tika.sh setup-android            # Android SDK and tools setup  
+./tika.sh setup-android            # Android SDK and tools setup
 ./tika.sh setup-ios                # iOS development tools (macOS only)
 ./tika.sh version                  # Show Tika version and system info
 ./tika.sh help                     # Show all available commands
 ```
 
-#### 📱 Project Creation  
+#### 📱 Project Creation
 ```bash
 # Create Flutter project
 ./tika.sh create --template flutter --name my-flutter-app
@@ -262,7 +262,7 @@ mise doctor
 #### 🔄 Template Management
 ```bash
 ./tika.sh template-status          # Check current template version
-./tika.sh template-check           # Check for available template upgrades  
+./tika.sh template-check           # Check for available template upgrades
 ./tika.sh template-upgrade         # Upgrade to latest template version
 ./tika.sh template-rollback        # Git rollback to previous version
 ./tika.sh template-releases        # List all available template releases

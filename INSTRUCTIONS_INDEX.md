@@ -165,7 +165,7 @@ For AI assistants working on this project, please follow these guidelines:
 - Test changes incrementally
 
 ### Project Structure Awareness
-- `playground/` for testing and experimentation (not `test/`)
+- `playground/` for testing and experimentation
 - `scripts/` for production automation
 - `templates/` for development templates
 - Follow established naming conventions

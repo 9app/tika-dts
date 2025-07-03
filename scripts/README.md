@@ -60,7 +60,7 @@ mise run template:upgrade         # Upgrade template
 
 ### **Setup Scripts** (One-time execution)
 - `setup.sh` - Environment setup
-- `setup-android.sh` - Android SDK setup  
+- `setup-android.sh` - Android SDK setup
 - `setup-ios.sh` - Xcode and iOS tools setup
 
 ### **Project Creation** (Per-project execution)

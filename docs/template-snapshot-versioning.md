@@ -19,17 +19,17 @@ templates:
         flutter_sdk: "3.30.0"
         dart_sdk: "3.6.0"
         changes: [...]
-        
-      - version: "1.2.0"          # Snapshot 1.2.0  
+
+      - version: "1.2.0"          # Snapshot 1.2.0
         flutter_sdk: "3.32.5"
         dart_sdk: "3.7.0"
         changes: [...]
-        
+
       - version: "1.4.0"          # Snapshot 1.4.0
         flutter_sdk: "3.34.0"
         dart_sdk: "3.8.0"
         changes: [...]
-        
+
       - version: "2.0.0"          # Latest snapshot
         flutter_sdk: "3.35.0"
         dart_sdk: "3.8.5"
@@ -182,7 +182,7 @@ grep -A 5 "version: \"1.4.0\"" templates/.templates-registry.yaml | grep "breaki
   breaking_changes: true
   migration_guide: "docs/migrations/flutter-1.2-to-1.3.md"
 
-- version: "1.4.0"  
+- version: "1.4.0"
   breaking_changes: false  # Safe to skip to
 ```
 
@@ -233,7 +233,7 @@ git branch -D template-upgrade-1.2.0-to-1.4.0-20250703
 
 ### 2. **Safety**
 - Warning khi skip breaking changes
-- Git integration để easy rollback  
+- Git integration để easy rollback
 - Dry-run để preview changes
 
 ### 3. **Traceability**
@@ -259,7 +259,7 @@ git branch -D template-upgrade-1.2.0-to-1.4.0-20250703
 
 ### Scenario 2: Skip Breaking Version
 ```bash
-# Current: 1.1.0, Latest: 2.0.0  
+# Current: 1.1.0, Latest: 2.0.0
 # Want: 1.4.0 (skip 1.3.0 with breaking changes)
 
 ./tika.sh template-upgrade --version 1.4.0
@@ -272,7 +272,7 @@ git branch -D template-upgrade-1.2.0-to-1.4.0-20250703
 # Upgrade từng bước thay vì nhảy thẳng lên latest
 ./tika.sh template-upgrade --version 1.3.0  # Step 1
 # Test, verify
-./tika.sh template-upgrade --version 1.4.0  # Step 2  
+./tika.sh template-upgrade --version 1.4.0  # Step 2
 # Test, verify
 ./tika.sh template-upgrade --version 2.0.0  # Final step
 ```
