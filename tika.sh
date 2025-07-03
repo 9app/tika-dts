@@ -53,10 +53,6 @@ show_usage() {
     echo "  setup           Setup development environment (one-time)"
     echo "  create          Create a new mobile project from templates"
     echo
-    echo "🔧 Platform-Specific Setup (use mise):"
-    echo "  mise run setup:android   Setup Android development tools"
-    echo "  mise run setup:ios       Setup iOS development tools (macOS only)"
-    echo
     echo "📦 Template Management:"
     echo "  template-status      Check current template version"
     echo "  template-check       Check for available template upgrades"
