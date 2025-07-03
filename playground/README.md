@@ -14,7 +14,7 @@ playground/
 ├── scripts/                # Testing and template management scripts
 │   ├── manage-templates.sh    # Template management utilities
 │   ├── test-runner.sh         # Automated template validation
-│   └── verify.sh             # Template verification script
+│   └── verify.sh             # Template verification scrip
 └── README.md              # This file
 ```
 
@@ -31,7 +31,7 @@ playground/
 - **Performance Testing**: Benchmark different approaches and optimizations
 
 ### 3. Development Workflows
-- **Script Testing**: Validate automation scripts in isolated environment
+- **Script Testing**: Validate automation scripts in isolated environmen
 - **Build Process**: Test build and deployment pipelines
 - **CI/CD**: Validate continuous integration workflows
 
@@ -43,13 +43,13 @@ playground/
 cd playground/apps/flutter_app
 mise install
 mise run setup:android
-mise run test
+mise run tes
 
 # Test React Native template
 cd playground/apps/mobile-app
 npm install
 npm run android
-npm test
+npm tes
 ```
 
 ### Creating Test Projects
@@ -79,7 +79,7 @@ cd playground
 - **Purpose**: Reference React Native/Expo implementation
 - **Features**: Demonstrates React Query patterns
 - **Testing**: Validates React Native template configuration
-- **Architecture**: Feature-based with TypeScript
+- **Architecture**: Feature-based with TypeScrip
 
 ### 🌐 Web App (`apps/web-app/`)
 - **Purpose**: Web-specific testing and experiments
@@ -115,11 +115,11 @@ cd playground
 ### 1. Template Development Cycle
 ```bash
 # 1. Make changes to templates/
-# 2. Test changes in playground environment
+# 2. Test changes in playground environmen
 cd playground
 ../scripts/create-new-project.sh --template flutter --name validation-test --path apps/
-cd apps/validation-test
-mise install && mise run test
+cd apps/validation-tes
+mise install && mise run tes
 
 # 3. Verify all existing test apps still work
 ./scripts/verify.sh
@@ -132,13 +132,13 @@ mise install && mise run test
 # 1. Create experimental branch
 git checkout -b experiment/new-feature
 
-# 2. Implement in playground apps first
+# 2. Implement in playground apps firs
 cd playground/apps/flutter_app
 # Add experimental feature
 
 # 3. Validate and refine
-mise run test
-mise run lint
+mise run tes
+mise run lin
 
 # 4. Extract to template if successful
 ```
@@ -146,9 +146,9 @@ mise run lint
 ### 3. Cross-Platform Validation
 ```bash
 # Test same feature across platforms
-cd playground/apps/flutter_app && mise run test
-cd playground/apps/mobile-app && npm test
-cd playground/apps/web-app && npm test
+cd playground/apps/flutter_app && mise run tes
+cd playground/apps/mobile-app && npm tes
+cd playground/apps/web-app && npm tes
 ```
 
 ## 📊 Best Practices

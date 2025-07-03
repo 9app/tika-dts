@@ -1,8 +1,8 @@
-# GitHub Copilot Instructions for Tika Project
+# GitHub Copilot Instructions for Tika Projec
 
-## 🎯 Project Context
+## 🎯 Project Contex
 This is a mobile development template system using mise for tool management. Focus on:
-- Flutter and React Native development
+- Flutter and React Native developmen
 - Template management and upgrades
 - Cross-platform compatibility
 - Developer experience optimization
@@ -40,8 +40,8 @@ grep -r "another_pattern" scripts/
 
 ### Tool Priority:
 1. Use `replace_string_in_file` for specific replacements
-2. Use `insert_edit_into_file` for new content
-3. Always include 3-5 lines context
+2. Use `insert_edit_into_file` for new conten
+3. Always include 3-5 lines contex
 4. Use `// ...existing code...` comments
 
 ### File Structure Awareness:
@@ -53,7 +53,7 @@ grep -r "another_pattern" scripts/
 ## 🚨 Safety Rules
 - Test commands incrementally
 - Avoid complex shell operations
-- Use built-in VS Code tools first
+- Use built-in VS Code tools firs
 - Break complex tasks into simple steps
 
 ## 📋 Commit Guidelines

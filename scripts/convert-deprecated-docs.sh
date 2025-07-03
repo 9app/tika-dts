@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -14,10 +14,10 @@ NC='\033[0m' # No Color
 
 echo -e "${BLUE}🔄 Converting deprecated documentation files to stubs...${NC}"
 
-# Function to create stub content
+# Function to create stub conten
 create_stub() {
     local file="$1"
-    local title="$2" 
+    local title="$2"
     local ssot_reference="$3"
     local description="$4"
 
@@ -56,58 +56,58 @@ EOF
     sed -i '' "s/TITLE_PLACEHOLDER/$title/g" "$file"
     sed -i '' "s|SSOT_REFERENCE_PLACEHOLDER|$ssot_reference|g" "$file"
     sed -i '' "s/DESCRIPTION_PLACEHOLDER/$description/g" "$file"
-    
+
     echo -e "${GREEN}✓ Created stub: $file${NC}"
 }
 
 # Template upgrade files → WORKFLOWS.md
-create_stub "docs/template-upgrade-quickstart.md" \
-    "Template Upgrade Quickstart" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+create_stub "docs/template-upgrade-quickstart.md"
+    "Template Upgrade Quickstart"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All template upgrade processes are now consolidated in"
 
-create_stub "docs/template-upgrade-system.md" \
-    "Template Upgrade System" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+create_stub "docs/template-upgrade-system.md"
+    "Template Upgrade System"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All template upgrade system documentation is now in"
 
-create_stub "docs/template-upgrade-comparison.md" \
-    "Template Upgrade Comparison" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+create_stub "docs/template-upgrade-comparison.md"
+    "Template Upgrade Comparison"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All template upgrade comparisons and strategies are now in"
 
-create_stub "docs/template-upgrade-workflow-demo.md" \
-    "Template Upgrade Workflow Demo" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+create_stub "docs/template-upgrade-workflow-demo.md"
+    "Template Upgrade Workflow Demo"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All template upgrade workflow demonstrations are now in"
 
 # Zero dependencies files → WORKFLOWS.md
-create_stub "docs/zero-dependencies-migration.md" \
-    "Zero Dependencies Migration" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#setup-workflows)" \
+create_stub "docs/zero-dependencies-migration.md"
+    "Zero Dependencies Migration"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#setup-workflows)"
     "All migration processes and zero-dependency setup are now in"
 
-create_stub "docs/zero-dependencies-complete.md" \
-    "Zero Dependencies Complete" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#setup-workflows)" \
+create_stub "docs/zero-dependencies-complete.md"
+    "Zero Dependencies Complete"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#setup-workflows)"
     "All zero-dependency implementation details are now in"
 
-# Git integration files → WORKFLOWS.md  
-create_stub "docs/git-integrated-template-upgrade.md" \
-    "Git Integrated Template Upgrade" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+# Git integration files → WORKFLOWS.md
+create_stub "docs/git-integrated-template-upgrade.md"
+    "Git Integrated Template Upgrade"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All git-integrated template upgrade workflows are now in"
 
-create_stub "docs/git-upgrade-migration.md" \
-    "Git Upgrade Migration" \
-    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)" \
+create_stub "docs/git-upgrade-migration.md"
+    "Git Upgrade Migration"
+    "[docs/WORKFLOWS.md](./WORKFLOWS.md#template-management-workflows)"
     "All git upgrade migration processes are now in"
 
 # VSCode configuration → REFERENCE.md
 if [ -f "docs/vscode-configuration.md" ]; then
-    create_stub "docs/vscode-configuration.md" \
-        "VSCode Configuration" \
-        "[docs/REFERENCE.md](./REFERENCE.md#development-tools--environment)" \
+    create_stub "docs/vscode-configuration.md"
+        "VSCode Configuration"
+        "[docs/REFERENCE.md](./REFERENCE.md#development-tools--environment)"
         "All VSCode and development tool configurations are now in"
 fi
 

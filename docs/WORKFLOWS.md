@@ -25,7 +25,7 @@ git clone <repo-url> tika && cd tika
 ./tika.sh setup
 
 # 2. Platform-specific setup (if needed)
-./tika.sh setup-android    # Android development
+./tika.sh setup-android    # Android developmen
 ./tika.sh setup-ios        # iOS development (macOS only)
 
 # 3. Verify installation
@@ -35,10 +35,10 @@ mise doctor
 
 ### Project Creation Workflow
 ```bash
-# Flutter project
+# Flutter projec
 ./tika.sh create --template flutter --name my-flutter-app
 
-# React Native project  
+# React Native projec
 ./tika.sh create --template expo --name my-expo-app
 
 # Advanced options
@@ -49,7 +49,7 @@ mise doctor
 
 ## 🔧 Daily Development Workflows
 
-### Flutter Development
+### Flutter Developmen
 ```bash
 # In project directory
 mise run dev                # Start development server
@@ -60,12 +60,12 @@ mise run test              # Run all tests
 mise run build             # Build for production
 ```
 
-### React Native Development  
+### React Native Developmen
 ```bash
 # In project directory
 mise run dev                # Start Expo development server
 mise run android            # Launch Android emulator
-mise run ios               # Launch iOS simulator (macOS)  
+mise run ios               # Launch iOS simulator (macOS)
 mise run web               # Launch web browser
 mise run test              # Run all tests
 mise run build             # Build for production
@@ -90,7 +90,7 @@ mise run template:check
 mise run template:upgrade
 
 # Rollback if issues occur
-./tika.sh template-rollback  
+./tika.sh template-rollback
 mise run template:rollback
 ```
 
@@ -141,7 +141,7 @@ git commit -m "feat: upgrade template to new version
 ```bash
 # 7. Test that everything works
 mise run verify
-mise run test
+mise run tes
 
 # 8. If successful, merge back to main branch
 git checkout main
@@ -181,7 +181,7 @@ cd playground/apps/mobile-app      # React Native reference
 cd playground && ./scripts/test-runner.sh
 
 # Create test projects
-./scripts/create-new-project.sh --template flutter --name test-project
+./scripts/create-new-project.sh --template flutter --name test-projec
 ```
 
 ### Quality Assurance Workflow
@@ -214,15 +214,15 @@ mise doctor
 ./tika.sh version
 
 # 3. Create test project to verify
-./tika.sh create --template flutter --name onboarding-test
+./tika.sh create --template flutter --name onboarding-tes
 cd onboarding-test && mise run dev
 ```
 
 ### Code Review Workflow
 1. **Development**: Follow platform-specific patterns from [ARCHITECTURE.md](./ARCHITECTURE.md)
-2. **Quality**: Run `mise run lint` and `mise run test` before commit
+2. **Quality**: Run `mise run lint` and `mise run test` before commi
 3. **Review**: Use architecture patterns as quality guidelines
-4. **Testing**: Validate changes work in test environment
+4. **Testing**: Validate changes work in test environmen
 
 ### Release Workflow
 ```bash
@@ -251,7 +251,7 @@ mise doctor                 # Check tool installation
 mise install               # Reinstall tools
 ./tika.sh setup            # Re-run setup
 
-# Template issues  
+# Template issues
 ./tika.sh template-rollback # Rollback problematic upgrade
 mise run template:status    # Check template state
 
@@ -289,8 +289,8 @@ mise run dev               # Restart development server
 - **Knowledge Sharing**: Document new patterns and solutions
 
 ### Maintenance Workflow Best Practices
-- **Regular Updates**: Keep tools and templates current
-- **Validation**: Test changes in playground environment first
+- **Regular Updates**: Keep tools and templates curren
+- **Validation**: Test changes in playground environment firs
 - **Backup Strategy**: Use git for all template changes
 - **Monitoring**: Regular health checks with `mise doctor`
 

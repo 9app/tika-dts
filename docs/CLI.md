@@ -7,7 +7,7 @@
 ### Environment & Setup
 ```bash
 ./tika.sh setup                    # Complete development environment setup
-./tika.sh setup-android            # Android SDK and tools setup  
+./tika.sh setup-android            # Android SDK and tools setup
 ./tika.sh setup-ios                # iOS development tools (macOS only)
 ./tika.sh version                  # Show Tika version and system info
 ./tika.sh help                     # Show all available commands
@@ -24,10 +24,10 @@
 ./tika.sh create --help            # Show creation options
 ```
 
-### Template Management
+### Template Managemen
 ```bash
 ./tika.sh template-status          # Check current template version
-./tika.sh template-check           # Check for available upgrades  
+./tika.sh template-check           # Check for available upgrades
 ./tika.sh template-upgrade         # Upgrade to latest template version
 ./tika.sh template-upgrade --dry-run    # Preview upgrade changes
 ./tika.sh template-upgrade --force      # Force upgrade ignoring conflicts
@@ -41,7 +41,7 @@
 
 ### Development Tasks (In Project Directory)
 ```bash
-# Core development
+# Core developmen
 mise run dev                       # Start development server
 mise run android                   # Run on Android device/emulator
 mise run ios                       # Run on iOS simulator (macOS only)
@@ -60,7 +60,7 @@ mise run format                    # Code formatting
 mise run analyze                   # Static code analysis
 mise run clean                     # Clean build artifacts
 
-# Environment
+# Environmen
 mise doctor                        # Verify environment health
 mise install                       # Install/update tools
 mise list                          # Show all available tasks
@@ -68,7 +68,7 @@ mise list                          # Show all available tasks
 
 ### Template Tasks (In Project Directory)
 ```bash
-# Template management from within project
+# Template management from within projec
 mise run template:status           # Check template version status
 mise run template:check            # Check for available updates
 mise run template:upgrade          # Upgrade template
@@ -84,7 +84,7 @@ mise run android:build            # Build Android APK
 mise run android:release          # Build Android release
 
 # iOS (macOS only)
-mise run simulator                 # Start iOS simulator  
+mise run simulator                 # Start iOS simulator
 mise run ios:build                # Build iOS app
 mise run ios:release              # Build iOS release
 
@@ -109,7 +109,7 @@ cd my-app && mise run dev
 ### Daily Development Pattern
 ```bash
 # In project directory
-mise run dev                       # Start development
+mise run dev                       # Start developmen
 # In separate terminals:
 mise run android                   # Test on Android
 mise run ios                       # Test on iOS
@@ -137,10 +137,10 @@ mise run test                      # Validate after upgrade
 ### Troubleshooting Pattern
 ```bash
 # When things break
-mise doctor                        # Check environment
+mise doctor                        # Check environmen
 ./tika.sh template-status          # Check template state
 mise run clean                     # Clean build
-mise run dev                       # Restart development
+mise run dev                       # Restart developmen
 ```
 
 ---
@@ -152,7 +152,7 @@ mise run dev                       # Restart development
 # Setup command options
 ./tika.sh setup [--verbose] [--android] [--ios]
 
-# Create command options  
+# Create command options
 ./tika.sh create --template <flutter|expo> --name <name> [--path <path>]
 
 # Template upgrade options
@@ -169,10 +169,10 @@ export TIKA_DEFAULT_PROJECT_PATH="./projects"
 
 ### mise Configuration
 ```bash
-# Tool management
+# Tool managemen
 mise install                       # Install all tools from mise.toml
 mise install node@20.12.0         # Install specific tool version
-mise use node@20.12.0             # Use specific version for project
+mise use node@20.12.0             # Use specific version for projec
 mise ls                           # List installed tools
 mise current                      # Show current tool versions
 ```
@@ -185,7 +185,7 @@ mise current                      # Show current tool versions
 ```bash
 # Always verify before major operations
 ./tika.sh template-upgrade --dry-run    # Preview before upgrade
-mise doctor                             # Check health before development
+mise doctor                             # Check health before developmen
 mise run test                           # Test before commits
 ```
 
@@ -230,8 +230,8 @@ ls docs/                          # Available documentation
 ```bash
 # Most common commands
 ./tika.sh setup                    # One-time setup
-./tika.sh create --template flutter --name app    # Create project
-cd app && mise run dev             # Start development
+./tika.sh create --template flutter --name app    # Create projec
+cd app && mise run dev             # Start developmen
 mise run test                      # Run tests
 ./tika.sh template-upgrade         # Update template
 ```

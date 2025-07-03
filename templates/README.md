@@ -6,8 +6,8 @@ This directory contains mise configuration templates for different mobile develo
 
 ### 📱 Flutter Template (`flutter-mise/`)
 Complete mise configuration for Flutter development including:
-- Flutter SDK management
-- Android/iOS/Web development
+- Flutter SDK managemen
+- Android/iOS/Web developmen
 - Testing automation
 - Build tasks for all platforms
 - Code formatting and linting
@@ -28,15 +28,15 @@ Complete mise configuration for React Native and Expo development including:
 
 ### Using the Script (Recommended)
 ```bash
-# Create a new Flutter project
+# Create a new Flutter projec
 ./scripts/create-new-project.sh --template flutter --name my-flutter-app
 
-# Create a new React Native/Expo project
+# Create a new React Native/Expo projec
 ./scripts/create-new-project.sh --template expo --name my-expo-app
 ```
 
 ### Manual Setup
-1. Choose the appropriate template for your project
+1. Choose the appropriate template for your projec
 2. Copy the template files to your project directory
 3. Follow the template-specific README instructions
 
@@ -63,7 +63,7 @@ Templates are designed to be starting points. You can:
 - Node.js (managed by mise)
 - Java (managed by mise)
 
-## Support
+## Suppor
 
 For questions and issues:
 1. Check the template-specific README

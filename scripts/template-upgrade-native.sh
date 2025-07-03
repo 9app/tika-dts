@@ -2,12 +2,12 @@
 
 # template-upgrade-native.sh - Template upgrade system without external dependencies
 # Pure bash implementation for cross-platform compatibility
-# 
+#
 # ⚠️  DEPRECATED: This script is deprecated in favor of template-upgrade-git.sh
-# 
+#
 # This backup-based approach has been replaced with a git-integrated solution.
 # Please use template-upgrade-git.sh or the main tika.sh interface instead.
-# 
+#
 # Migration guide: docs/git-upgrade-migration.md
 # New usage: ./tika.sh template-upgrade OR ./scripts/template-upgrade-git.sh
 
@@ -26,7 +26,7 @@ echo ""
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -44,7 +44,7 @@ BACKUPS_DIR="$WORKSPACE_ROOT/backups"
 # Source YAML parser
 source "$SCRIPT_DIR/yaml-parser.sh"
 
-# Print colored output
+# Print colored outpu
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -68,9 +68,9 @@ print_header() {
 # Check dependencies (minimal)
 check_dependencies() {
     local missing_deps=()
-    
+
     command -v git >/dev/null 2>&1 || missing_deps+=("git")
-    
+
     if [[ ${#missing_deps[@]} -gt 0 ]]; then
         print_error "Missing required dependencies: ${missing_deps[*]}"
         print_info "Install git for your platform"
@@ -88,7 +88,7 @@ Pure bash implementation - no external dependencies required!
 Usage: ./scripts/template-upgrade-native.sh <command> [options]
 
 Commands:
-  init <path>               Initialize template metadata for existing project
+  init <path>               Initialize template metadata for existing projec
   status [path]             Show current template status
   check-upgrades [path]     Check for available template upgrades
   upgrade [options]         Upgrade template to newer version
@@ -107,15 +107,15 @@ Registry Commands:
   registry list            List all available templates
 
 Examples:
-  # Initialize metadata for existing project
-  ./scripts/template-upgrade-native.sh init ./my-flutter-project
+  # Initialize metadata for existing projec
+  ./scripts/template-upgrade-native.sh init ./my-flutter-projec
 
   # Check upgrade status
-  cd my-flutter-project
+  cd my-flutter-projec
   ../../scripts/template-upgrade-native.sh status
 
   # Upgrade to latest version
-  ../../scripts/template-upgrade-native.sh upgrade --latest
+  ../../scripts/template-upgrade-native.sh upgrade --lates
 
 EOF
 }
@@ -124,20 +124,20 @@ EOF
 parse_yaml_value() {
     local file="$1"
     local key="$2"
-    
+
     if [[ ! -f "$file" ]]; then
         return 1
     fi
-    
+
     # Look for key: value pattern
     local value
     value=$(grep "^[[:space:]]*${key}:" "$file" | head -n1 | sed "s/^[[:space:]]*${key}:[[:space:]]*//" | sed 's/^"\(.*\)"$/\1/' | sed "s/^'\(.*\)'$/\1/")
-    
+
     if [[ -n "$value" ]]; then
         echo "$value"
         return 0
     fi
-    
+
     return 1
 }
 
@@ -146,33 +146,33 @@ parse_nested_yaml_value() {
     local file="$1"
     local section="$2"
     local key="$3"
-    
+
     if [[ ! -f "$file" ]]; then
         return 1
     fi
-    
+
     # Find section and extract key
     local in_section=false
     local section_indent=0
-    
+
     while IFS= read -r line; do
         # Skip comments and empty lines
         [[ "$line" =~ ^[[:space:]]*# ]] && continue
         [[ "$line" =~ ^[[:space:]]*$ ]] && continue
-        
+
         # Calculate indentation
         local line_indent=0
         if [[ "$line" =~ ^([[:space:]]*) ]]; then
             line_indent=${#BASH_REMATCH[1]}
         fi
-        
+
         # Check if we're entering the target section
         if [[ "$line" =~ ^[[:space:]]*${section}:[[:space:]]*$ ]]; then
             in_section=true
-            section_indent=$line_indent
+            section_indent=$line_inden
             continue
         fi
-        
+
         # If we're in the section
         if [[ "$in_section" == true ]]; then
             # Check if we've moved to a different section at the same or higher level
@@ -180,7 +180,7 @@ parse_nested_yaml_value() {
                 in_section=false
                 continue
             fi
-            
+
             # Look for our key
             if [[ "$line" =~ ^[[:space:]]*${key}:[[:space:]]*(.+)$ ]]; then
                 local value="${BASH_REMATCH[1]}"
@@ -194,7 +194,7 @@ parse_nested_yaml_value() {
             fi
         fi
     done < "$file"
-    
+
     return 1
 }
 
@@ -203,14 +203,14 @@ update_yaml_value_native() {
     local file="$1"
     local key="$2"
     local new_value="$3"
-    
+
     if [[ ! -f "$file" ]]; then
         return 1
     fi
-    
+
     # Create backup
     cp "$file" "${file}.bak"
-    
+
     # Use sed to replace the value
     if [[ "$OSTYPE" == "darwin"* ]]; then
         # macOS sed
@@ -226,18 +226,18 @@ add_to_yaml_array() {
     local file="$1"
     local array_name="$2"
     local entry="$3"
-    
+
     if [[ ! -f "$file" ]]; then
         return 1
     fi
-    
-    # Find the array and add entry after it
+
+    # Find the array and add entry after i
     local temp_file=$(mktemp)
     local found_array=false
-    
+
     while IFS= read -r line; do
         echo "$line" >> "$temp_file"
-        
+
         if [[ "$line" =~ ^[[:space:]]*${array_name}:[[:space:]]*$ ]]; then
             found_array=true
         elif [[ "$found_array" == true ]] && [[ "$line" =~ ^[[:space:]]*$ ]]; then
@@ -246,12 +246,12 @@ add_to_yaml_array() {
             found_array=false
         fi
     done < "$file"
-    
+
     # If array was at the end of file
     if [[ "$found_array" == true ]]; then
         echo "$entry" >> "$temp_file"
     fi
-    
+
     mv "$temp_file" "$file"
 }
 
@@ -259,21 +259,21 @@ add_to_yaml_array() {
 count_yaml_array_entries() {
     local file="$1"
     local array_name="$2"
-    
+
     if [[ ! -f "$file" ]]; then
         echo "0"
         return
     fi
-    
+
     local count=0
     local in_array=false
-    
+
     while IFS= read -r line; do
         if [[ "$line" =~ ^[[:space:]]*${array_name}:[[:space:]]*$ ]]; then
             in_array=true
             continue
         fi
-        
+
         if [[ "$in_array" == true ]]; then
             if [[ "$line" =~ ^[[:space:]]*-[[:space:]] ]]; then
                 ((count++))
@@ -283,7 +283,7 @@ count_yaml_array_entries() {
             fi
         fi
     done < "$file"
-    
+
     echo "$count"
 }
 
@@ -293,34 +293,34 @@ get_project_path() {
     echo "$(cd "$path" && pwd)"
 }
 
-# Check if directory is a template-based project
+# Check if directory is a template-based projec
 is_template_project() {
     local project_path="$1"
     [[ -f "$project_path/.template-metadata" ]]
 }
 
-# Initialize template metadata for existing project
+# Initialize template metadata for existing projec
 init_template_metadata() {
     local project_path="$(get_project_path "$1")"
-    
+
     if [[ ! -d "$project_path" ]]; then
         print_error "Project directory not found: $project_path"
         exit 1
     fi
-    
+
     if is_template_project "$project_path"; then
         print_warning "Project already has template metadata"
         return 0
     fi
-    
+
     print_header "Initializing Template Metadata"
     print_info "Project path: $project_path"
-    
+
     # Detect template type
     local template_name=""
     local template_version="1.0.0"
     local workspace_version="2024.1"
-    
+
     if [[ -f "$project_path/pubspec.yaml" ]]; then
         template_name="flutter-mise"
         print_info "Detected Flutter project"
@@ -332,7 +332,7 @@ init_template_metadata() {
         print_info "Supported types: Flutter, React Native/Expo"
         exit 1
     fi
-    
+
     # Get template version from registry if available
     if [[ -f "$REGISTRY_FILE" ]]; then
         local current_version
@@ -341,18 +341,18 @@ init_template_metadata() {
             template_version="$current_version"
         fi
     fi
-    
+
     # Get current timestamp
     local created_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-    
+
     # Get git commit if available
     local base_commit=""
     if git rev-parse --git-dir >/dev/null 2>&1; then
         base_commit=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
     fi
-    
+
     print_info "Creating template metadata..."
-    
+
     # Create metadata file
     cat > "$project_path/.template-metadata" << EOF
 # This file tracks template properties and upgrade history
@@ -373,10 +373,10 @@ upgrade_history: []
 customizations:
   # Files that have been modified by user
   modified_files: []
-  
-  # Custom tasks added by user  
+
+  # Custom tasks added by user
   custom_tasks: []
-  
+
   # Custom environment variables
   custom_env: []
 
@@ -410,7 +410,7 @@ EOF
   - "components/**"              # React components
   - "constants/**"               # App constants
   - "hooks/**"                   # React hooks
-  - "App.{js,jsx,ts,tsx}"        # Main app component
+  - "App.{js,jsx,ts,tsx}"        # Main app componen
   - "metro.config.js"            # Metro bundler config
   - "babel.config.js"            # Babel configuration
 
@@ -423,7 +423,7 @@ compatibility:
   expo_sdk_range: ">=51.0.0 <52.0.0"
 EOF
     fi
-    
+
     print_success "Template metadata created: .template-metadata"
     print_info "Template: $template_name v$template_version"
 }
@@ -431,36 +431,36 @@ EOF
 # Show current template status
 show_template_status() {
     local project_path="$(get_project_path "$1")"
-    
+
     if ! is_template_project "$project_path"; then
         print_error "Not a template-based project"
         print_info "Run: ./scripts/template-upgrade-native.sh init $project_path"
         exit 1
     fi
-    
+
     print_header "Template Status"
     print_info "Project: $(basename "$project_path")"
-    
+
     # Parse metadata
     local metadata_file="$project_path/.template-metadata"
     local template_name=$(parse_nested_yaml_value "$metadata_file" "template" "name")
     local current_version=$(parse_nested_yaml_value "$metadata_file" "template" "version")
     local workspace_version=$(parse_nested_yaml_value "$metadata_file" "template" "workspace_version")
     local created_at=$(parse_nested_yaml_value "$metadata_file" "template" "created_at")
-    
+
     echo
     echo "📋 Current Configuration"
     echo "Template: $template_name"
     echo "Version: $current_version"
     echo "Workspace: $workspace_version"
     echo "Created: $created_at"
-    
+
     # Check for available upgrades
     if [[ -f "$REGISTRY_FILE" ]]; then
         # Simple approach to get latest version
         local latest_version
         latest_version=$(grep -A 5 "^[[:space:]]*${template_name}:" "$REGISTRY_FILE" | grep "current_version:" | sed 's/.*current_version:[[:space:]]*//' | sed 's/^"\(.*\)"$/\1/')
-        
+
         if [[ -n "$latest_version" && "$latest_version" != "$current_version" ]]; then
             echo
             print_warning "Upgrade available: $current_version → $latest_version"
@@ -469,9 +469,9 @@ show_template_status() {
             print_success "Template is up to date"
         fi
     fi
-    
+
     # Show upgrade history
-    local history_count
+    local history_coun
     history_count=$(count_yaml_array_entries "$metadata_file" "upgrade_history")
     if [[ "$history_count" -gt 0 ]]; then
         echo
@@ -484,43 +484,43 @@ show_template_status() {
 # Check for available upgrades
 check_upgrades() {
     local project_path="$(get_project_path "$1")"
-    
+
     if ! is_template_project "$project_path"; then
         print_error "Not a template-based project"
         exit 1
     fi
-    
+
     print_header "Checking for Template Upgrades"
-    
+
     local metadata_file="$project_path/.template-metadata"
     local template_name=$(parse_nested_yaml_value "$metadata_file" "template" "name")
     local current_version=$(parse_nested_yaml_value "$metadata_file" "template" "version")
-    
+
     if [[ ! -f "$REGISTRY_FILE" ]]; then
         print_error "Template registry not found"
         exit 1
     fi
-    
+
     # Get latest version (simple approach)
     local latest_version
     latest_version=$(grep -A 5 "^[[:space:]]*${template_name}:" "$REGISTRY_FILE" | grep "current_version:" | sed 's/.*current_version:[[:space:]]*//' | sed 's/^"\(.*\)"$/\1/')
-    
+
     echo "Current version: $current_version"
     echo "Latest version: $latest_version"
     echo
-    
+
     if [[ "$current_version" == "$latest_version" ]]; then
         print_success "Template is up to date"
         return 0
     fi
-    
+
     echo "📦 Available Upgrades:"
     echo
     print_warning "Upgrade available: $current_version → $latest_version"
-    
+
     # Show version information from registry (simplified)
     echo "   Check registry for detailed changes: $REGISTRY_FILE"
-    
+
     print_info "To upgrade: ./scripts/template-upgrade-native.sh upgrade --version $latest_version"
     print_info "Latest: ./scripts/template-upgrade-native.sh upgrade --latest"
 }
@@ -531,7 +531,7 @@ perform_upgrade() {
     local target_version=""
     local dry_run=false
     local force=false
-    
+
     # Parse options
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -541,15 +541,15 @@ perform_upgrade() {
                 ;;
             --latest)
                 target_version="latest"
-                shift
+                shif
                 ;;
             --dry-run)
                 dry_run=true
-                shift
+                shif
                 ;;
             --force)
                 force=true
-                shift
+                shif
                 ;;
             *)
                 print_error "Unknown option: $1"
@@ -557,37 +557,37 @@ perform_upgrade() {
                 ;;
         esac
     done
-    
+
     if ! is_template_project "$project_path"; then
         print_error "Not a template-based project"
         exit 1
     fi
-    
+
     if [[ -z "$target_version" ]]; then
         print_error "Target version required. Use --version <version> or --latest"
         exit 1
     fi
-    
+
     print_header "Template Upgrade"
-    
+
     local metadata_file="$project_path/.template-metadata"
     local template_name=$(parse_nested_yaml_value "$metadata_file" "template" "name")
     local current_version=$(parse_nested_yaml_value "$metadata_file" "template" "version")
-    
+
     # Resolve latest version
     if [[ "$target_version" == "latest" ]]; then
         target_version=$(grep -A 5 "^[[:space:]]*${template_name}:" "$REGISTRY_FILE" | grep "current_version:" | sed 's/.*current_version:[[:space:]]*//' | sed 's/^"\(.*\)"$/\1/')
     fi
-    
+
     print_info "Template: $template_name"
     print_info "Current version: $current_version"
     print_info "Target version: $target_version"
-    
+
     if [[ "$current_version" == "$target_version" ]]; then
         print_success "Already at target version"
         return 0
     fi
-    
+
     # Create backup
     print_info "Creating backup..."
     local timestamp=$(date +"%Y%m%d_%H%M%S")
@@ -595,7 +595,7 @@ perform_upgrade() {
     mkdir -p "$backup_dir"
     cp -r "$project_path"/* "$backup_dir/" 2>/dev/null || true
     print_success "Backup created: $backup_dir"
-    
+
     if [[ "$dry_run" == "true" ]]; then
         print_info "DRY RUN - No changes will be applied"
         echo
@@ -605,10 +605,10 @@ perform_upgrade() {
         echo "  • Update .template-metadata"
         return 0
     fi
-    
+
     # Apply upgrade
     print_info "Applying upgrade..."
-    
+
     # Copy new template files
     local template_dir="$TEMPLATES_DIR/$template_name"
     if [[ -f "$template_dir/mise.toml" ]]; then
@@ -616,18 +616,18 @@ perform_upgrade() {
         cp "$template_dir/mise.toml" "$project_path/mise.toml.new"
         print_warning "New template saved as mise.toml.new - please review and merge manually"
     fi
-    
+
     # Update metadata using native functions
     local upgraded_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
     local commit_hash=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
-    
+
     # Update current version
     update_yaml_value_native "$metadata_file" "version" "$target_version"
-    
+
     # Add to upgrade history (simplified approach)
     local upgrade_entry="  - from_version: \"$current_version\""$'\n'"    to_version: \"$target_version\""$'\n'"    upgraded_at: \"$upgraded_at\""$'\n'"    commit: \"$commit_hash\""
     add_to_yaml_array "$metadata_file" "upgrade_history" "$upgrade_entry"
-    
+
     print_success "Template upgraded successfully"
     print_info "Version: $current_version → $target_version"
     print_info "Please test your project to ensure everything works correctly"
@@ -636,27 +636,27 @@ perform_upgrade() {
 # Show upgrade history
 show_history() {
     local project_path="$(get_project_path "$1")"
-    
+
     if ! is_template_project "$project_path"; then
         print_error "Not a template-based project"
         exit 1
     fi
-    
+
     print_header "Template Upgrade History"
-    
+
     local metadata_file="$project_path/.template-metadata"
-    local history_count
+    local history_coun
     history_count=$(count_yaml_array_entries "$metadata_file" "upgrade_history")
-    
+
     if [[ "$history_count" -eq 0 ]]; then
         print_info "No upgrade history found"
         return 0
     fi
-    
+
     echo "Project: $(basename "$project_path")"
     echo "Total upgrades: $history_count"
     echo
-    
+
     # Show upgrade history (simplified)
     echo "🔄 Upgrade History"
     grep -A 10 "upgrade_history:" "$metadata_file" | grep -E "(from_version|to_version|upgraded_at)" | sed 's/^[[:space:]]*/   /'
@@ -668,17 +668,17 @@ list_templates() {
         print_error "Template registry not found"
         exit 1
     fi
-    
+
     print_header "Available Templates"
-    
+
     # Simple template listing
     grep -E "^[[:space:]]*[^[:space:]]+:[[:space:]]*$" "$REGISTRY_FILE" | grep -v "templates:" | while read -r line; do
         local template_name=$(echo "$line" | sed 's/:[[:space:]]*$//' | sed 's/^[[:space:]]*//')
-        
+
         # Get description and version (simplified)
         local description=$(grep -A 10 "$line" "$REGISTRY_FILE" | grep "description:" | head -n1 | sed 's/.*description:[[:space:]]*//' | sed 's/^"\(.*\)"$/\1/')
         local version=$(grep -A 10 "$line" "$REGISTRY_FILE" | grep "current_version:" | head -n1 | sed 's/.*current_version:[[:space:]]*//' | sed 's/^"\(.*\)"$/\1/')
-        
+
         echo "📱 $template_name"
         [[ -n "$description" ]] && echo "   Description: $description"
         [[ -n "$version" ]] && echo "   Current version: $version"
@@ -689,15 +689,15 @@ list_templates() {
 # Main function
 main() {
     check_dependencies
-    
+
     if [[ $# -eq 0 ]]; then
         show_usage
         exit 1
     fi
-    
+
     local command="$1"
-    shift
-    
+    shif
+
     case "$command" in
         init)
             init_template_metadata "$@"

@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -22,7 +22,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 WORKSPACE_ROOT="$(dirname "$SCRIPT_DIR")"
 TEMPLATES_DIR="$WORKSPACE_ROOT/templates"
 
-# Print colored output
+# Print colored outpu
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -198,17 +198,17 @@ check_prerequisites() {
     print_success "Prerequisites check passed"
 }
 
-# Create Flutter project
+# Create Flutter projec
 create_flutter_project() {
     print_info "Creating Flutter project: $PROJECT_NAME"
-    
+
     # Check if directory already exists
     if [[ -d "$TARGET_PATH/$PROJECT_NAME" ]]; then
         print_error "Directory already exists: $TARGET_PATH/$PROJECT_NAME"
         exit 1
     fi
 
-    # Create Flutter project
+    # Create Flutter projec
     cd "$TARGET_PATH"
     flutter create "$PROJECT_NAME"
     cd "$PROJECT_NAME"
@@ -216,7 +216,7 @@ create_flutter_project() {
     # Copy mise template
     print_info "Copying Flutter mise template..."
     cp "$TEMPLATES_DIR/flutter-mise/mise.toml" .
-    
+
     # Copy VS Code configuration
     if [[ -d "$TEMPLATES_DIR/flutter-mise/.vscode" ]]; then
         print_info "Copying Flutter VS Code configuration..."
@@ -247,17 +247,17 @@ create_flutter_project() {
     echo "  mise run doctor         # Verify setup"
 }
 
-# Create Expo project
+# Create Expo projec
 create_expo_project() {
     print_info "Creating Expo project: $PROJECT_NAME"
-    
+
     # Check if directory already exists
     if [[ -d "$TARGET_PATH/$PROJECT_NAME" ]]; then
         print_error "Directory already exists: $TARGET_PATH/$PROJECT_NAME"
         exit 1
     fi
 
-    # Create Expo project
+    # Create Expo projec
     cd "$TARGET_PATH"
     npx create-expo-app "$PROJECT_NAME"
     cd "$PROJECT_NAME"
@@ -265,13 +265,13 @@ create_expo_project() {
     # Copy mise template
     print_info "Copying React Native/Expo mise template..."
     cp "$TEMPLATES_DIR/rn-expo-mise/mise.toml" .
-    
+
     # Copy Biome configuration
     if [[ -f "$TEMPLATES_DIR/rn-expo-mise/biome.json" ]]; then
         print_info "Copying Biome configuration..."
         cp "$TEMPLATES_DIR/rn-expo-mise/biome.json" .
     fi
-    
+
     # Copy VS Code configuration
     if [[ -d "$TEMPLATES_DIR/rn-expo-mise/.vscode" ]]; then
         print_info "Copying React Native/Expo VS Code configuration..."
@@ -309,7 +309,7 @@ create_template_metadata() {
     local template_name="$1"
     local current_version="1.0.0"
     local workspace_version="2024.1"
-    
+
     # Get template version from registry if available (using native parsing)
     if [[ -f "$TEMPLATES_DIR/.templates-registry.yaml" ]]; then
         # Parse YAML using native bash - look for current_version under template
@@ -318,18 +318,18 @@ create_template_metadata() {
             current_version=$(echo "$version_line" | sed 's/.*current_version:[[:space:]]*["'"'"']*\([^"'"'"']*\)["'"'"']*/\1/')
         fi
     fi
-    
+
     # Get current timestamp
     local created_at=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-    
+
     # Get git commit if available
     local base_commit=""
     if git rev-parse --git-dir >/dev/null 2>&1; then
         base_commit=$(git rev-parse HEAD 2>/dev/null || echo "unknown")
     fi
-    
+
     print_info "Creating template metadata..."
-    
+
     # Create metadata file
     cat > ".template-metadata" << EOF
 # This file tracks template properties and upgrade history
@@ -350,10 +350,10 @@ upgrade_history: []
 customizations:
   # Files that have been modified by user
   modified_files: []
-  
-  # Custom tasks added by user  
+
+  # Custom tasks added by user
   custom_tasks: []
-  
+
   # Custom environment variables
   custom_env: []
 
@@ -387,7 +387,7 @@ EOF
   - "components/**"              # React components
   - "constants/**"               # App constants
   - "hooks/**"                   # React hooks
-  - "App.{js,jsx,ts,tsx}"        # Main app component
+  - "App.{js,jsx,ts,tsx}"        # Main app componen
   - "metro.config.js"            # Metro bundler config
   - "babel.config.js"            # Babel configuration
 
@@ -400,23 +400,23 @@ compatibility:
   expo_sdk_range: ">=51.0.0 <52.0.0"
 EOF
     fi
-    
+
     print_success "Template metadata created: .template-metadata"
 }
 # Main function
 main() {
     print_info "🚀 Mobile Project Creator"
-    
+
     parse_args "$@"
     validate_args
     check_prerequisites
 
     case "$TEMPLATE" in
         flutter)
-            create_flutter_project
+            create_flutter_projec
             ;;
         expo)
-            create_expo_project
+            create_expo_projec
             ;;
     esac
 

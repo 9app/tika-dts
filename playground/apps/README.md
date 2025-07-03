@@ -19,7 +19,7 @@ Each app should have its own:
 - package.json (for Node.js apps) or pubspec.yaml (for Flutter apps)
 - Build and deployment configurations
 
-## Development
+## Developmen
 
 Use the mise commands from the root directory:
 ```bash

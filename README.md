@@ -8,7 +8,7 @@
 # 1. Setup (one-time)
 git clone <repo-url> tika && cd tika && ./tika.sh setup
 
-# 2. Create project  
+# 2. Create projec
 ./tika.sh create --template flutter --name my-app    # Flutter
 ./tika.sh create --template expo --name my-app      # React Native
 
@@ -47,7 +47,7 @@ cd my-app && mise run dev
 
 ### **Core Value Propositions**
 - 🚀 **5-Minute Setup**: From zero to running mobile app in 5 minutes
-- 📱 **Production Templates**: Battle-tested Flutter and React Native templates  
+- 📱 **Production Templates**: Battle-tested Flutter and React Native templates
 - 🔄 **Smart Upgrades**: Git-integrated template updates with automatic rollback
 - 🛠️ **Zero Config**: Everything works out of the box, no manual configuration
 
@@ -98,14 +98,14 @@ tika/
 ### **Setup & Creation**
 ```bash
 ./tika.sh setup                    # One-time environment setup
-./tika.sh create --template flutter --name <app>   # Create Flutter project
-./tika.sh create --template expo --name <app>      # Create React Native project
+./tika.sh create --template flutter --name <app>   # Create Flutter projec
+./tika.sh create --template expo --name <app>      # Create React Native projec
 ```
 
 ### **Daily Development** (in project directory)
 ```bash
 mise run dev                       # Start development server
-mise run android                   # Launch Android emulator  
+mise run android                   # Launch Android emulator
 mise run ios                       # Launch iOS simulator
 mise run test                      # Run all tests
 ```
@@ -120,12 +120,12 @@ mise run test                      # Run all tests
 
 ---
 
-## 🔄 Template Management
+## 🔄 Template Managemen
 
 ### **Intelligent Upgrade System**
 - ✅ **Git Integration**: Automatic commits before upgrades
-- ✅ **Rollback Safety**: One-command rollback if issues occur  
-- ✅ **Version Selection**: Choose specific versions, not just latest
+- ✅ **Rollback Safety**: One-command rollback if issues occur
+- ✅ **Version Selection**: Choose specific versions, not just lates
 - ✅ **Conflict Resolution**: Smart handling of upgrade conflicts
 
 ### **Upgrade Workflow**
@@ -144,8 +144,8 @@ mise run test                      # Run all tests
 
 ### **Out-of-the-Box Features**
 - 🎯 **Single Command Setup**: `./tika.sh setup` configures everything
-- 📱 **Hot Reload Ready**: Instant feedback during development
-- 🧪 **Testing Configured**: Unit, widget, integration, and E2E tests  
+- 📱 **Hot Reload Ready**: Instant feedback during developmen
+- 🧪 **Testing Configured**: Unit, widget, integration, and E2E tests
 - 🔍 **Debugging Tools**: VS Code integration, platform debuggers
 - 📊 **Code Quality**: Linting, formatting, and analysis pre-configured
 
@@ -161,14 +161,14 @@ mise run test                      # Run all tests
 
 ### **Compared to Manual Setup**
 - ⚡ **10x Faster**: 5 minutes vs 2+ hours manual configuration
-- 🔒 **Consistent**: Same environment across all team members  
+- 🔒 **Consistent**: Same environment across all team members
 - 🎯 **Best Practices**: Production-proven patterns built-in
 - 🔄 **Maintainable**: Easy updates as ecosystem evolves
 
 ### **Compared to Other Tools**
 - 🚫 **Zero Dependencies**: No external tools required (yq, jq, etc.)
 - 🔧 **Tool Management**: Automatic version management with mise
-- 📱 **Mobile Focus**: Optimized specifically for mobile development
+- 📱 **Mobile Focus**: Optimized specifically for mobile developmen
 - 🎯 **Template System**: Upgradeable, version-controlled templates
 
 ---
@@ -180,14 +180,14 @@ mise run test                      # Run all tests
 2. **Learn Stack**: [System Architecture](./docs/ARCHITECTURE.md) - Understand the tools
 3. **Daily Workflow**: [Development Workflows](./docs/WORKFLOWS.md) - Master the process
 
-### **Team Setup?**  
-1. **Environment**: [Setup Guide](./docs/WORKFLOWS.md#setup-workflows) - Consistent team environment
+### **Team Setup?**
+1. **Environment**: [Setup Guide](./docs/WORKFLOWS.md#setup-workflows) - Consistent team environmen
 2. **Standards**: [Flutter Guide](./templates/flutter-mise/GUIDE.md) | [React Native Guide](./templates/rn-expo-mise/GUIDE.md) - Development standards
 3. **Processes**: [Team Workflows](./docs/WORKFLOWS.md#team-development-workflows) - Collaboration patterns
 
 ### **Need Help?**
 - 🐛 **Issues**: [Troubleshooting Guide](./docs/TROUBLESHOOTING.md)
-- 💬 **Commands**: [CLI Reference](./docs/CLI.md)  
+- 💬 **Commands**: [CLI Reference](./docs/CLI.md)
 - 🏗️ **Architecture**: [Template Architecture](./docs/template-architecture.md)
 
 ---
@@ -210,9 +210,9 @@ mise run test                      # Run all tests
 ```bash
 # 1. Clone and setup environment (one-time)
 git clone <repo-url> tika && cd tika
-./tika.sh setup                    # Complete development environment
+./tika.sh setup                    # Complete development environmen
 
-# 2. Create your first project
+# 2. Create your first projec
 ./tika.sh create --template flutter --name my-flutter-app
 # OR
 ./tika.sh create --template expo --name my-expo-app
@@ -249,7 +249,7 @@ mise run ios                       # Launch on iOS (macOS only)
 **Navigate to your project and use mise for development operations:**
 
 ```bash
-# Navigate to your created project
+# Navigate to your created projec
 cd my-flutter-app
 
 # DEVELOPMENT OPERATIONS
@@ -268,7 +268,7 @@ mise run format                    # Code formatting
 # TEMPLATE OPERATIONS (Alternative to Tika CLI)
 mise run template:status           # Check template version status
 mise run template:upgrade          # Upgrade template (same as Tika CLI)
-mise run template:rollback         # Rollback template changes using git
+mise run template:rollback         # Rollback template changes using gi
 ```
 
 ## 🎯 When to Use What?
@@ -320,10 +320,10 @@ Experienced users can access individual scripts directly if needed:
 
 ### 🔧 **Development Tools & Versions**
 - **Node.js**: 20.12.0 (LTS) - JavaScript runtime
-- **Flutter**: 3.24.0 - Cross-platform UI toolkit
+- **Flutter**: 3.24.0 - Cross-platform UI toolki
 - **Java**: 17.0.2 - Android development and Gradle
 - **Python**: 3.11.7 - Build scripts and automation
-- **mise**: Latest - Tool version management
+- **mise**: Latest - Tool version managemen
 
 ### 📖 **Additional Information**
 For detailed setup instructions and troubleshooting, see:
@@ -337,7 +337,7 @@ For detailed setup instructions and troubleshooting, see:
 
 ```
 tika/
-├── tika.sh                 # 🎯 Main CLI entry point
+├── tika.sh                 # 🎯 Main CLI entry poin
 ├── mise.toml              # 🛠️ Tool and task definitions
 ├── scripts/               # 🔧 Core automation scripts
 │   ├── setup.sh           # Environment setup
@@ -365,12 +365,12 @@ tika/
 The primary command-line interface that orchestrates all operations:
 - Environment setup and configuration
 - Project creation from templates
-- Template upgrade and management
+- Template upgrade and managemen
 - Platform-specific tool installation
 
-#### 🛠️ **`mise.toml`** - Tool & Task Management
+#### 🛠️ **`mise.toml`** - Tool & Task Managemen
 Defines development tools, versions, and automation tasks:
-- Cross-platform tool version management
+- Cross-platform tool version managemen
 - Project-specific environment variables
 - Development workflow automation
 - Template upgrade tasks
@@ -398,8 +398,8 @@ Template testing and validation environment:
 **Tika** uses [mise](https://mise.jdx.dev) for **deterministic tool version management**. All tools and versions are defined in `mise.toml`:
 
 ### 📦 Included Development Tools
-- **Node.js 20.12.0** - JavaScript runtime for React Native development
-- **Flutter 3.33.0** - Google's UI toolkit for cross-platform development
+- **Node.js 20.12.0** - JavaScript runtime for React Native developmen
+- **Flutter 3.33.0** - Google's UI toolkit for cross-platform developmen
 - **Java 17.0.2** - Required for Android development and Gradle builds
 - **Python 3.11.7** - Used by build scripts and automation tools
 
@@ -407,8 +407,8 @@ Template testing and validation environment:
 - **Reproducible environments** across team members and CI/CD
 - **Automatic tool installation** based on project requirements
 - **No manual PATH management** - tools are activated automatically
-- **Environment variables** managed per-project
-- **Task automation** integrated with tool management
+- **Environment variables** managed per-projec
+- **Task automation** integrated with tool managemen
 
 ## ⚡ Installation & Setup
 
@@ -478,17 +478,17 @@ mise doctor
 
 #### 📱 Project Creation
 ```bash
-# Create Flutter project
+# Create Flutter projec
 ./tika.sh create --template flutter --name my-flutter-app
 
-# Create React Native/Expo project
+# Create React Native/Expo projec
 ./tika.sh create --template expo --name my-expo-app
 
 # Advanced options
 ./tika.sh create --template flutter --name my-app --path ./projects/
 ```
 
-#### 🔄 Template Management
+#### 🔄 Template Managemen
 ```bash
 ./tika.sh template-status          # Check current template version
 ./tika.sh template-check           # Check for available template upgrades
@@ -501,10 +501,10 @@ mise doctor
 ./tika.sh template-upgrade --force      # Force upgrade ignoring conflicts
 ```
 ./tika.sh verify                   # Verify project configuration
-./tika.sh build                    # Build project
+./tika.sh build                    # Build projec
 ```
 
-#### 📦 Template Management
+#### 📦 Template Managemen
 ```bash
 # Template upgrades (git-integrated, zero dependencies)
 ./tika.sh template-status          # Check current template status
@@ -513,10 +513,10 @@ mise doctor
 ./tika.sh template-rollback        # Git rollback to previous version
 ./tika.sh template-releases        # List all available template releases
 
-# Using mise tasks from within project
+# Using mise tasks from within projec
 mise run template:status           # Check template status
 mise run template:upgrade          # Upgrade template
-mise run template:rollback         # Rollback using git
+mise run template:rollback         # Rollback using gi
 ```
 
 #### 📖 Information & Help
@@ -528,7 +528,7 @@ mise run template:rollback         # Rollback using git
 
 ### Command Examples
 
-#### Create a New Flutter Project
+#### Create a New Flutter Projec
 ```bash
 # Using unified interface (recommended)
 ./tika.sh create --template flutter --name awesome-flutter-app
@@ -537,7 +537,7 @@ mise run template:rollback         # Rollback using git
 ./scripts/create-new-project.sh --template flutter --name awesome-flutter-app
 ```
 
-#### Setup Complete Environment
+#### Setup Complete Environmen
 ```bash
 # One command setup
 ./tika.sh setup

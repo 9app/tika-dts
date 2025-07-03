@@ -55,7 +55,7 @@ PATH=$FLUTTER_ROOT/bin:$ANDROID_SDK_ROOT/platform-tools:$PATH
 
 ## Migration Steps
 
-### Step 1: Backup Your Project
+### Step 1: Backup Your Projec
 
 ```bash
 # Create backup before migration
@@ -69,11 +69,11 @@ If you have custom scripts that call the old task names, update them:
 ```bash
 # Old
 mise run build:apk-debug
-mise run flutter:test
+mise run flutter:tes
 
 # New
 mise run build:debug
-mise run test
+mise run tes
 ```
 
 ### Step 3: Update Android Configuration
@@ -138,7 +138,7 @@ cd android && ./gradlew clean && cd ..
 mise run doctor
 
 # Run tests
-mise run test
+mise run tes
 
 # Test builds
 mise run build:debug
@@ -151,7 +151,7 @@ mise run build:release
 
 If you're using Material Design components, some APIs have changed:
 
-```dart
+```dar
 // Before v1.2.0
 Theme(
   data: ThemeData(
@@ -172,7 +172,7 @@ Theme(
 
 ### 2. Deprecated API Replacements
 
-```dart
+```dar
 // Replace deprecated TextTheme properties
 // Before
 textTheme: TextTheme(
@@ -197,7 +197,7 @@ textTheme: TextTheme(
 # Clean everything and reinstall
 mise run clean
 flutter clean
-flutter pub get
+flutter pub ge
 cd ios && pod install && cd ..
 cd android && ./gradlew clean && cd ..
 ```
@@ -248,7 +248,7 @@ mise run template:upgrade:rollback --version 1.1.0
 mise run template:upgrade:restore --backup <backup-name>
 ```
 
-## Validation Checklist
+## Validation Checklis
 
 After migration, verify:
 
@@ -288,7 +288,7 @@ After successful migration:
 
 ### Added
 - New `mise run build:profile` task for profile builds
-- Enhanced Android emulator management
+- Enhanced Android emulator managemen
 - Improved web development workflow
 - Better integration test automation
 
@@ -297,7 +297,7 @@ After successful migration:
 - Flutter SDK to 3.32.5-stable
 - Android SDK requirements (min SDK 34)
 - iOS minimum version (12.0)
-- Material Design 3 as default
+- Material Design 3 as defaul
 
 ### Removed
 - Legacy task names (with deprecation warnings)

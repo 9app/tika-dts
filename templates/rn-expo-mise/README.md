@@ -6,14 +6,14 @@ This template provides a complete mise configuration for React Native and Expo d
 
 - ✅ React Native & Expo CLI setup
 - ✅ EAS Build & Submit integration
-- ✅ Android/iOS development support
+- ✅ Android/iOS development suppor
 - ✅ Web development with Expo
 - ✅ Comprehensive testing tasks
 - ✅ Code formatting and linting
 - ✅ Local and cloud builds
-- ✅ Development server management
+- ✅ Development server managemen
 
-## Quick Start
+## Quick Star
 
 1. Copy this template to your React Native/Expo project:
    ```bash
@@ -26,12 +26,12 @@ This template provides a complete mise configuration for React Native and Expo d
    # Creates project with default name: my-expo-app
 
    # Or with custom name:
-   ./scripts/create-new-project.sh --template expo --name your-rn-project
+   ./scripts/create-new-project.sh --template expo --name your-rn-projec
    ```
 
 2. Navigate to your project and activate mise:
    ```bash
-   cd my-expo-app  # or your-rn-project
+   cd my-expo-app  # or your-rn-projec
    mise install
    ```
 
@@ -42,9 +42,9 @@ This template provides a complete mise configuration for React Native and Expo d
 
 4. Setup development environment:
    ```bash
-   mise run setup:android  # For Android development
+   mise run setup:android  # For Android developmen
    mise run setup:ios      # For iOS development (macOS only)
-   mise run setup:eas      # For EAS Build & Submit
+   mise run setup:eas      # For EAS Build & Submi
    ```
 
 5. Verify your setup:
@@ -54,18 +54,18 @@ This template provides a complete mise configuration for React Native and Expo d
 
 ## Available Tasks
 
-### Development
+### Developmen
 - `mise run dev` - Start Metro bundler
 - `mise run android` - Run on Android device/emulator
 - `mise run ios` - Run on iOS device/simulator (macOS only)
 - `mise run web` - Run on web browser
 - `mise run tunnel` - Start development server with tunnel
-- `mise run localhost` - Start development server on localhost
+- `mise run localhost` - Start development server on localhos
 
 ### Testing
 - `mise run test` - Run all tests
 - `mise run test:watch` - Run tests in watch mode
-- `mise run test:coverage` - Run tests with coverage report
+- `mise run test:coverage` - Run tests with coverage repor
 - `mise run test:android` - Run Android instrumentation tests
 - `mise run test:ios` - Run iOS tests (macOS only)
 
@@ -80,7 +80,7 @@ This template provides a complete mise configuration for React Native and Expo d
 - `mise run build:android` - Build Android APK locally
 - `mise run build:ios` - Build iOS app locally (macOS only)
 
-### EAS Submit
+### EAS Submi
 - `mise run submit:eas:android` - Submit to Google Play Store
 - `mise run submit:eas:ios` - Submit to Apple App Store
 
@@ -91,7 +91,7 @@ This template provides a complete mise configuration for React Native and Expo d
 - `mise run clean:ios` - Clean iOS build artifacts
 
 ### Development Tools
-- `mise run lint` - Run ESLint
+- `mise run lint` - Run ESLin
 - `mise run lint:fix` - Run ESLint with auto-fix
 - `mise run format` - Format code with Prettier
 - `mise run simulator` - Open iOS Simulator (macOS only)
@@ -115,11 +115,11 @@ This template provides a complete mise configuration for React Native and Expo d
 
 This template works with both standard React Native and Expo projects:
 
-### Expo Managed Project
+### Expo Managed Projec
 ```
 my-expo-app/            # Default project name
 ├── mise.toml           # This template file
-├── App.js              # Main app component
+├── App.js              # Main app componen
 ├── app.json            # Expo configuration
 ├── eas.json            # EAS configuration
 ├── package.json        # Dependencies
@@ -127,7 +127,7 @@ my-expo-app/            # Default project name
 └── assets/             # App assets
 ```
 
-### Expo Bare/React Native Project
+### Expo Bare/React Native Projec
 ```
 my-expo-app/            # Default project name
 ├── mise.toml           # This template file
@@ -145,7 +145,7 @@ my-expo-app/            # Default project name
 The template includes these environment variables:
 
 - `ANDROID_HOME` - Android SDK path
-- `ANDROID_SDK_ROOT` - Android SDK root
+- `ANDROID_SDK_ROOT` - Android SDK roo
 - `NODE_ENV` - Node environment (development)
 - `REACT_NATIVE_PACKAGER_HOSTNAME` - Metro bundler hostname
 - `IOS_SIMULATOR_UDID` - iOS simulator device ID
@@ -155,7 +155,7 @@ The template includes these environment variables:
 
 To use EAS Build and Submit, you'll need:
 
-1. An Expo account
+1. An Expo accoun
 2. EAS CLI installed (handled by template)
 3. `eas.json` configuration file
 4. Proper app signing credentials
@@ -180,7 +180,7 @@ Run `mise run setup:eas` to get started with EAS.
 ### Expo Bare Workflow / React Native CLI
 - Full access to native code
 - Use local builds or EAS for production
-- Requires Android Studio/Xcode for native development
+- Requires Android Studio/Xcode for native developmen
 
 ## Customization
 
@@ -189,7 +189,7 @@ You can customize this template by:
 1. Adjusting tool versions in the `[tools]` section
 2. Modifying environment variables in the `[env]` section
 3. Adding custom tasks in the `[tasks.*]` sections
-4. Updating EAS configuration for your specific project
+4. Updating EAS configuration for your specific projec
 5. Adding project-specific scripts and tools
 
 ## VS Code Integration
@@ -198,14 +198,14 @@ This template includes a complete VS Code workspace configuration:
 
 ### Extensions
 The template recommends installing these VS Code extensions:
-- TypeScript and JavaScript language support
+- TypeScript and JavaScript language suppor
 - React Native and Expo tools
 - ESLint for code quality
 - Prettier for code formatting
 - Error Lens for inline error display
-- TODO Tree for task management
+- TODO Tree for task managemen
 - GitHub Copilot for AI assistance
-- Styled Components support
+- Styled Components suppor
 
 ### Tasks
 Pre-configured VS Code tasks for common React Native/Expo operations:
@@ -214,7 +214,7 @@ Pre-configured VS Code tasks for common React Native/Expo operations:
 - EAS Build & Submit workflows
 - Testing and coverage
 - Code formatting and linting
-- Dependency management
+- Dependency managemen
 - Cache cleaning utilities
 
 ### Debug Configurations

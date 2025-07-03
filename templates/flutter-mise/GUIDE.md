@@ -17,11 +17,11 @@
 
 ### Project Creation
 ```bash
-# Create new Flutter project
+# Create new Flutter projec
 ./tika.sh create --template flutter --name my-flutter-app
 cd my-flutter-app
 
-# Start development
+# Start developmen
 mise run dev                # Start development server
 mise run android            # Launch Android emulator
 mise run ios               # Launch iOS simulator (macOS)
@@ -32,7 +32,7 @@ mise run ios               # Launch iOS simulator (macOS)
 ### Project Structure
 ```
 lib/
-├── main.dart              # Application entry point
+├── main.dart              # Application entry poin
 ├── app/                   # App configuration (theme, router)
 ├── core/                  # Shared infrastructure (error, network, utils)
 ├── shared/                # Reusable components (widgets, extensions)
@@ -40,7 +40,7 @@ lib/
     └── [feature_name]/
         ├── domain/        # Entities, repositories, use cases
         ├── data/          # Models, repositories, data sources
-        └── presentation/  # Pages, widgets, BLoC/Cubit
+        └── presentation/  # Pages, widgets, BLoC/Cubi
 ```
 
 > **Detailed architecture**: See [Flutter Architecture](../../docs/REFERENCE.md#flutter-clean-architecture--bloc)
@@ -50,19 +50,19 @@ lib/
 ## 🏗️ Development Patterns
 
 ### BLoC Pattern Implementation
-```dart
+```dar
 // See complete pattern examples in:
 ```
 > [BLoC Pattern Reference](../../docs/REFERENCE.md#flutter-bloc-pattern)
 
-### Riverpod Provider Pattern  
-```dart
+### Riverpod Provider Pattern
+```dar
 // See complete pattern examples in:
 ```
 > [Riverpod Pattern Reference](../../docs/REFERENCE.md#flutter-riverpod-provider)
 
 ### Clean Architecture UseCase
-```dart
+```dar
 // See complete pattern examples in:
 ```
 > [Clean Architecture Reference](../../docs/REFERENCE.md#code-pattern-reference)
@@ -71,7 +71,7 @@ lib/
 
 ## 🔧 Development Workflows
 
-### Daily Development
+### Daily Developmen
 ```bash
 # In project directory
 mise run dev               # Start development with hot reload
@@ -123,19 +123,19 @@ mise run test:integration  # Integration tests
 
 ## 📱 Platform-Specific Considerations
 
-### Android Development
+### Android Developmen
 - Material 3 design system
 - Android-specific permissions
 - Platform channels for native functionality
 - APK/AAB build configuration
 
-### iOS Development  
+### iOS Developmen
 - Human Interface Guidelines
 - iOS-specific permissions and capabilities
 - Platform channels for native functionality
 - IPA build and distribution
 
-### Web Development
+### Web Developmen
 - Progressive Web App (PWA) features
 - Web-specific routing considerations
 - Performance optimizations for web
@@ -144,7 +144,7 @@ mise run test:integration  # Integration tests
 
 ---
 
-## 🔄 Template Management
+## 🔄 Template Managemen
 
 ### Keeping Templates Updated
 ```bash
@@ -172,7 +172,7 @@ mise run test:integration  # Integration tests
 - [Dart Language Tour](https://dart.dev/language) - Dart language guide
 - [Material Design 3](https://m3.material.io) - Design system guide
 
-### State Management
+### State Managemen
 - [BLoC Library](https://bloclibrary.dev) - BLoC pattern documentation
 - [Riverpod Documentation](https://riverpod.dev) - Riverpod guide
 

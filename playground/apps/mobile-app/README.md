@@ -2,11 +2,11 @@
 
 React Native mobile application built with Expo and managed by EAS.
 
-## 🚀 Quick Start
+## 🚀 Quick Star
 
-### Development
+### Developmen
 ```bash
-# From project root
+# From project roo
 mise run dev          # Start Expo development server
 mise run android      # Run on Android device/emulator
 mise run ios          # Run on iOS simulator (macOS only)
@@ -21,7 +21,7 @@ npm run web           # Run on web
 
 ### Testing
 ```bash
-# From project root
+# From project roo
 mise run test:rn      # Run tests
 
 # Or from this directory
@@ -35,12 +35,12 @@ npm test              # Run tests
 
 You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
 
-## Get a fresh project
+## Get a fresh projec
 
 When you're ready, run:
 
 ```bash
-npm run reset-project
+npm run reset-projec
 ```
 
 This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.

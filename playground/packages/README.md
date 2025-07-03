@@ -27,7 +27,7 @@ packages/
 - **shared-auth**: Authentication utilities
 - **shared-db**: Database models and utilities
 
-## Development
+## Developmen
 
 Each package should have:
 - `package.json` with proper dependencies
@@ -38,7 +38,7 @@ Each package should have:
 ## Usage
 
 Import packages in your apps:
-```typescript
+```typescrip
 // In your app
 import { Button } from '@tika/shared-ui';
 import { formatDate } from '@tika/shared-utils';

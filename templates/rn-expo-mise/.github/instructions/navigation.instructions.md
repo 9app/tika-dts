@@ -272,7 +272,7 @@ const ConditionalNavigator: React.FC = () => {
 };
 ```
 
-### Navigation with State Management
+### Navigation with State Managemen
 ```tsx
 import { useAppSelector } from '../hooks/redux';
 

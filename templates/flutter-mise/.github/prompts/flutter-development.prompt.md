@@ -1,6 +1,6 @@
 # Flutter Development Prompts
 
-## Widget Creation Prompt
+## Widget Creation Promp
 Create a Flutter widget that follows these guidelines:
 - Use StatelessWidget unless state is needed
 - Include const constructor
@@ -9,7 +9,7 @@ Create a Flutter widget that follows these guidelines:
 - Handle edge cases
 - Include semantic labels for accessibility
 
-## State Management Prompt
+## State Management Promp
 Implement state management using Riverpod that includes:
 - Proper provider definition
 - Error handling with Either type
@@ -17,7 +17,7 @@ Implement state management using Riverpod that includes:
 - Consumer widget implementation
 - Unit tests for state logic
 
-## API Integration Prompt
+## API Integration Promp
 Create an API service that includes:
 - Dio HTTP client configuration
 - Error handling for network failures
@@ -25,7 +25,7 @@ Create an API service that includes:
 - Repository pattern implementation
 - Proper type safety
 
-## Testing Prompt
+## Testing Promp
 Generate tests that cover:
 - Unit tests for business logic
 - Widget tests for UI components
@@ -33,7 +33,7 @@ Generate tests that cover:
 - Edge case testing
 - Integration test scenarios
 
-## Performance Optimization Prompt
+## Performance Optimization Promp
 Optimize the code for performance by:
 - Using ListView.builder for lists
 - Implementing const constructors
@@ -41,10 +41,10 @@ Optimize the code for performance by:
 - Optimizing image loading
 - Reducing widget rebuilds
 
-## Accessibility Prompt
+## Accessibility Promp
 Make the widget accessible by:
 - Adding semantic labels
-- Implementing proper focus management
+- Implementing proper focus managemen
 - Supporting screen readers
 - Handling keyboard navigation
 - Following WCAG guidelines

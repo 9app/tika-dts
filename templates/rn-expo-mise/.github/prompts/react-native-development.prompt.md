@@ -1,15 +1,15 @@
 # React Native Development Prompts
 
-## Component Creation Prompt
+## Component Creation Promp
 Create a React Native component that follows these guidelines:
 - Use TypeScript with proper interface definitions
 - Implement functional component with hooks
-- Include proper styling with StyleSheet
+- Include proper styling with StyleShee
 - Handle platform differences (iOS/Android)
 - Add accessibility features
 - Include error boundaries where appropriate
 
-## Navigation Prompt
+## Navigation Promp
 Implement React Navigation that includes:
 - Proper TypeScript navigation typing
 - Stack, Tab, and Drawer navigation patterns
@@ -18,7 +18,7 @@ Implement React Navigation that includes:
 - Custom header components
 - Proper back button handling
 
-## State Management Prompt
+## State Management Promp
 Create state management solution using Redux Toolkit or Zustand that includes:
 - Proper TypeScript typing for state and actions
 - Async thunk implementation for API calls
@@ -26,16 +26,16 @@ Create state management solution using Redux Toolkit or Zustand that includes:
 - Persistence with AsyncStorage
 - Proper selector usage in components
 
-## API Integration Prompt
+## API Integration Promp
 Implement API service that includes:
 - Axios configuration with interceptors
 - Proper error handling and retry logic
 - TypeScript interfaces for API responses
-- Authentication token management
+- Authentication token managemen
 - Network status handling
 - Caching strategies
 
-## Performance Optimization Prompt
+## Performance Optimization Promp
 Optimize React Native performance by:
 - Using FlatList for large lists
 - Implementing React.memo and useMemo
@@ -44,15 +44,15 @@ Optimize React Native performance by:
 - Bundle size optimization
 - Memory leak prevention
 
-## Testing Prompt
+## Testing Promp
 Generate comprehensive tests that include:
-- Unit tests with Jest
+- Unit tests with Jes
 - Component tests with React Native Testing Library
 - Integration tests with proper mocking
 - E2E tests with Detox
 - Mock implementations for native modules
 
-## Expo Specific Prompt
+## Expo Specific Promp
 Implement Expo features that include:
 - Expo SDK module integration
 - EAS Build configuration

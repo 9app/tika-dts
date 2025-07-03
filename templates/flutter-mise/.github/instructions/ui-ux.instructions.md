@@ -3,7 +3,7 @@
 ## Material Design 3 Guidelines
 
 ### Theme Configuration
-```dart
+```dar
 class AppTheme {
   static ThemeData light() {
     return ThemeData(
@@ -36,7 +36,7 @@ class AppTheme {
 ```
 
 ### Responsive Design
-```dart
+```dar
 class ResponsiveLayout extends StatelessWidget {
   const ResponsiveLayout({
     super.key,
@@ -67,7 +67,7 @@ class ResponsiveLayout extends StatelessWidget {
 ```
 
 ### Custom Widgets
-```dart
+```dar
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
@@ -108,7 +108,7 @@ enum ButtonSize { small, medium, large }
 ```
 
 ### Form Validation
-```dart
+```dar
 class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
@@ -146,7 +146,7 @@ class CustomTextFormField extends StatelessWidget {
 ```
 
 ### Loading States
-```dart
+```dar
 class LoadingOverlay extends StatelessWidget {
   const LoadingOverlay({
     super.key,
@@ -176,7 +176,7 @@ class LoadingOverlay extends StatelessWidget {
 ```
 
 ### Error States
-```dart
+```dar
 class ErrorWidget extends StatelessWidget {
   const ErrorWidget({
     super.key,
@@ -219,7 +219,7 @@ class ErrorWidget extends StatelessWidget {
 ```
 
 ### Empty States
-```dart
+```dar
 class EmptyState extends StatelessWidget {
   const EmptyState({
     super.key,
@@ -275,7 +275,7 @@ class EmptyState extends StatelessWidget {
 ## Accessibility Guidelines
 
 ### Semantic Labels
-```dart
+```dar
 class AccessibleButton extends StatelessWidget {
   const AccessibleButton({
     super.key,
@@ -303,8 +303,8 @@ class AccessibleButton extends StatelessWidget {
 }
 ```
 
-### Focus Management
-```dart
+### Focus Managemen
+```dar
 class FocusableForm extends StatefulWidget {
   const FocusableForm({super.key});
 
@@ -347,7 +347,7 @@ class _FocusableFormState extends State<FocusableForm> {
 ## Animation Guidelines
 
 ### Page Transitions
-```dart
+```dar
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required this.child})
       : super(
@@ -370,7 +370,7 @@ class CustomPageRoute<T> extends PageRouteBuilder<T> {
 ```
 
 ### Micro-interactions
-```dart
+```dar
 class AnimatedLikeButton extends StatefulWidget {
   const AnimatedLikeButton({
     super.key,

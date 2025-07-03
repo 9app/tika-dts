@@ -15,20 +15,20 @@ This specification serves as a **source of truth** for generating project-specif
 - `yarn` - Yarn package manager
 - `pnpm` - PNPM package manager
 
-### Mobile Development
-- `android` - Android development
+### Mobile Developmen
+- `android` - Android developmen
 - `flutter` - Flutter framework
 - `dart` - Dart language
 - `reactnative` - React Native
 - `expo` - Expo framework
-- `ios` - iOS development
+- `ios` - iOS developmen
 - `xcode` - Xcode IDE
 
 ### IDEs and Editors
 - `vscode` - Visual Studio Code
 - `intellij` - IntelliJ IDEA
 - `androidstudio` - Android Studio
-- `sublimetext` - Sublime Text
+- `sublimetext` - Sublime Tex
 
 ### Operating Systems
 - `macos` - macOS
@@ -37,7 +37,7 @@ This specification serves as a **source of truth** for generating project-specif
 
 ## Custom/Override Sections
 
-### Mise Tool Management
+### Mise Tool Managemen
 ```gitignore
 # Mise (formerly asdf-vm)
 .mise/

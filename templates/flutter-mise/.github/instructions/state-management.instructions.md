@@ -1,6 +1,6 @@
 # Flutter State Management Instructions
 
-## Riverpod State Management
+## Riverpod State Managemen
 
 ### Provider Types
 - Use `Provider` for read-only values
@@ -12,7 +12,7 @@
 ### Example Implementations
 
 #### Simple State Provider
-```dart
+```dar
 final counterProvider = StateProvider<int>((ref) => 0);
 
 class CounterWidget extends ConsumerWidget {
@@ -36,7 +36,7 @@ class CounterWidget extends ConsumerWidget {
 ```
 
 #### StateNotifier for Complex State
-```dart
+```dar
 @freezed
 class UserState with _$UserState {
   const factory UserState.initial() = _Initial;
@@ -68,7 +68,7 @@ final userProvider = StateNotifierProvider<UserNotifier, UserState>((ref) {
 ```
 
 #### Async Provider
-```dart
+```dar
 final userFutureProvider = FutureProvider<List<User>>((ref) async {
   final repository = ref.read(userRepositoryProvider);
   return repository.getUsers();
@@ -96,7 +96,7 @@ class UserListWidget extends ConsumerWidget {
 ## BLoC Pattern
 
 ### Event and State Classes
-```dart
+```dar
 @freezed
 class AuthEvent with _$AuthEvent {
   const factory AuthEvent.loginRequested(String email, String password) = _LoginRequested;
@@ -114,7 +114,7 @@ class AuthState with _$AuthState {
 ```
 
 ### BLoC Implementation
-```dart
+```dar
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc(this._authRepository) : super(const AuthState.initial()) {
     on<_LoginRequested>(_onLoginRequested);
@@ -147,8 +147,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 }
 ```
 
-### BLoC Consumer Widget
-```dart
+### BLoC Consumer Widge
+```dar
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
@@ -178,7 +178,7 @@ class LoginPage extends StatelessWidget {
 ## Best Practices
 
 ### Provider Dependency Injection
-```dart
+```dar
 final dioProvider = Provider<Dio>((ref) {
   return Dio(BaseOptions(
     baseUrl: 'https://api.example.com',
@@ -193,7 +193,7 @@ final userRepositoryProvider = Provider<UserRepository>((ref) {
 ```
 
 ### Error Handling
-```dart
+```dar
 final dataProvider = FutureProvider<Data>((ref) async {
   try {
     final repository = ref.read(dataRepositoryProvider);
@@ -206,8 +206,8 @@ final dataProvider = FutureProvider<Data>((ref) async {
 });
 ```
 
-### Testing State Management
-```dart
+### Testing State Managemen
+```dar
 void main() {
   group('UserNotifier', () {
     late UserRepository mockRepository;
@@ -227,10 +227,10 @@ void main() {
       when(() => mockRepository.getUsers())
           .thenAnswer((_) async => [const User(id: '1', name: 'Test')]);
 
-      // Act
+      // Ac
       await container.read(userProvider.notifier).loadUsers();
 
-      // Assert
+      // Asser
       final state = container.read(userProvider);
       expect(state, isA<_Loaded>());
     });

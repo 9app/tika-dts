@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -18,7 +18,7 @@ PLAYGROUND_ROOT="$(dirname "$SCRIPT_DIR")"
 WORKSPACE_ROOT="$(dirname "$PLAYGROUND_ROOT")"
 TEMPLATES_DIR="$WORKSPACE_ROOT/templates"
 
-# Print colored output
+# Print colored outpu
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -55,7 +55,7 @@ Examples:
   $0 list               # List all templates
   $0 validate           # Check all templates for issues
   $0 sync               # Sync templates with main configuration
-  $0 update-versions    # Update tool versions to latest
+  $0 update-versions    # Update tool versions to lates
   $0 backup             # Create timestamped backup
 EOF
 }
@@ -237,7 +237,7 @@ sync_templates() {
     print_success "Template sync completed"
 }
 
-# Update tool versions to latest
+# Update tool versions to lates
 update_versions() {
     print_info "📅 Updating tool versions to latest..."
 
@@ -307,7 +307,7 @@ main() {
     fi
 
     command="$1"
-    shift
+    shif
 
     case "$command" in
         list)

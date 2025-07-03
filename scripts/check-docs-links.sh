@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -27,12 +27,12 @@ echo "======================================="
 check_file_exists() {
     local file_path="$1"
     local source_file="$2"
-    
+
     # Convert relative path to absolute
     if [[ "$file_path" == ./* ]]; then
         file_path="${file_path#./}"
     fi
-    
+
     # Handle different path patterns
     case "$file_path" in
         docs/*)
@@ -62,7 +62,7 @@ check_file_exists() {
             full_path="$file_path"
             ;;
     esac
-    
+
     if [[ -f "$full_path" ]]; then
         return 0
     else
@@ -76,29 +76,29 @@ check_file_exists() {
 check_markdown_links() {
     local file="$1"
     echo -e "${YELLOW}📄 Checking: $file${NC}"
-    
+
     # Extract markdown links: [text](path) and [text](path#anchor)
     while IFS= read -r line; do
         # Find all markdown links in the line
         echo "$line" | grep -oE '\[[^\]]*\]\([^)]+\)' | while read -r link; do
             # Extract the path part (between parentheses)
             path=$(echo "$link" | sed 's/.*(\([^)]*\)).*/\1/')
-            
+
             # Skip external URLs (http, https, mailto, etc.)
             if [[ "$path" =~ ^https?:// ]] || [[ "$path" =~ ^mailto: ]] || [[ "$path" =~ ^ftp:// ]]; then
                 continue
             fi
-            
+
             # Remove anchor part (#section) for file existence check
             file_path=$(echo "$path" | cut -d'#' -f1)
-            
+
             # Skip empty paths or just anchors
             if [[ -z "$file_path" ]] || [[ "$file_path" == "#"* ]]; then
                 continue
             fi
-            
+
             ((TOTAL_LINKS++))
-            
+
             # Check if file exists
             if ! check_file_exists "$file_path" "$file"; then
                 echo -e "  ${RED}✗ Broken link: $link${NC}"
@@ -122,7 +122,7 @@ echo -e "\n${BLUE}📱 Checking template documentation...${NC}"
 for template_dir in "$TEMPLATES_DIR"/*; do
     if [[ -d "$template_dir" ]]; then
         echo -e "${YELLOW}📁 Template: $(basename "$template_dir")${NC}"
-        
+
         # Check main template files
         for file in "$template_dir"/*.md "$template_dir"/**/*.md; do
             if [[ -f "$file" ]]; then
@@ -157,13 +157,13 @@ echo -e "Broken links found: ${RED}$BROKEN_COUNT${NC}"
 if [[ $BROKEN_COUNT -gt 0 ]]; then
     echo -e "\n${RED}🚨 Broken Links Found:${NC}"
     printf '%s\n' "${BROKEN_LINKS[@]}"
-    
+
     echo -e "\n${YELLOW}💡 Recommendations:${NC}"
     echo "1. Update broken links to point to the correct SSOT files"
     echo "2. Check if referenced files have been moved or renamed"
     echo "3. Verify relative path calculations"
     echo "4. Consider using absolute paths from project root"
-    
+
     exit 1
 else
     echo -e "\n${GREEN}🎉 All links are valid!${NC}"

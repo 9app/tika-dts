@@ -1,4 +1,4 @@
-# ⚠️ DEPRECATED - Template Upgrade Quickstart
+# ⚠️ DEPRECATED - Template Upgrade Quickstar
 
 **This file has been moved to maintain Single Source of Truth (SSOT) documentation.**
 

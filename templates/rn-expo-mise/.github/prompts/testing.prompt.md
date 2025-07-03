@@ -1,6 +1,6 @@
 # React Native Testing Prompts
 
-## Component Testing Prompt
+## Component Testing Promp
 Generate comprehensive component tests that include:
 - Render testing with different props
 - User interaction testing (press, scroll, input)
@@ -12,9 +12,9 @@ Generate comprehensive component tests that include:
 
 Example request: "Generate tests for this LoginForm component"
 
-## Hook Testing Prompt
+## Hook Testing Promp
 Create custom hook tests that verify:
-- Hook state management
+- Hook state managemen
 - Side effects and cleanup
 - Error handling
 - Async operations
@@ -23,7 +23,7 @@ Create custom hook tests that verify:
 
 Example request: "Generate tests for this useAuth custom hook"
 
-## Navigation Testing Prompt
+## Navigation Testing Promp
 Implement navigation tests that include:
 - Screen navigation flow
 - Parameter passing between screens
@@ -34,7 +34,7 @@ Implement navigation tests that include:
 
 Example request: "Generate tests for the user profile navigation flow"
 
-## API Service Testing Prompt
+## API Service Testing Promp
 Create API service tests that cover:
 - HTTP request/response testing
 - Error handling scenarios
@@ -45,7 +45,7 @@ Create API service tests that cover:
 
 Example request: "Generate tests for this UserService API class"
 
-## Redux/State Testing Prompt
+## Redux/State Testing Promp
 Generate state management tests that include:
 - Action creator testing
 - Reducer logic verification
@@ -56,7 +56,7 @@ Generate state management tests that include:
 
 Example request: "Generate tests for this user authentication slice"
 
-## Integration Testing Prompt
+## Integration Testing Promp
 Create integration tests that verify:
 - Complete user journeys
 - API integration end-to-end
@@ -67,7 +67,7 @@ Create integration tests that verify:
 
 Example request: "Generate integration tests for user registration and login flow"
 
-## E2E Testing with Detox Prompt
+## E2E Testing with Detox Promp
 Implement end-to-end tests that include:
 - App launch and initialization
 - User interaction simulation

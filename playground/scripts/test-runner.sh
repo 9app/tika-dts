@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -64,7 +64,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --quick)
             QUICK_MODE=true
-            shift
+            shif
             ;;
         --help|-h)
             show_help
@@ -210,7 +210,7 @@ main() {
     print_info "Starting template validation tests..."
     print_info "Template: $TEMPLATE, Quick mode: $QUICK_MODE"
 
-    # Test template integrity first
+    # Test template integrity firs
     if ! test_template_integrity; then
         print_error "Template integrity test failed"
         exit 1

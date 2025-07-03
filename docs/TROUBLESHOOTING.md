@@ -13,7 +13,7 @@ mise doctor
 ./tika.sh template-status
 
 # 3. Verify tool versions
-mise current
+mise curren
 
 # 4. Check for recent changes
 git log --oneline -5
@@ -139,7 +139,7 @@ cd android && rm -rf .gradle && ./gradlew wrapper
 xcode-select --install
 
 # Accept Xcode license
-sudo xcodebuild -license accept
+sudo xcodebuild -license accep
 
 # Re-run iOS setup
 ./tika.sh setup-ios
@@ -192,15 +192,15 @@ lsof -i :3000  # React Native Metro
 lsof -i :8080  # Flutter web
 lsof -i :19000 # Expo
 
-# Kill process using port
+# Kill process using por
 kill -9 <PID>
 
-# Use different port
+# Use different por
 mise run dev --port 3001
 ```
 
 #### Hot reload not working
-**Symptoms**: Changes not reflected during development
+**Symptoms**: Changes not reflected during developmen
 
 **Solutions**:
 ```bash
@@ -209,7 +209,7 @@ mise run clean && mise run dev
 
 # Clear cache
 # Flutter
-flutter clean && flutter pub get
+flutter clean && flutter pub ge
 
 # React Native
 npx react-native start --reset-cache
@@ -224,7 +224,7 @@ npx react-native start --reset-cache
 ```bash
 # Clean and reinstall dependencies
 flutter clean
-flutter pub get
+flutter pub ge
 
 # Check for conflicts
 flutter pub deps
@@ -245,7 +245,7 @@ npm ls
 
 **Solutions**:
 ```bash
-# Increase Node.js memory limit
+# Increase Node.js memory limi
 export NODE_OPTIONS="--max-old-space-size=8192"
 
 # For Flutter, increase Gradle memory
@@ -309,8 +309,8 @@ rm -rf ~/.cache/tika/templates
 # Check test dependencies
 flutter pub deps
 
-# Run specific test
-flutter test test/specific_test.dart
+# Run specific tes
+flutter test test/specific_test.dar
 
 # Update test imports
 # Verify paths in test files match lib/ structure
@@ -324,7 +324,7 @@ cat jest.config.js
 # Clear Jest cache
 npx jest --clearCache
 
-# Run specific test
+# Run specific tes
 npm test -- --testPathPattern=specific.test.ts
 ```
 
@@ -350,14 +350,14 @@ npx react-native run-android --list-devices
 
 ### Health Check Procedure
 ```bash
-# 1. Environment
+# 1. Environmen
 mise doctor
 ./tika.sh version
 
 # 2. Project status
 cd <project-directory>
-mise current
-mise list
+mise curren
+mise lis
 
 # 3. Template status
 ./tika.sh template-status
@@ -405,7 +405,7 @@ journalctl -u mise --since "1 hour ago"
 - **Environment**: OS, shell, mise version, tool versions
 - **Project type**: Flutter or React Native
 - **Template version**: Output of `./tika.sh template-status`
-- **Error messages**: Complete error output
+- **Error messages**: Complete error outpu
 - **Steps to reproduce**: Exact commands that cause the issue
 
 ### Self-Help Resources

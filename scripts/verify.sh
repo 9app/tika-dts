@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -50,11 +50,11 @@ print_header() {
 
 check_mise() {
     print_status "Checking mise installation..."
-    
+
     if command_exists mise; then
         print_success "✓ Mise is installed"
         mise --version
-        
+
         # Check if mise is activated
         if [[ -n "$MISE_SHELL" ]]; then
             print_success "✓ Mise is activated in current shell"
@@ -70,12 +70,12 @@ check_mise() {
 
 check_tools() {
     print_status "Checking development tools..."
-    
+
     # Activate mise
     eval "$(mise activate bash 2>/dev/null || mise activate zsh 2>/dev/null || true)"
-    
+
     local all_good=true
-    
+
     # Check individual tools
     if command_exists node; then
         version=$(node --version 2>/dev/null)
@@ -84,7 +84,7 @@ check_tools() {
         print_error "✗ node is not available"
         all_good=false
     fi
-    
+
     if command_exists npm; then
         version=$(npm --version 2>/dev/null)
         print_success "✓ npm: $version"
@@ -92,7 +92,7 @@ check_tools() {
         print_error "✗ npm is not available"
         all_good=false
     fi
-    
+
     if command_exists java; then
         version=$(java -version 2>&1 | head -n1)
         print_success "✓ java: $version"
@@ -100,7 +100,7 @@ check_tools() {
         print_error "✗ java is not available"
         all_good=false
     fi
-    
+
     if command_exists python; then
         version=$(python --version 2>/dev/null)
         print_success "✓ python: $version"
@@ -108,21 +108,21 @@ check_tools() {
         print_error "✗ python is not available"
         all_good=false
     fi
-    
+
     if command_exists flutter; then
         version=$(flutter --version 2>/dev/null | head -n1)
         print_success "✓ flutter: $version"
     else
         print_warning "⚠ flutter not available (install via official installer)"
     fi
-    
+
     if command_exists dart; then
         version=$(dart --version 2>/dev/null)
         print_success "✓ dart: $version"
     else
         print_warning "⚠ dart not available (comes with Flutter)"
     fi
-    
+
     if [ "$all_good" = true ]; then
         return 0
     else
@@ -132,7 +132,7 @@ check_tools() {
 
 check_android() {
     print_status "Checking Android development setup..."
-    
+
     # Check Android SDK - expand ~ in path
     if [[ -n "$ANDROID_HOME" ]]; then
         # Expand tilde to home directory
@@ -145,7 +145,7 @@ check_android() {
     else
         print_error "✗ ANDROID_HOME is not set"
     fi
-    
+
     # Check platform-tools
     if command_exists adb; then
         adb_version=$(adb --version | head -n1)
@@ -153,7 +153,7 @@ check_android() {
     else
         print_error "✗ ADB is not available (check Android SDK platform-tools)"
     fi
-    
+
     # Check for Android Studio (macOS)
     OS=$(detect_os)
     if [[ "$OS" == "macos" ]]; then
@@ -163,7 +163,7 @@ check_android() {
             print_warning "⚠ Android Studio not found"
         fi
     fi
-    
+
     # Check Gradle
     if command_exists gradle; then
         gradle_version=$(gradle --version | grep "Gradle" | head -n1)
@@ -179,14 +179,14 @@ check_ios() {
         print_warning "⚠ iOS development is only available on macOS"
         return
     fi
-    
+
     print_status "Checking iOS development setup..."
-    
+
     # Check Xcode
     if command_exists xcodebuild; then
         xcode_version=$(xcodebuild -version | head -n1)
         print_success "✓ $xcode_version"
-        
+
         # Check command line tools
         if xcode-select -p &>/dev/null; then
             print_success "✓ Xcode command line tools are installed"
@@ -196,7 +196,7 @@ check_ios() {
     else
         print_error "✗ Xcode is not installed"
     fi
-    
+
     # Check CocoaPods
     if command_exists pod; then
         pod_version=$(pod --version)
@@ -204,7 +204,7 @@ check_ios() {
     else
         print_error "✗ CocoaPods is not installed"
     fi
-    
+
     # Check iOS Simulator
     if command_exists xcrun; then
         simulators=$(xcrun simctl list devices available | grep "iPhone" | wc -l)
@@ -218,11 +218,11 @@ check_ios() {
 
 check_flutter() {
     print_status "Checking Flutter setup..."
-    
+
     if command_exists flutter; then
         print_status "Running Flutter Doctor..."
         flutter doctor
-        
+
         # Check Flutter configuration
         print_status "Flutter configuration:"
         flutter config
@@ -234,11 +234,11 @@ check_flutter() {
 
 check_react_native() {
     print_status "Checking React Native setup..."
-    
+
     # Check if React Native CLI is available
     if command_exists npx; then
         print_success "✓ npx is available (can run React Native commands)"
-        
+
         # Check React Native doctor if available
         if [[ -f "package.json" ]]; then
             if grep -q "react-native" package.json; then
@@ -249,7 +249,7 @@ check_react_native() {
     else
         print_error "✗ npx is not available"
     fi
-    
+
     # Check Metro bundler dependencies
     if [[ -f "metro.config.js" ]]; then
         print_success "✓ Metro configuration found"
@@ -260,26 +260,26 @@ check_react_native() {
 
 check_environment() {
     print_status "Checking environment variables..."
-    
+
     # Check important environment variables
     if [[ -n "$ANDROID_HOME" ]]; then
         print_success "✓ ANDROID_HOME: $ANDROID_HOME"
     else
         print_warning "⚠ ANDROID_HOME is not set (Android SDK location)"
     fi
-    
+
     if [[ -n "$JAVA_HOME" ]]; then
         print_success "✓ JAVA_HOME: $JAVA_HOME"
     else
         print_info "ℹ JAVA_HOME not set (mise will manage Java automatically)"
     fi
-    
+
     if [[ -n "$FLUTTER_ROOT" ]]; then
         print_success "✓ FLUTTER_ROOT: $FLUTTER_ROOT"
     else
         print_info "ℹ FLUTTER_ROOT not set (Flutter manages its own installation)"
     fi
-    
+
     if [[ -n "$NODE_ENV" ]]; then
         print_success "✓ NODE_ENV: $NODE_ENV"
     else
@@ -289,32 +289,32 @@ check_environment() {
 
 check_project_files() {
     print_status "Checking project files..."
-    
+
     # Check essential files
     if [[ -f "mise.toml" ]]; then
         print_success "✓ mise.toml: Mise configuration"
     else
         print_error "✗ mise.toml missing"
     fi
-    
+
     if [[ -f "package.json" ]]; then
         print_success "✓ package.json: Node.js dependencies"
     else
         print_info "ℹ package.json not found (for React Native projects)"
     fi
-    
+
     if [[ -f "pubspec.yaml" ]]; then
         print_success "✓ pubspec.yaml: Flutter dependencies"
     else
         print_info "ℹ pubspec.yaml not found (for Flutter projects)"
     fi
-    
+
     if [[ -d "android" ]]; then
         print_success "✓ android/: Android project directory"
     else
         print_info "ℹ android/ directory not found (for mobile projects)"
     fi
-    
+
     if [[ -d "ios" ]]; then
         print_success "✓ ios/: iOS project directory"
     else
@@ -324,7 +324,7 @@ check_project_files() {
 
 check_dependencies() {
     print_status "Checking project dependencies..."
-    
+
     # Node modules
     if [[ -f "package.json" ]]; then
         if [[ -d "node_modules" ]]; then
@@ -333,7 +333,7 @@ check_dependencies() {
             print_warning "⚠ Node.js dependencies not installed (run: npm install)"
         fi
     fi
-    
+
     # Flutter packages
     if [[ -f "pubspec.yaml" ]]; then
         if [[ -d ".dart_tool" ]]; then
@@ -342,7 +342,7 @@ check_dependencies() {
             print_warning "⚠ Flutter dependencies not installed (run: flutter pub get)"
         fi
     fi
-    
+
     # iOS Pods
     OS=$(detect_os)
     if [[ "$OS" == "macos" && -f "ios/Podfile" ]]; then
@@ -356,7 +356,7 @@ check_dependencies() {
 
 run_tests() {
     print_status "Running quick health tests..."
-    
+
     # Test Node.js
     if command_exists node; then
         node_test=$(node -e "console.log('Node.js works')" 2>/dev/null)
@@ -366,7 +366,7 @@ run_tests() {
             print_error "✗ Node.js execution test failed"
         fi
     fi
-    
+
     # Test Flutter
     if command_exists flutter; then
         flutter_test=$(flutter --version 2>/dev/null | head -n1)
@@ -376,7 +376,7 @@ run_tests() {
             print_error "✗ Flutter execution test failed"
         fi
     fi
-    
+
     # Test Java
     if command_exists java; then
         java_test=$(java -version 2>&1 | head -n1)
@@ -409,12 +409,12 @@ print_summary() {
 
 main() {
     print_header
-    
+
     local exit_code=0
-    
+
     check_mise || exit_code=1
     check_tools || exit_code=1
-    check_environment
+    check_environmen
     check_project_files
     check_dependencies
     check_android
@@ -422,15 +422,15 @@ main() {
     check_flutter
     check_react_native
     run_tests
-    
+
     print_summary
-    
+
     if [[ $exit_code -eq 0 ]]; then
         print_success "🎉 Environment verification completed successfully!"
     else
         print_error "❌ Environment verification found issues. Please check the errors above."
     fi
-    
+
     exit $exit_code
 }
 

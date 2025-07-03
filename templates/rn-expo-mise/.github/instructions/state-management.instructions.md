@@ -20,7 +20,7 @@ function onAppStateChange(status: string) {
 
 AppState.addEventListener('change', onAppStateChange);
 
-// Set up network state management
+// Set up network state managemen
 onlineManager.setEventListener((setOnline) => {
   return NetInfo.addEventListener((state) => {
     setOnline(!!state.isConnected);
@@ -416,7 +416,7 @@ export const useBatchUpdateUsers = () => {
         }
       });
 
-      // Invalidate users list
+      // Invalidate users lis
       queryClient.invalidateQueries({ queryKey: queryKeys.users() });
     },
   });
@@ -600,7 +600,7 @@ export const useOptimizedUserList = (filters?: UserFilters) => {
 
 ## Best Practices Summary
 
-### 1. Query Key Management
+### 1. Query Key Managemen
 - Use factory pattern for consistent query keys
 - Include all dependencies in query keys (filters, pagination, etc.)
 - Use hierarchical key structure for easy invalidation
@@ -654,7 +654,7 @@ export const useOptimizedUserList = (filters?: UserFilters) => {
 - Implement consistent error handling patterns
 - Document query dependencies and side effects
 
-### 9. Memory Management
+### 9. Memory Managemen
 - Use `gcTime` (formerly `cacheTime`) appropriately
 - Implement query cleanup for unused data
 - Use `removeQueries` for manual cleanup

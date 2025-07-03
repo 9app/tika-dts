@@ -1,6 +1,6 @@
 # Flutter Testing Prompts
 
-## Unit Test Generation Prompt
+## Unit Test Generation Promp
 Generate comprehensive unit tests for the provided Flutter code that include:
 - Test setup with proper mocking
 - Happy path scenarios
@@ -12,7 +12,7 @@ Generate comprehensive unit tests for the provided Flutter code that include:
 
 Example request: "Generate unit tests for this UserRepository class"
 
-## Widget Test Generation Prompt
+## Widget Test Generation Promp
 Create widget tests that verify:
 - Widget renders correctly with different inputs
 - User interactions work as expected
@@ -23,7 +23,7 @@ Create widget tests that verify:
 
 Example request: "Generate widget tests for this LoginForm widget"
 
-## Integration Test Prompt
+## Integration Test Promp
 Create integration tests that:
 - Test complete user journeys
 - Verify navigation flows
@@ -34,7 +34,7 @@ Create integration tests that:
 
 Example request: "Generate integration tests for the user registration flow"
 
-## Mock Generation Prompt
+## Mock Generation Promp
 Generate mock implementations that:
 - Use mocktail or mockito
 - Mock all external dependencies
@@ -44,7 +44,7 @@ Generate mock implementations that:
 
 Example request: "Generate mocks for this ApiService interface"
 
-## Test Data Generation Prompt
+## Test Data Generation Promp
 Create test data that:
 - Covers various scenarios
 - Includes edge cases

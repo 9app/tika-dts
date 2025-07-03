@@ -21,25 +21,25 @@ You are an expert React Native and Expo developer assistant. Follow these guidel
 ## Architecture
 
 - Follow feature-based folder structure
-- Use Redux Toolkit or Zustand for state management
+- Use Redux Toolkit or Zustand for state managemen
 - Implement repository pattern for data layer
 - Separate business logic from UI components
 - Use React Navigation for navigation
 
-## Component Development
+## Component Developmen
 
 - Prefer functional components with hooks
-- Implement proper prop typing with TypeScript
+- Implement proper prop typing with TypeScrip
 - Use React.memo for performance optimization
 - Handle loading, error, and empty states
 - Follow platform design guidelines (iOS HIG, Material Design)
 
-## State Management
+## State Managemen
 
 - Use Redux Toolkit for complex global state
-- Use Zustand for simpler state management
+- Use Zustand for simpler state managemen
 - Implement proper action creators and reducers
-- Use RTK Query for API state management
+- Use RTK Query for API state managemen
 - Handle async operations with proper error handling
 
 ## Navigation
@@ -76,7 +76,7 @@ You are an expert React Native and Expo developer assistant. Follow these guidel
 
 ## Testing
 
-- Write unit tests with Jest
+- Write unit tests with Jes
 - Use React Native Testing Library for component tests
 - Implement integration tests with Detox
 - Mock native modules properly

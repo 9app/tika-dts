@@ -4,12 +4,12 @@
 
 ### Bước 1: Cài đặt dependencies
 ```bash
-# Từ thư mục root của project
+# Từ thư mục root của projec
 mise run deps:flutter
 
 # Hoặc thủ công
 cd apps/flutter_app
-flutter pub get
+flutter pub ge
 ```
 
 ### Bước 2: Kiểm tra devices có sẵn
@@ -46,7 +46,7 @@ mise run simulator
 ### Testing
 ```bash
 mise run test:flutter      # Chạy tests
-cd apps/flutter_app && flutter test
+cd apps/flutter_app && flutter tes
 ```
 
 ### Building
@@ -60,7 +60,7 @@ cd apps/flutter_app && flutter build ios       # Build iOS
 ```bash
 mise run clean:flutter     # Clean và reinstall dependencies
 cd apps/flutter_app && flutter clean
-cd apps/flutter_app && flutter doctor          # Kiểm tra environment
+cd apps/flutter_app && flutter doctor          # Kiểm tra environmen
 cd apps/flutter_app && flutter analyze         # Static analysis
 ```
 
@@ -69,7 +69,7 @@ cd apps/flutter_app && flutter analyze         # Static analysis
 ```
 apps/flutter_app/
 ├── lib/                    # Dart source code
-│   └── main.dart          # Entry point
+│   └── main.dart          # Entry poin
 ├── android/               # Android-specific code
 ├── ios/                   # iOS-specific code
 ├── test/                  # Unit tests
@@ -80,12 +80,12 @@ apps/flutter_app/
 ## 🔧 Cấu hình trong mise.toml
 
 Tất cả các task Flutter đã được cấu hình sẵn:
-- `flutter` - Chạy app với device tự động detect
+- `flutter` - Chạy app với device tự động detec
 - `flutter:android` - Chạy trên Android
 - `flutter:ios` - Chạy trên iOS
 - `test:flutter` - Chạy tests
 - `build:flutter` - Build app
-- `clean:flutter` - Clean project
+- `clean:flutter` - Clean projec
 - `deps:flutter` - Cài đặt dependencies
 
 ## 💡 Tips
@@ -93,5 +93,5 @@ Tất cả các task Flutter đã được cấu hình sẵn:
 1. **Kiểm tra devices trước khi chạy**: `flutter devices`
 2. **Hot reload**: Nhấn `r` trong terminal khi app đang chạy
 3. **Hot restart**: Nhấn `R` trong terminal
-4. **Quit**: Nhấn `q` để thoát
+4. **Quit**: Nhấn `q` để thoá
 5. **Chạy trên web**: `flutter run -d chrome` (nếu web được enable)

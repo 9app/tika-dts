@@ -32,26 +32,26 @@ src/
 └── types/
 ```
 
-### Component Development
+### Component Developmen
 - Use functional components with hooks
 - Implement proper TypeScript typing
 - Extract reusable logic into custom hooks
 - Use React.memo for performance optimization
 - Handle all component states (loading, error, success)
 
-### State Management
+### State Managemen
 - Use React Query for server state management and data fetching
 - Use Zustand for client-side global state
 - Use local component state for UI-specific state
 - Implement proper caching and background refetching strategies
 
 ### Navigation
-- Use React Navigation v6 with TypeScript
+- Use React Navigation v6 with TypeScrip
 - Implement proper navigation typing
 - Handle deep linking appropriately
 - Use proper navigation patterns
 
-## Specific Instructions for Copilot
+## Specific Instructions for Copilo
 
 ### When generating components:
 ```tsx
@@ -97,7 +97,7 @@ const useUserProfile = (userId: string) => {
   };
 };
 
-// Custom hook for local state management
+// Custom hook for local state managemen
 const useToggle = (initialValue = false) => {
   const [value, setValue] = useState(initialValue);
 

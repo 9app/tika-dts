@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -414,7 +414,7 @@ main() {
 
     check_mise || exit_code=1
     check_tools || exit_code=1
-    check_environment
+    check_environmen
     check_project_files
     check_dependencies
     check_android

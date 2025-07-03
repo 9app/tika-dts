@@ -17,11 +17,11 @@
 
 ### Project Creation
 ```bash
-# Create new React Native project
+# Create new React Native projec
 ./tika.sh create --template expo --name my-expo-app
 cd my-expo-app
 
-# Start development
+# Start developmen
 mise run dev                # Start Expo development server
 mise run android            # Launch Android emulator
 mise run ios               # Launch iOS simulator (macOS)
@@ -55,19 +55,19 @@ src/
 ## 🏗️ Development Patterns
 
 ### React Query Hook Pattern
-```typescript
+```typescrip
 // See complete pattern examples in:
 ```
 > [React Query Pattern Reference](../../docs/REFERENCE.md#react-native-react-query-hook)
 
 ### Zustand Store Pattern
-```typescript
+```typescrip
 // See complete pattern examples in:
 ```
 > [Zustand Pattern Reference](../../docs/REFERENCE.md#react-native-zustand-store)
 
 ### Navigation Typing
-```typescript
+```typescrip
 // See complete pattern examples in:
 ```
 > [Navigation Pattern Reference](../../docs/REFERENCE.md#code-pattern-reference)
@@ -76,7 +76,7 @@ src/
 
 ## 🔧 Development Workflows
 
-### Daily Development
+### Daily Developmen
 ```bash
 # In project directory
 mise run dev               # Start Expo development server
@@ -127,13 +127,13 @@ mise run test:e2e          # End-to-end tests
 
 ## 📱 Platform-Specific Considerations
 
-### Android Development
+### Android Developmen
 - React Native architecture
 - Android-specific permissions and configuration
 - Native module integration
 - APK build and distribution
 
-### iOS Development
+### iOS Developmen
 - iOS-specific permissions and capabilities
 - Native module integration
 - IPA build and App Store distribution
@@ -147,7 +147,7 @@ mise run test:e2e          # End-to-end tests
 
 ---
 
-## 🔄 Template Management
+## 🔄 Template Managemen
 
 ### Keeping Templates Updated
 ```bash
@@ -175,7 +175,7 @@ mise run test:e2e          # End-to-end tests
 - [Expo Documentation](https://docs.expo.dev) - Expo platform guide
 - [TypeScript Documentation](https://www.typescriptlang.org/docs) - TypeScript guide
 
-### State Management
+### State Managemen
 - [TanStack Query](https://tanstack.com/query) - React Query documentation
 - [Zustand Documentation](https://zustand-demo.pmnd.rs) - Zustand guide
 - [React Navigation](https://reactnavigation.org) - Navigation guide

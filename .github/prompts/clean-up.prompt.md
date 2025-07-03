@@ -6,7 +6,7 @@ description: Comprehensive workspace cleanup and optimization prompt for mobile 
 
 Clean up and optimize the entire workspace by removing duplicate content, empty files, fixing broken paths, correcting non-functional scripts, and updating instructions/prompts throughout the workspace.
 
-## 📋 Clean-up Progress Checklist
+## 📋 Clean-up Progress Checklis
 
 ### 🔍 Phase 1: Analysis & Inspection
 - [ ] **1.1** Scan all empty files in workspace (exclude node_modules, .git)
@@ -103,7 +103,7 @@ Clean up and optimize the entire workspace by removing duplicate content, empty 
 ```bash
 find . -type f -name "*.md" -size 0
 find . -type f -name "*.sh" -size 0
-find . -type f \( -name "*.md" -o -name "*.sh" -o -name "*.json" \) -exec sh -c 'test $(wc -l < "$1") -eq 0' _ {} \; -print
+find . -type f \( -name "*.md" -o -name "*.sh" -o -name "*.json" \) -exec sh -c 'test $(wc -l < "$1") -eq 0' _ {} \; -prin
 ```
 
 ### Find Duplicate Files:
@@ -145,7 +145,7 @@ grep -r " $" . --include="*.md" --include="*.sh"
 ### Backup Strategy:
 - [ ] Create backups before deleting files
 - [ ] Use git to track all changes
-- [ ] Test scripts in sandbox environment first
+- [ ] Test scripts in sandbox environment firs
 
 ### Verification Steps:
 - [ ] Check git status after each phase

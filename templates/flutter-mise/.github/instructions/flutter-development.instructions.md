@@ -6,7 +6,7 @@ This document provides specific instructions for GitHub Copilot when working on 
 ## Core Development Principles
 
 ### Architecture
-- Follow the BLoC pattern or Riverpod for state management
+- Follow the BLoC pattern or Riverpod for state managemen
 - Use repository pattern for data layer
 - Implement clean architecture principles
 - Separate business logic from UI components
@@ -28,18 +28,18 @@ lib/
 │   ├── widgets/
 │   ├── themes/
 │   └── extensions/
-└── main.dart
+└── main.dar
 ```
 
-### Widget Development
+### Widget Developmen
 - Always use `const` constructors when possible
 - Keep widgets small and focused
 - Extract complex logic into separate methods
 - Use proper key management for dynamic lists
 - Implement proper dispose methods for controllers
 
-### State Management
-- Use `StatelessWidget` by default
+### State Managemen
+- Use `StatelessWidget` by defaul
 - Convert to `StatefulWidget` only when local state is needed
 - For complex state, prefer Riverpod or BLoC
 - Avoid `setState` in large widgets
@@ -69,10 +69,10 @@ lib/
 - Keep line length under 120 characters
 - Use trailing commas for better formatting
 
-## Specific Instructions for Copilot
+## Specific Instructions for Copilo
 
 ### When generating widgets:
-```dart
+```dar
 class MyWidget extends StatelessWidget {
   const MyWidget({super.key});
 
@@ -84,7 +84,7 @@ class MyWidget extends StatelessWidget {
 ```
 
 ### When generating models:
-```dart
+```dar
 class User {
   const User({
     required this.id,
@@ -115,7 +115,7 @@ class User {
 ```
 
 ### When generating API calls:
-```dart
+```dar
 class ApiService {
   const ApiService(this._dio);
 
@@ -133,7 +133,7 @@ class ApiService {
 ```
 
 ### When generating tests:
-```dart
+```dar
 void main() {
   group('User', () {
     test('should create User from JSON', () {
@@ -144,10 +144,10 @@ void main() {
         'email': 'john@example.com',
       };
 
-      // Act
+      // Ac
       final user = User.fromJson(json);
 
-      // Assert
+      // Asser
       expect(user.id, '1');
       expect(user.name, 'John Doe');
       expect(user.email, 'john@example.com');
@@ -159,7 +159,7 @@ void main() {
 ## Dependencies to Prefer
 - `dio` for HTTP requests
 - `fpdart` for functional programming
-- `riverpod` or `flutter_bloc` for state management
+- `riverpod` or `flutter_bloc` for state managemen
 - `go_router` for navigation
 - `freezed` for immutable data classes
 - `json_annotation` for JSON serialization

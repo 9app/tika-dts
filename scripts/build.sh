@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Production Build Script
+# Production Build Scrip
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -36,14 +36,14 @@ detect_os() {
 
 build_react_native_android() {
     print_status "Building React Native Android app..."
-    
+
     if [[ ! -f "android/build.gradle" ]]; then
         print_warning "No React Native Android project found"
         return
     fi
-    
+
     cd android
-    
+
     # Clean previous builds
     print_status "Cleaning previous builds..."
     if ! ./gradlew clean; then
@@ -51,7 +51,7 @@ build_react_native_android() {
         cd ..
         return 1
     fi
-    
+
     # Build release APK
     print_status "Building release APK..."
     if ./gradlew assembleRelease; then
@@ -63,7 +63,7 @@ build_react_native_android() {
         cd ..
         return 1
     fi
-    
+
     # Build release AAB (for Play Store)
     print_status "Building release AAB..."
     if ./gradlew bundleRelease; then
@@ -75,7 +75,7 @@ build_react_native_android() {
         cd ..
         return 1
     fi
-    
+
     cd ..
 }
 
@@ -85,16 +85,16 @@ build_react_native_ios() {
         print_warning "iOS builds are only available on macOS"
         return
     fi
-    
+
     print_status "Building React Native iOS app..."
-    
+
     if [[ ! -f "ios/Podfile" ]]; then
         print_warning "No React Native iOS project found"
         return
     fi
-    
+
     cd ios
-    
+
     # Install pods
     print_status "Installing/updating CocoaPods..."
     if ! pod install; then
@@ -102,18 +102,18 @@ build_react_native_ios() {
         cd ..
         return 1
     fi
-    
+
     # Clean previous builds
     print_status "Cleaning previous builds..."
     rm -rf build
-    
+
     # Build for release
     print_status "Building iOS app for release..."
-    if xcodebuild -workspace *.xcworkspace \
-                  -scheme "$(ls *.xcworkspace | sed 's/.xcworkspace//')" \
-                  -configuration Release \
-                  -destination generic/platform=iOS \
-                  -archivePath build/Release.xcarchive \
+    if xcodebuild -workspace *.xcworkspace
+                  -scheme "$(ls *.xcworkspace | sed 's/.xcworkspace//')"
+                  -configuration Release
+                  -destination generic/platform=iOS
+                  -archivePath build/Release.xcarchive
                   archive; then
         print_success "✓ iOS app archived successfully"
         echo "Archive location: ios/build/Release.xcarchive"
@@ -122,25 +122,25 @@ build_react_native_ios() {
         cd ..
         return 1
     fi
-    
+
     cd ..
 }
 
 build_flutter() {
     print_status "Building Flutter apps..."
-    
+
     if [[ ! -f "pubspec.yaml" ]]; then
         print_warning "No Flutter project found"
         return
     fi
-    
+
     # Clean and get dependencies
     print_status "Cleaning Flutter project..."
     if ! flutter clean || ! flutter pub get; then
         print_error "Failed to clean Flutter project or get dependencies"
         return 1
     fi
-    
+
     # Build Android APK
     print_status "Building Flutter Android APK..."
     if flutter build apk --release; then
@@ -151,7 +151,7 @@ build_flutter() {
         print_error "Failed to build Flutter Android APK"
         return 1
     fi
-    
+
     # Build Android AAB
     print_status "Building Flutter Android AAB..."
     if flutter build appbundle --release; then
@@ -162,7 +162,7 @@ build_flutter() {
         print_error "Failed to build Flutter Android AAB"
         return 1
     fi
-    
+
     # Build iOS (macOS only)
     local os_type=$(detect_os)
     if [[ "$os_type" == "macos" ]]; then
@@ -181,9 +181,9 @@ build_flutter() {
 
 run_tests() {
     print_status "Running tests before build..."
-    
+
     local test_failed=false
-    
+
     # Run React Native tests
     if [[ -f "package.json" ]] && command -v npm >/dev/null 2>&1; then
         print_status "Running React Native tests..."
@@ -191,7 +191,7 @@ run_tests() {
             test_failed=true
         fi
     fi
-    
+
     # Run Flutter tests
     if [[ -f "pubspec.yaml" ]] && command -v flutter >/dev/null 2>&1; then
         print_status "Running Flutter tests..."
@@ -199,7 +199,7 @@ run_tests() {
             test_failed=true
         fi
     fi
-    
+
     if [[ "$test_failed" == "true" ]]; then
         print_error "Some tests failed!"
         read -p "Continue with build anyway? (y/N): " -n 1 -r
@@ -215,16 +215,16 @@ run_tests() {
 
 check_environment() {
     print_status "Checking build environment..."
-    
+
     # Check if mise is activated
     if [[ -z "$MISE_SHELL" ]]; then
         print_error "Mise is not activated. Please run: eval \"\$(mise activate)\""
         exit 1
     fi
-    
+
     # Check required tools
     local missing_tools=()
-    
+
     if [[ -f "package.json" ]]; then
         if ! command -v node >/dev/null; then
             missing_tools+=("node")
@@ -233,23 +233,23 @@ check_environment() {
             missing_tools+=("npm")
         fi
     fi
-    
+
     if [[ -f "pubspec.yaml" ]]; then
         if ! command -v flutter >/dev/null; then
             missing_tools+=("flutter")
         fi
     fi
-    
+
     if ! command -v java >/dev/null; then
         missing_tools+=("java")
     fi
-    
+
     if [[ ${#missing_tools[@]} -gt 0 ]]; then
         print_error "Missing required tools: ${missing_tools[*]}"
         print_status "Run 'mise install' to install missing tools"
         exit 1
     fi
-    
+
     print_success "Build environment looks good"
 }
 
@@ -257,7 +257,7 @@ create_output_summary() {
     print_status "Build output summary:"
     echo
     echo "📦 Generated files:"
-    
+
     # React Native outputs
     if [[ -d "android/app/build/outputs" ]]; then
         echo "React Native Android:"
@@ -266,14 +266,14 @@ create_output_summary() {
             echo "  • $file ($size)"
         done
     fi
-    
+
     if [[ -d "ios/build" ]]; then
         echo "React Native iOS:"
         find ios/build -name "*.xcarchive" 2>/dev/null | while read -r file; do
             echo "  • $file"
         done
     fi
-    
+
     # Flutter outputs
     if [[ -d "build/app/outputs" ]]; then
         echo "Flutter Android:"
@@ -282,7 +282,7 @@ create_output_summary() {
             echo "  • $file ($size)"
         done
     fi
-    
+
     if [[ -d "build/ios/iphoneos" ]]; then
         echo "Flutter iOS:"
         echo "  • build/ios/iphoneos/Runner.app"
@@ -294,32 +294,32 @@ main() {
     echo "🏗️ Production Build Script"
     echo "=========================="
     echo
-    
+
     # Parse arguments
     SKIP_TESTS=false
     BUILD_TARGET="all"
-    
+
     while [[ $# -gt 0 ]]; do
         case $1 in
             --skip-tests)
                 SKIP_TESTS=true
-                shift
+                shif
                 ;;
             --android-only)
                 BUILD_TARGET="android"
-                shift
+                shif
                 ;;
             --ios-only)
                 BUILD_TARGET="ios"
-                shift
+                shif
                 ;;
             --flutter-only)
                 BUILD_TARGET="flutter"
-                shift
+                shif
                 ;;
             --rn-only)
                 BUILD_TARGET="react-native"
-                shift
+                shif
                 ;;
             --help|-h)
                 echo "🏗️ Production Build Script"
@@ -350,15 +350,15 @@ main() {
                 ;;
         esac
     done
-    
-    check_environment
-    
+
+    check_environmen
+
     if [[ "$SKIP_TESTS" != "true" ]]; then
         run_tests
     else
         print_warning "Skipping tests as requested"
     fi
-    
+
     case $BUILD_TARGET in
         "android")
             build_react_native_android || print_error "Android build failed"
@@ -377,19 +377,19 @@ main() {
             local android_success=true
             local ios_success=true
             local flutter_success=true
-            
+
             build_react_native_android || android_success=false
             build_react_native_ios || ios_success=false
             build_flutter || flutter_success=false
-            
+
             if [[ "$android_success" == "false" ]] || [[ "$ios_success" == "false" ]] || [[ "$flutter_success" == "false" ]]; then
                 print_warning "Some builds failed. Check the output above for details."
             fi
             ;;
     esac
-    
+
     create_output_summary
-    
+
     echo
     print_success "🎉 Build process completed!"
     echo

@@ -4,15 +4,15 @@ This template provides a complete mise configuration for Flutter development.
 
 ## Features
 
-- ✅ Flutter SDK management
+- ✅ Flutter SDK managemen
 - ✅ Android/iOS development setup
-- ✅ Web development support
+- ✅ Web development suppor
 - ✅ Comprehensive build tasks
 - ✅ Testing automation
 - ✅ Code formatting and linting
 - ✅ Development tools integration
 
-## Quick Start
+## Quick Star
 
 1. Copy this template to your Flutter project:
    ```bash
@@ -25,20 +25,20 @@ This template provides a complete mise configuration for Flutter development.
    # Creates project with default name: my_flutter_app
 
    # Or with custom name:
-   ./scripts/create-new-project.sh --template flutter --name your_flutter_project
+   ./scripts/create-new-project.sh --template flutter --name your_flutter_projec
    ```
 
 2. Navigate to your project and activate mise:
    ```bash
-   cd my_flutter_app  # or your_flutter_project
+   cd my_flutter_app  # or your_flutter_projec
    mise install
    ```
 
 3. Setup Flutter development environment:
    ```bash
-   mise run setup:android  # For Android development
+   mise run setup:android  # For Android developmen
    mise run setup:ios      # For iOS development (macOS only)
-   mise run setup:web      # For web development
+   mise run setup:web      # For web developmen
    ```
 
 4. Verify your setup:
@@ -48,7 +48,7 @@ This template provides a complete mise configuration for Flutter development.
 
 ## Available Tasks
 
-### Development
+### Developmen
 - `mise run dev` - Run Flutter app in development mode
 - `mise run android` - Run on Android device/emulator
 - `mise run ios` - Run on iOS device/simulator (macOS only)
@@ -73,14 +73,14 @@ This template provides a complete mise configuration for Flutter development.
 
 ### Development Tools
 - `mise run lint` - Run Flutter analyzer
-- `mise run format` - Format code with dart format
+- `mise run format` - Format code with dart forma
 - `mise run simulator` - Open iOS Simulator (macOS only)
 - `mise run emulator` - Start Android emulator
 
 ### Setup & Configuration
-- `mise run setup:android` - Configure Android development
+- `mise run setup:android` - Configure Android developmen
 - `mise run setup:ios` - Configure iOS development (macOS only)
-- `mise run setup:web` - Configure web development
+- `mise run setup:web` - Configure web developmen
 - `mise run precache` - Precache Flutter binaries
 - `mise run upgrade` - Upgrade Flutter SDK
 
@@ -132,7 +132,7 @@ This template includes a complete VS Code workspace configuration:
 The template recommends installing these VS Code extensions:
 - Flutter extension pack (Dart & Flutter)
 - Error Lens for inline error display
-- TODO Tree for task management
+- TODO Tree for task managemen
 - GitHub Copilot for AI assistance
 - Prettier for code formatting
 - YAML support for configuration files
@@ -140,11 +140,11 @@ The template recommends installing these VS Code extensions:
 ### Tasks
 Pre-configured VS Code tasks for common Flutter operations:
 - Setup and environment verification
-- Development server management
+- Development server managemen
 - Testing (unit, widget, integration)
 - Building (APK, App Bundle, iOS, Web)
 - Code formatting and analysis
-- Dependency management
+- Dependency managemen
 
 ### Debug Configurations
 Ready-to-use debug configurations for:

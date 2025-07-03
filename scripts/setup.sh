@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Function to print colored output
+# Function to print colored outpu
 print_status() {
     echo -e "${BLUE}[INFO]${NC} $1"
 }
@@ -57,17 +57,17 @@ print_header() {
 # Check prerequisites
 check_prerequisites() {
     print_status "Checking prerequisites..."
-    
-    # Check Git
+
+    # Check Gi
     if ! command_exists git; then
         print_error "Git is not installed. Please install Git first."
         exit 1
     fi
-    
+
     # Check platform
     OS=$(detect_os)
     print_status "Detected OS: $OS"
-    
+
     if [[ "$OS" == "windows" ]]; then
         print_warning "Windows detected. iOS development will not be available."
     elif [[ "$OS" == "unknown" ]]; then
@@ -79,13 +79,13 @@ check_prerequisites() {
 # Install mise
 install_mise() {
     print_status "Installing mise..."
-    
+
     if command_exists mise; then
         print_success "Mise is already installed"
         mise --version
         return
     fi
-    
+
     # Try homebrew first (macOS/Linux)
     if command_exists brew; then
         print_status "Installing mise via Homebrew..."
@@ -94,11 +94,11 @@ install_mise() {
         # Use curl installer
         print_status "Installing mise via curl..."
         curl -fsSL https://mise.run | sh
-        
+
         # Add to PATH
         export PATH="$HOME/.local/bin:$PATH"
     fi
-    
+
     if command_exists mise; then
         print_success "Mise installed successfully"
         mise --version
@@ -111,11 +111,11 @@ install_mise() {
 # Setup shell integration
 setup_shell() {
     print_status "Setting up shell integration..."
-    
+
     # Detect shell
     SHELL_NAME=$(basename "$SHELL")
     print_status "Detected shell: $SHELL_NAME"
-    
+
     case "$SHELL_NAME" in
         zsh)
             SHELL_RC="$HOME/.zshrc"
@@ -134,18 +134,18 @@ setup_shell() {
             return
             ;;
     esac
-    
+
     # Check if already configured
     if grep -q "mise activate" "$SHELL_RC" 2>/dev/null; then
         print_success "Shell integration already configured"
         return
     fi
-    
+
     # Add activation to shell rc
     echo "" >> "$SHELL_RC"
     echo "# Mise activation" >> "$SHELL_RC"
     echo "$ACTIVATION_CMD" >> "$SHELL_RC"
-    
+
     print_success "Shell integration added to $SHELL_RC"
     print_warning "Please restart your terminal or run: source $SHELL_RC"
 }
@@ -153,10 +153,10 @@ setup_shell() {
 # Install project tools
 install_tools() {
     print_status "Installing project development tools..."
-    
+
     # Activate mise for current session
     eval "$(mise activate bash 2>/dev/null || mise activate zsh 2>/dev/null || true)"
-    
+
     # Install tools from mise.toml
     if [[ -f "mise.toml" ]]; then
         print_status "Installing tools from mise.toml..."
@@ -168,10 +168,10 @@ install_tools() {
     fi
 }
 
-# Setup Android development
+# Setup Android developmen
 setup_android() {
     print_status "Setting up Android development..."
-    
+
     # Check for Android Studio
     if [[ "$OS" == "macos" ]]; then
         if [[ -d "/Applications/Android Studio.app" ]]; then
@@ -180,18 +180,18 @@ setup_android() {
             print_warning "Android Studio not found. Please install it from https://developer.android.com/studio"
         fi
     fi
-    
-    # Create Android SDK directory if it doesn't exist
+
+    # Create Android SDK directory if it doesn't exis
     ANDROID_HOME="$HOME/Library/Android/sdk"
     if [[ "$OS" == "linux" ]]; then
         ANDROID_HOME="$HOME/Android/Sdk"
     fi
-    
+
     if [[ ! -d "$ANDROID_HOME" ]]; then
         print_status "Creating Android SDK directory: $ANDROID_HOME"
         mkdir -p "$ANDROID_HOME"
     fi
-    
+
     print_success "Android development setup complete"
 }
 
@@ -201,18 +201,18 @@ setup_ios() {
         print_warning "iOS development is only available on macOS"
         return
     fi
-    
+
     print_status "Setting up iOS development..."
-    
+
     # Check for Xcode
     if command_exists xcodebuild; then
         print_success "Xcode found"
         xcodebuild -version
-        
+
         # Accept license
         print_status "Accepting Xcode license (may require sudo)..."
         sudo xcodebuild -license accept 2>/dev/null || true
-        
+
         # Install command line tools
         if ! xcode-select -p &>/dev/null; then
             print_status "Installing Xcode command line tools..."
@@ -221,32 +221,32 @@ setup_ios() {
     else
         print_warning "Xcode not found. Please install it from the App Store"
     fi
-    
-    # Install CocoaPods if not present
+
+    # Install CocoaPods if not presen
     if ! command_exists pod; then
         print_status "Installing CocoaPods..."
         gem install cocoapods
     fi
-    
+
     print_success "iOS development setup complete"
 }
 
 # Install project dependencies
 install_dependencies() {
     print_status "Installing project dependencies..."
-    
+
     # Node.js dependencies
     if [[ -f "package.json" ]]; then
         print_status "Installing Node.js dependencies..."
         npm install
     fi
-    
+
     # Flutter dependencies
     if [[ -f "pubspec.yaml" ]]; then
         print_status "Installing Flutter dependencies..."
-        flutter pub get
+        flutter pub ge
     fi
-    
+
     # iOS dependencies
     if [[ -f "ios/Podfile" && "$OS" == "macos" ]]; then
         print_status "Installing iOS dependencies..."
@@ -254,24 +254,24 @@ install_dependencies() {
         pod install
         cd ..
     fi
-    
+
     print_success "Dependencies installed"
 }
 
 # Verify installation
 verify_installation() {
     print_status "Verifying installation..."
-    
+
     # Check mise
     if command_exists mise; then
         print_success "✓ Mise is working"
     else
         print_error "✗ Mise is not working"
     fi
-    
+
     # Check development tools
     eval "$(mise activate bash 2>/dev/null || mise activate zsh 2>/dev/null || true)"
-    
+
     tools=("node" "npm" "flutter" "dart" "java")
     for tool in "${tools[@]}"; do
         if command_exists "$tool"; then
@@ -280,7 +280,7 @@ verify_installation() {
             print_warning "✗ $tool is not available"
         fi
     done
-    
+
     # Run mise doctor
     print_status "Running mise environment check..."
     mise doctor || true
@@ -289,15 +289,15 @@ verify_installation() {
 # Main setup function
 main() {
     print_header
-    
-    # Check if running from project root
+
+    # Check if running from project roo
     if [[ ! -f "mise.toml" ]]; then
         print_error "This script must be run from the project root directory (where mise.toml exists)"
         exit 1
     fi
-    
+
     print_status "Starting setup process..."
-    
+
     check_prerequisites
     install_mise
     setup_shell
@@ -306,7 +306,7 @@ main() {
     setup_ios
     install_dependencies
     verify_installation
-    
+
     echo
     print_success "🎉 Setup complete!"
     echo

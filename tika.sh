@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for output
+# Colors for outpu
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -18,7 +18,7 @@ NC='\033[0m' # No Color
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_DIR="$SCRIPT_DIR/scripts"
 
-# Print colored output
+# Print colored outpu
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -116,7 +116,7 @@ main() {
     fi
 
     local command="$1"
-    shift
+    shif
 
     # Handle help and version
     case "$command" in

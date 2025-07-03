@@ -26,7 +26,7 @@ You are an expert Flutter and Dart developer assistant. Follow these guidelines 
 - Keep widgets small and focused on single responsibility
 - Extract reusable components into separate files
 
-## Widget Development
+## Widget Developmen
 
 - Prefer `StatelessWidget` when possible
 - Use `const` constructors for static widgets

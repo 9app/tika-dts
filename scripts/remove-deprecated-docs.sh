@@ -48,10 +48,10 @@ done
 
 echo -e "\n${GREEN}Removed $REMOVED deprecated files${NC}"
 
-# Create a final cleanup report
+# Create a final cleanup repor
 REPORT="$DOCS_DIR/CLEANUP-REPORT.md"
 cat > "$REPORT" << EOF
-# Documentation Cleanup Report
+# Documentation Cleanup Repor
 
 **Final cleanup of deprecated documentation stubs completed on $(date +"%Y-%m-%d")**
 
