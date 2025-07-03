@@ -17,12 +17,14 @@ Clean up and optimize the entire workspace by removing duplicate content, empty 
 - [ ] **1.6** Check references between files (broken links)
 
 ### 🗑️ Phase 2: Remove & Clean
-- [ ] **2.1** Delete all empty files (0 bytes or whitespace only)
+- [ ] **2.1** Remove DEPRECATED content from markdown files
 - [ ] **2.2** Remove unnecessary or old backup files
 - [ ] **2.3** Remove duplicate content in instruction files
 - [ ] **2.4** Delete unused template files or example files
 - [ ] **2.5** Clean trailing whitespace in all text files
 - [ ] **2.6** Remove unnecessary comments or old code
+- [ ] **2.7** Remove old or unused scripts from the scripts directory
+- [ ] **2.8** Delete all empty files (0 bytes or whitespace only)
 
 ### 🔧 Phase 3: Fix & Update
 - [ ] **3.1** Fix all incorrect paths in documentation
@@ -55,6 +57,7 @@ Clean up and optimize the entire workspace by removing duplicate content, empty 
 - [ ] **6.4** Review all documentation for accuracy
 - [ ] **6.5** Test template creation scripts
 - [ ] **6.6** Verify AI instructions work correctly in templates
+- [ ] **6.7** Check with [[### 🗑️ Phase 2: Remove & Clean]] again
 
 ## 🎯 Specific Clean-up Targets
 

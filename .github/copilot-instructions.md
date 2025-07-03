@@ -7,6 +7,14 @@ This is a mobile development template system using mise for tool management. Foc
 - Cross-platform compatibility
 - Developer experience optimization
 
+<context>
+If you lack context on how to solve the user's request:
+
+FIRST, use #tool:resolve-library-id from Context7 to find the referenced library.
+
+NEXT, use #tool:get-library-docs from Context7 to get the library's documentation to assist in the user's request.
+</context>
+
 ## 🔧 Terminal Command Guidelines
 
 ### ❌ NEVER use these patterns:

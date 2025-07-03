@@ -1,94 +1,277 @@
 # 🚀 Tika Quick Start Guide
 
-**Tika** is a mobile development template system focused on **initial setup and project creation**. After setup, use **mise** for ongoing development operations.
+**Get up and running with cross-platform mobile development in under 5 minutes.**
 
-## ⚡ One-Time Setup
+## ⚡ Super Quick Start (TL;DR)
 
 ```bash
-# 1. Clone and enter the project
+# 1. Clone and setup (one-time)
+git clone <repo-url> tika && cd tika && ./tika.sh setup
+
+# 2. Create your project (choose one)
+./tika.sh create --template flutter --name my-app    # Flutter + Material 3
+./tika.sh create --template expo --name my-app      # React Native + Expo
+
+# 3. Start developing immediately
+cd my-app && mise run dev                           # Development server
+mise run android                                    # Android emulator
+mise run ios                                        # iOS simulator (macOS)
+```
+
+**That's it!** Your mobile development environment is ready with hot reload, debugging, and platform tools.
+
+---
+
+## 📋 Complete Step-by-Step Guide
+
+### 🎯 Understanding the Workflow
+
+**Tika** uses a **two-phase approach** for optimal developer experience:
+
+| Phase | Tool | Purpose | When to Use |
+|-------|------|---------|-------------|
+| **Phase 1** | **Tika CLI** | System setup & project creation | Initial setup, new projects, template management |
+| **Phase 2** | **Mise** | Daily development operations | Building, testing, running, debugging |
+
+---
+
+## 🛠️ Phase 1: One-Time Setup (Tika CLI)
+
+### Step 1: Clone and Setup Environment
+
+```bash
+# Clone the repository
 git clone <repo-url> tika
 cd tika
 
-# 2. One-time environment setup
+# Complete environment setup (installs mise + all tools)
 ./tika.sh setup
-
-# 3. Create your first project
-./tika.sh create --template flutter --name my-app
 ```
 
-## 🎯 Workflow: Tika → Mise
+**What this does:**
+- ✅ Installs mise (tool version manager)
+- ✅ Configures shell integration
+- ✅ Downloads and installs Flutter, Node.js, Java, Python
+- ✅ Sets up Android SDK and development tools
+- ✅ Configures VS Code extensions and settings
 
-### � Phase 1: Initial Setup (Use Tika)
+### Step 2: Platform-Specific Setup (Optional)
+
 ```bash
-# Setup development environment (once)
-./tika.sh setup
+# Android development tools (if setup didn't complete)
+./tika.sh setup-android
 
-# Platform-specific setup if needed
-./tika.sh setup-android        # Android development
-./tika.sh setup-ios            # iOS development (macOS only)
-
-# Create new projects
-./tika.sh create --template flutter --name my-flutter-app
-./tika.sh create --template expo --name my-expo-app
+# iOS development tools (macOS only)
+./tika.sh setup-ios
 ```
 
-### � Phase 2: Ongoing Development (Use Mise)
-```bash
-# Navigate to your project directory first
-cd my-flutter-app  # or cd my-expo-app
+### Step 3: Create Your First Project
 
-# Verify environment
+```bash
+# Flutter project with Material 3 + BLoC
+./tika.sh create --template flutter --name awesome-flutter-app
+
+# React Native project with Expo + TypeScript
+./tika.sh create --template expo --name awesome-mobile-app
+
+# Advanced: Custom project path
+./tika.sh create --template flutter --name my-app --path ./projects/
+```
+
+**Project Templates Include:**
+- 📁 **Complete project structure** with best practices
+- 🏗️ **Architecture patterns** (Clean Architecture / Feature-based)
+- 🎨 **UI components** (Material 3 / React Native components)
+- 🧪 **Testing setup** (Unit, Widget/Component, Integration tests)
+- ⚙️ **Development tools** (Linting, formatting, debugging)
+- 📱 **Platform configuration** (iOS, Android, Web)
+
+---
+
+## 🔧 Phase 2: Daily Development (Mise)
+
+**After creating your project, navigate to it and use mise for all development operations:**
+
+### Step 1: Navigate to Your Project
+
+```bash
+# Navigate to your created project
+cd awesome-flutter-app
+# OR
+cd awesome-mobile-app
+```
+
+### Step 2: Verify Environment
+
+```bash
+# Check that everything is working correctly
+mise doctor                        # Verify tool installation and versions
+mise list                          # Show all available tasks
+```
+
+### Step 3: Start Developing
+
+```bash
+# Core development commands
+mise run dev                       # Start development server with hot reload
+mise run android                   # Launch on Android emulator/device
+mise run ios                       # Launch on iOS simulator (macOS only)
+mise run web                       # Launch in web browser
+
+# Additional development tools
+mise run test                      # Run all tests (unit, widget, integration)
+mise run lint                      # Run code analysis and linting
+mise run format                    # Format code according to project standards
+mise run build                     # Build for production
+```
+
+### Step 4: Template Management (Optional)
+
+```bash
+# Keep your project up-to-date with latest template improvements
+mise run template:status           # Check current template version
+mise run template:check            # Check for available updates
+mise run template:upgrade          # Upgrade to latest template (creates git commit)
+mise run template:rollback         # Git-based rollback if issues occur
+```
+
+---
+
+## 🎯 Common Development Workflows
+
+### 👤 **New Team Member Onboarding**
+
+```bash
+# 1. Clone and setup environment (one-time)
+git clone <repo-url> tika && cd tika
+./tika.sh setup
+
+# 2. Verify installation
 mise doctor
+./tika.sh version
 
-# Template management (git-integrated)
-mise run template:status          # Check current template version
-mise run template:check           # Check for updates
-mise run template:upgrade         # Upgrade to latest template (git commit)
-mise run template:rollback        # Rollback using git
-mise run template:history         # View upgrade history
-
-# Development tasks
-mise run dev                      # Start development
-mise run android                  # Run on Android
-mise run ios                      # Run on iOS
-mise run build                    # Build for production
+# 3. Create a test project to verify everything works
+./tika.sh create --template flutter --name onboarding-test
+cd onboarding-test && mise run dev
 ```
 
-### Start Development
+### 📱 **Starting a New Project**
+
 ```bash
-# React Native + Expo (from playground/apps/mobile-app/)
-mise run dev          # Start Expo development server
-## 🎯 Common Workflows
+# 1. Create project from template
+./tika.sh create --template flutter --name production-app --path ./projects/
 
-### New Team Member Onboarding
-```bash
-# 1. One-time environment setup
-./tika.sh setup
+# 2. Initialize development environment
+cd projects/production-app
+mise run dev                       # Verify project works
 
-# 2. Verify everything works
-mise doctor
-
-# 3. Create test project
-./tika.sh create --template flutter --name test-project
+# 3. Set up version control (if not using git template integration)
+git init && git add . && git commit -m "Initial project setup"
 ```
 
-### Daily Development (In Project Directory)
+### 🔄 **Daily Development Routine**
+
 ```bash
-# Check for template updates
+# In your project directory
+mise run dev                       # Start development server
+
+# In separate terminal tabs/windows
+mise run android                   # Launch Android for testing
+mise run ios                       # Launch iOS for testing (macOS)
+
+# Code quality checks
+mise run lint                      # Check for issues
+mise run test                      # Run tests
+mise run format                    # Format code before commit
+```
+
+### 🔧 **Template Maintenance**
+
+```bash
+# Check for template updates (weekly/monthly)
 mise run template:check
 
-# Start development
-mise run dev
+# Upgrade to latest template (creates git commit automatically)
+mise run template:upgrade
 
-# Run on devices
-mise run android        # Android
-mise run ios           # iOS
+# If issues occur, rollback safely
+mise run template:rollback
 ```
 
-### Project Maintenance (In Project Directory)
+---
+
+## 🚨 Troubleshooting
+
+### Common Issues and Solutions
+
+#### ❌ `mise not found` or command errors
 ```bash
-# Update to latest template
-mise run template:upgrade
+# Ensure mise is properly installed and activated
+curl https://mise.run | sh
+echo 'eval "$(mise activate zsh)"' >> ~/.zshrc  # or ~/.bashrc for bash
+source ~/.zshrc  # or source ~/.bashrc
+```
+
+#### ❌ Android emulator or iOS simulator not starting
+```bash
+# Run platform-specific setup
+./tika.sh setup-android            # For Android issues
+./tika.sh setup-ios                # For iOS issues (macOS only)
+
+# Verify installation
+mise doctor
+```
+
+#### ❌ Template upgrade conflicts
+```bash
+# Safe rollback using git
+mise run template:rollback
+
+# Check status and try again
+mise run template:status
+mise run template:upgrade --dry-run  # Preview changes first
+```
+
+#### ❌ Development server not starting
+```bash
+# Clean and rebuild
+mise run clean                     # Clean build artifacts
+mise run dev                       # Restart development server
+
+# Check for port conflicts
+lsof -i :3000                      # Check if port 3000 is in use (React Native)
+lsof -i :8080                      # Check if port 8080 is in use (Flutter web)
+```
+
+### Getting Help
+
+1. **Check documentation**: See `docs/` directory for detailed guides
+2. **Verify environment**: Run `mise doctor` to check tool installation
+3. **View available commands**: Run `mise list` in your project directory
+4. **Template-specific help**: Check the template's README in your project
+
+---
+
+## 🎯 Next Steps
+
+### 🎓 **Learn the Architecture**
+- **Flutter**: [Flutter Development Instructions](./templates/flutter-mise/.github/instructions/)
+- **React Native**: [React Native Development Instructions](./templates/rn-expo-mise/.github/instructions/)
+- **Template System**: [Template Architecture Guide](./docs/template-architecture.md)
+
+### ⚙️ **Customize Your Setup**
+- **VS Code**: [VS Code Configuration Guide](./docs/vscode-configuration.md)
+- **Git Integration**: [Template Upgrade System](./docs/template-upgrade-system.md)
+- **CLI Reference**: [Complete Command Reference](./docs/cli-reference.md)
+
+### 🧪 **Experiment and Test**
+- **Playground**: Use `playground/` directory for testing new features
+- **Template Testing**: Validate templates with `playground/scripts/test-runner.sh`
+- **Custom Templates**: Learn to create your own project templates
+
+---
+
+**🎉 Congratulations!** You're now ready to build amazing cross-platform mobile applications with Tika. Happy coding!
 
 # Verify after updates
 mise doctor

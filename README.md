@@ -1,69 +1,274 @@
-# Tika - Development Template System
+# Tika - Mobile Development Template System
 
-**Tika CLI** is a unified command-line interface for cross-platform mobile development with Flutter and React Native. It streamlines environment setup, project creation, and template management.
+**Unified mobile development toolkit for Flutter and React Native** - Zero-config setup, production-ready templates, and intelligent template management.
+
+## 🚀 Quick Start (5 Minutes)
+
+```bash
+# 1. Setup (one-time)
+git clone <repo-url> tika && cd tika && ./tika.sh setup
+
+# 2. Create project  
+./tika.sh create --template flutter --name my-app    # Flutter
+./tika.sh create --template expo --name my-app      # React Native
+
+# 3. Start developing
+cd my-app && mise run dev
+```
+
+**✅ Done!** Your development environment is ready with hot reload, debugging, and platform tools.
+
+---
+
+## 📚 Documentation Hub
+
+### 🎯 **Essential Guides**
+| Document | Purpose | Time to Read |
+|----------|---------|--------------|
+| **[QUICKSTART.md](./QUICKSTART.md)** | 5-minute setup guide | 5 min ⚡ |
+| **[Technology Stack](./docs/REFERENCE.md)** | All versions, tools, configurations | 10 min 📋 |
+| **[Development Workflows](./docs/WORKFLOWS.md)** | Daily development processes | 15 min 🔧 |
+| **[CLI Commands](./docs/CLI.md)** | Complete command reference | 10 min 💻 |
+
+### 🔧 **Implementation Guides**
+| Technology | Guide | Focus |
+|------------|-------|-------|
+| **Flutter** | [Flutter Guide](./templates/flutter-mise/GUIDE.md) | Clean Architecture, BLoC, Material 3 |
+| **React Native** | [React Native Guide](./templates/rn-expo-mise/GUIDE.md) | TypeScript, React Query, Expo |
+
+### 🧪 **Advanced Topics**
+- **[Template Architecture](./docs/template-architecture.md)** - How the template system works
+- **[Playground Testing](./playground/TESTING.md)** - Validation and experimentation
+- **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
+
+---
 
 ## 🎯 What is Tika?
 
-**Tika** (`./tika.sh`) is your **one-stop mobile development toolkit** that provides:
+### **Core Value Propositions**
+- 🚀 **5-Minute Setup**: From zero to running mobile app in 5 minutes
+- 📱 **Production Templates**: Battle-tested Flutter and React Native templates  
+- 🔄 **Smart Upgrades**: Git-integrated template updates with automatic rollback
+- 🛠️ **Zero Config**: Everything works out of the box, no manual configuration
 
-- 🚀 **Quick Environment Setup** - Automated development environment configuration
-- 📱 **Template-Based Project Creation** - Create Flutter and React Native projects from battle-tested templates
-- 🔄 **Git-Integrated Template Upgrades** - Keep your projects up-to-date with latest best practices
-- 🛠️ **Cross-Platform Tool Management** - Unified interface for Android, iOS, and web development
+### **Technology Support**
+- **Flutter 3.24+**: Clean Architecture, BLoC/Riverpod, Material 3
+- **React Native 0.74+**: TypeScript, React Query, Expo SDK 51+
+- **Development Tools**: mise, VS Code, Android Studio, Xcode
 
-### Two-Phase Development Workflow
+> **Complete technology details**: See [Technology Reference](./docs/REFERENCE.md)
 
-**Phase 1: Bootstrap (Use Tika CLI)** → **Phase 2: Development (Use Mise)**
+---
 
-## 🚀 Quick Start
+## 🏗️ System Architecture
 
-### Phase 1: Initial Setup & Project Creation (Tika CLI)
+### **Two-Phase Development Workflow**
+```
+Phase 1: Bootstrap (Tika CLI) → Phase 2: Development (Mise)
+```
 
-Use **Tika CLI** for one-time setup and project creation:
+| Phase | Tool | Commands | Purpose |
+|-------|------|----------|---------|
+| **Bootstrap** | `./tika.sh` | `setup`, `create` | System setup, project creation |
+| **Development** | `mise run` | `dev`, `android`, `ios` | Daily development, builds, tests |
 
-#### Phase 1: Initial Setup (Use Tika CLI)
+### **Repository Structure**
+```
+tika/
+├── 📋 README.md (this file)        # Project overview & navigation
+├── 🚀 QUICKSTART.md               # 5-minute setup guide
+├── 🎯 tika.sh                     # Main CLI interface
+├── 📚 docs/                       # Core documentation
+│   ├── REFERENCE.md              # Technology stack (SSOT)
+│   ├── WORKFLOWS.md              # Development processes (SSOT)
+│   └── CLI.md                    # Command reference (SSOT)
+├── 🔧 templates/                  # Mobile development templates
+│   ├── flutter-mise/             # Flutter + Clean Architecture
+│   └── rn-expo-mise/             # React Native + Expo
+├── 🧪 playground/                # Testing & validation
+└── 📝 scripts/                   # Automation scripts
+```
+
+> **Detailed architecture**: See [Template Architecture](./docs/template-architecture.md)
+
+---
+
+## 📋 Quick Command Reference
+
+### **Setup & Creation**
 ```bash
-# Install and activate mise first (if not already done)
-curl https://mise.run | sh
-echo 'eval "$(mise activate zsh)"' >> ~/.zshrc  # or ~/.bashrc for bash
+./tika.sh setup                    # One-time environment setup
+./tika.sh create --template flutter --name <app>   # Create Flutter project
+./tika.sh create --template expo --name <app>      # Create React Native project
+```
 
-# ONE-TIME ENVIRONMENT SETUP
+### **Daily Development** (in project directory)
+```bash
+mise run dev                       # Start development server
+mise run android                   # Launch Android emulator  
+mise run ios                       # Launch iOS simulator
+mise run test                      # Run all tests
+```
+
+### **Template Management**
+```bash
+./tika.sh template-upgrade         # Upgrade to latest template
+./tika.sh template-rollback        # Rollback if issues occur
+```
+
+> **Complete command reference**: See [CLI Documentation](./docs/CLI.md)
+
+---
+
+## 🔄 Template Management
+
+### **Intelligent Upgrade System**
+- ✅ **Git Integration**: Automatic commits before upgrades
+- ✅ **Rollback Safety**: One-command rollback if issues occur  
+- ✅ **Version Selection**: Choose specific versions, not just latest
+- ✅ **Conflict Resolution**: Smart handling of upgrade conflicts
+
+### **Upgrade Workflow**
+```bash
+./tika.sh template-check           # Check for updates
+./tika.sh template-upgrade --dry-run    # Preview changes
+./tika.sh template-upgrade         # Apply upgrade (creates git commit)
+./tika.sh template-rollback        # Rollback if needed
+```
+
+> **Detailed upgrade workflows**: See [Development Workflows](./docs/WORKFLOWS.md)
+
+---
+
+## 🛠️ Developer Experience
+
+### **Out-of-the-Box Features**
+- 🎯 **Single Command Setup**: `./tika.sh setup` configures everything
+- 📱 **Hot Reload Ready**: Instant feedback during development
+- 🧪 **Testing Configured**: Unit, widget, integration, and E2E tests  
+- 🔍 **Debugging Tools**: VS Code integration, platform debuggers
+- 📊 **Code Quality**: Linting, formatting, and analysis pre-configured
+
+### **Production-Ready Templates**
+- **Flutter Template**: Material 3, BLoC pattern, Clean Architecture
+- **React Native Template**: Expo Router, TypeScript, React Query
+
+> **Implementation details**: See [Flutter Guide](./templates/flutter-mise/GUIDE.md) | [React Native Guide](./templates/rn-expo-mise/GUIDE.md)
+
+---
+
+## 🌟 Why Choose Tika?
+
+### **Compared to Manual Setup**
+- ⚡ **10x Faster**: 5 minutes vs 2+ hours manual configuration
+- 🔒 **Consistent**: Same environment across all team members  
+- 🎯 **Best Practices**: Production-proven patterns built-in
+- 🔄 **Maintainable**: Easy updates as ecosystem evolves
+
+### **Compared to Other Tools**
+- 🚫 **Zero Dependencies**: No external tools required (yq, jq, etc.)
+- 🔧 **Tool Management**: Automatic version management with mise
+- 📱 **Mobile Focus**: Optimized specifically for mobile development
+- 🎯 **Template System**: Upgradeable, version-controlled templates
+
+---
+
+## 🚀 Getting Started
+
+### **New to Tika?**
+1. **Start Here**: [QUICKSTART.md](./QUICKSTART.md) - Get running in 5 minutes
+2. **Learn Stack**: [Technology Reference](./docs/REFERENCE.md) - Understand the tools
+3. **Daily Workflow**: [Development Workflows](./docs/WORKFLOWS.md) - Master the process
+
+### **Team Setup?**  
+1. **Environment**: [Setup Guide](./docs/WORKFLOWS.md#setup-workflows) - Consistent team environment
+2. **Standards**: [Flutter Guide](./templates/flutter-mise/GUIDE.md) | [React Native Guide](./templates/rn-expo-mise/GUIDE.md) - Development standards
+3. **Processes**: [Team Workflows](./docs/WORKFLOWS.md#team-development-workflows) - Collaboration patterns
+
+### **Need Help?**
+- 🐛 **Issues**: [Troubleshooting Guide](./docs/TROUBLESHOOTING.md)
+- 💬 **Commands**: [CLI Reference](./docs/CLI.md)  
+- 🏗️ **Architecture**: [Template Architecture](./docs/template-architecture.md)
+
+---
+
+**🎯 Ready to build amazing mobile apps?** Start with [QUICKSTART.md](./QUICKSTART.md) and go from zero to mobile development in 5 minutes!
+
+## 🚀 Quick Start Guide
+
+### 📋 Two-Phase Development Workflow
+
+**Phase 1: Bootstrap (Tika CLI)** → **Phase 2: Development (Mise)**
+
+| Phase | Tool | Purpose | Example Commands |
+|-------|------|---------|------------------|
+| **1. Bootstrap** | Tika CLI | System setup & project creation | `./tika.sh setup`, `./tika.sh create` |
+| **2. Development** | Mise | Daily development & builds | `mise run dev`, `mise run android` |
+
+### ⚡ Super Quick Start (5 Minutes)
+
+```bash
+# 1. Clone and setup environment (one-time)
+git clone <repo-url> tika && cd tika
+./tika.sh setup                    # Complete development environment
+
+# 2. Create your first project
+./tika.sh create --template flutter --name my-flutter-app
+# OR
+./tika.sh create --template expo --name my-expo-app
+
+# 3. Start developing immediately
+cd my-flutter-app
+mise run dev                       # Start development server
+mise run android                   # Launch on Android
+mise run ios                       # Launch on iOS (macOS only)
+```
+
+### 🎯 Phase 1: Initial Setup & Project Creation (Tika CLI)
+
+**Use Tika CLI for one-time system setup and project creation:**
+
+```bash
+# ENVIRONMENT SETUP (One-time)
 ./tika.sh setup                    # Complete development environment setup
-./tika.sh setup-android            # Android development tools
+./tika.sh setup-android            # Android SDK and tools (if needed separately)
 ./tika.sh setup-ios                # iOS development tools (macOS only)
 
 # PROJECT CREATION FROM TEMPLATES
-./tika.sh create --template flutter --name my-flutter-app
-./tika.sh create --template expo --name my-expo-app
+./tika.sh create --template flutter --name my-flutter-app --path ./projects/
+./tika.sh create --template expo --name my-expo-app --path ./mobile-apps/
 
 # TEMPLATE MANAGEMENT
 ./tika.sh template-status          # Check current template version
 ./tika.sh template-upgrade         # Upgrade to latest template version
-./tika.sh template-rollback        # Rollback to previous version (git-based)
+./tika.sh template-rollback        # Git-based rollback to previous version
 ```
 
-#### Phase 2: Ongoing Development (Use Mise in Project Directory)
+### 🔧 Phase 2: Daily Development (Mise in Project Directory)
+
+**Navigate to your project and use mise for development operations:**
+
 ```bash
 # Navigate to your created project
 cd my-flutter-app
 
 # DEVELOPMENT OPERATIONS
 mise doctor                        # Verify environment health
-mise run dev                       # Start development server
+mise run dev                       # Start development server with hot reload
 mise run android                   # Run on Android device/emulator
 mise run ios                       # Run on iOS simulator (macOS only)
-mise run web                       # Run on web browser
+mise run web                       # Run on web browser (Flutter/Expo)
 
-# BUILD & DEPLOYMENT
+# BUILD & TESTING
 mise run build                     # Build for production
-mise run test                      # Run tests
-mise run lint                      # Code linting
+mise run test                      # Run all tests (unit, widget, integration)
+mise run lint                      # Code linting and analysis
 mise run format                    # Code formatting
 
 # TEMPLATE OPERATIONS (Alternative to Tika CLI)
-mise run template:status           # Check template version
-mise run template:upgrade          # Upgrade template
-mise run template:rollback         # Rollback template changes
+mise run template:status           # Check template version status
+mise run template:upgrade          # Upgrade template (same as Tika CLI)
+mise run template:rollback         # Rollback template changes using git
 ```
 
 ## 🎯 When to Use What?
@@ -93,14 +298,38 @@ Experienced users can access individual scripts directly if needed:
 ./scripts/template-upgrade-git.sh status     # Git-integrated template upgrades
 ```
 
-## 📱 Supported Platforms & Frameworks
+## 📱 Supported Technologies & Platforms
 
-Tika supports modern cross-platform mobile development:
+**Tika** supports modern cross-platform mobile development with best-in-class tooling:
 
-- **🎯 Flutter** - Google's UI toolkit for cross-platform apps
-- **⚛️ React Native with Expo** - Facebook's framework with Expo development platform
-- **🤖 Android Native** - Android-specific features and optimizations
-- **🍎 iOS Native** - iOS-specific features (macOS development only)
+### 🎯 **Flutter Development**
+- **Framework**: Flutter 3.24+ with Dart 3.5+
+- **Architecture**: Clean Architecture with BLoC/Cubit pattern
+- **State Management**: BLoC, Riverpod, Provider patterns
+- **UI/UX**: Material 3 design system with custom theming
+- **Testing**: Unit, widget, and integration testing strategies
+- **Platforms**: iOS, Android, Web, macOS, Linux, Windows
+
+### ⚛️ **React Native & Expo Development**
+- **Framework**: React Native 0.74+ with Expo SDK 51+
+- **Language**: TypeScript with strict type checking
+- **State Management**: React Query (server), Zustand (client)
+- **Navigation**: React Navigation v6 with type safety
+- **Development**: Expo Router, hot reload, debugging tools
+- **Platforms**: iOS, Android, Web (Expo)
+
+### 🔧 **Development Tools & Versions**
+- **Node.js**: 20.12.0 (LTS) - JavaScript runtime
+- **Flutter**: 3.24.0 - Cross-platform UI toolkit
+- **Java**: 17.0.2 - Android development and Gradle
+- **Python**: 3.11.7 - Build scripts and automation
+- **mise**: Latest - Tool version management
+
+### 📖 **Additional Information**
+For detailed setup instructions and troubleshooting, see:
+- **[Complete CLI Reference](./docs/cli-reference.md)** - All available commands
+- **[Template Architecture Guide](./docs/template-architecture.md)** - Understanding templates
+- **[VS Code Configuration](./docs/vscode-configuration.md)** - IDE setup and extensions
 
 ## 📁 Repository Structure
 
