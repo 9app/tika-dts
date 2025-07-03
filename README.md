@@ -26,7 +26,7 @@ cd my-app && mise run dev
 | Document | Purpose | Time to Read |
 |----------|---------|--------------|
 | **[QUICKSTART.md](./QUICKSTART.md)** | 5-minute setup guide | 5 min ⚡ |
-| **[Technology Stack](./docs/REFERENCE.md)** | All versions, tools, configurations | 10 min 📋 |
+| **[Technology Stack](./docs/ARCHITECTURE.md)** | All versions, tools, configurations | 10 min 📋 |
 | **[Development Workflows](./docs/WORKFLOWS.md)** | Daily development processes | 15 min 🔧 |
 | **[CLI Commands](./docs/CLI.md)** | Complete command reference | 10 min 💻 |
 
@@ -37,8 +37,8 @@ cd my-app && mise run dev
 | **React Native** | [React Native Guide](./templates/rn-expo-mise/GUIDE.md) | TypeScript, React Query, Expo |
 
 ### 🧪 **Advanced Topics**
-- **[Template Architecture](./docs/template-architecture.md)** - How the template system works
-- **[Playground Testing](./playground/TESTING.md)** - Validation and experimentation
+- **[System Architecture](./docs/ARCHITECTURE.md)** - How the template system works
+- **[Playground Guide](./playground/README.md)** - Validation and experimentation
 - **[Troubleshooting](./docs/TROUBLESHOOTING.md)** - Common issues and solutions
 
 ---
@@ -56,7 +56,7 @@ cd my-app && mise run dev
 - **React Native 0.74+**: TypeScript, React Query, Expo SDK 51+
 - **Development Tools**: mise, VS Code, Android Studio, Xcode
 
-> **Complete technology details**: See [Technology Reference](./docs/REFERENCE.md)
+> **Complete technology details**: See [System Architecture](./docs/ARCHITECTURE.md)
 
 ---
 
@@ -89,7 +89,7 @@ tika/
 └── 📝 scripts/                   # Automation scripts
 ```
 
-> **Detailed architecture**: See [Template Architecture](./docs/template-architecture.md)
+> **Detailed architecture**: See [System Architecture](./docs/ARCHITECTURE.md)
 
 ---
 
@@ -177,7 +177,7 @@ mise run test                      # Run all tests
 
 ### **New to Tika?**
 1. **Start Here**: [QUICKSTART.md](./QUICKSTART.md) - Get running in 5 minutes
-2. **Learn Stack**: [Technology Reference](./docs/REFERENCE.md) - Understand the tools
+2. **Learn Stack**: [System Architecture](./docs/ARCHITECTURE.md) - Understand the tools
 3. **Daily Workflow**: [Development Workflows](./docs/WORKFLOWS.md) - Master the process
 
 ### **Team Setup?**  

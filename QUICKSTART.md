@@ -257,12 +257,12 @@ lsof -i :8080                      # Check if port 8080 is in use (Flutter web)
 ### 🎓 **Learn the Architecture**
 - **Flutter**: [Flutter Development Instructions](./templates/flutter-mise/.github/instructions/)
 - **React Native**: [React Native Development Instructions](./templates/rn-expo-mise/.github/instructions/)
-- **Template System**: [Template Architecture Guide](./docs/template-architecture.md)
+- **Template System**: [System Architecture Guide](./docs/ARCHITECTURE.md)
 
 ### ⚙️ **Customize Your Setup**
-- **VS Code**: [VS Code Configuration Guide](./docs/vscode-configuration.md)
-- **Git Integration**: [Template Upgrade System](./docs/template-upgrade-system.md)
-- **CLI Reference**: [Complete Command Reference](./docs/cli-reference.md)
+- **VS Code**: [Troubleshooting Guide](./docs/TROUBLESHOOTING.md)
+- **Git Integration**: [Development Workflows](./docs/WORKFLOWS.md)
+- **CLI Reference**: [CLI Commands](./docs/CLI.md)
 
 ### 🧪 **Experiment and Test**
 - **Playground**: Use `playground/` directory for testing new features
@@ -335,8 +335,8 @@ tika/
 
 ## 📖 Documentation
 
-- **[Full Setup Guide](README.md)** - Complete documentation
-- **[Onboarding Checklist](ONBOARDING.md)** - Step-by-step checklist for new members
+- **[Project Structure](README.md)** - Complete documentation
+- **[Getting Started Checklist](./docs/WORKFLOWS.md)** - Step-by-step checklist for new members
 - **Available Commands**: Run `mise run` to see all available tasks
 
 ## 🆘 Need Help?

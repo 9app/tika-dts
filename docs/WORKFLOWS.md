@@ -219,7 +219,7 @@ cd onboarding-test && mise run dev
 ```
 
 ### Code Review Workflow
-1. **Development**: Follow platform-specific patterns from [REFERENCE.md](./REFERENCE.md)
+1. **Development**: Follow platform-specific patterns from [ARCHITECTURE.md](./ARCHITECTURE.md)
 2. **Quality**: Run `mise run lint` and `mise run test` before commit
 3. **Review**: Use architecture patterns as quality guidelines
 4. **Testing**: Validate changes work in test environment
