@@ -1,6 +1,16 @@
 # Development Workflows Reference
 
-**Single Source of Truth for all development processes and workflows** in the Tika mobile development template system.
+**Single Source of Truth for all development pro# Check for updates
+./scripts/template-upgrade-git.sh check-upgrades
+mise run template:check
+
+# Upgrade to latest version
+./scripts/template-upgrade-git.sh upgrade
+mise run template:upgrade
+
+# Rollback if issues occur
+./scripts/template-upgrade-git.sh rollback
+mise run template:rollbackworkflows** in the Tika mobile development template system.
 
 ## 🎯 Core Development Workflow
 
@@ -121,7 +131,7 @@ git add -A && git commit -m "feat: save state before template upgrade"
 #### Phase 2: Template Update with Git Integration
 ```bash
 # 4. Apply template changes
-./tika.sh template-upgrade
+./scripts/template-upgrade-git.sh upgrade
 # Or use mise task
 mise run template:upgrade
 
@@ -232,7 +242,7 @@ mise run lint               # No linting errors
 mise run build             # Production build works
 
 # Template updates (if needed)
-./tika.sh template-upgrade  # Update to latest template
+./scripts/template-upgrade-git.sh upgrade  # Update to latest template
 mise run test               # Validate after template update
 
 # Release preparation

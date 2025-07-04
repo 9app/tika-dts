@@ -24,15 +24,15 @@
 ./tika.sh create --help            # Show creation options
 ```
 
-### Template Managemen
+### Template Management
 ```bash
-./tika.sh template-status          # Check current template version
-./tika.sh template-check           # Check for available upgrades
-./tika.sh template-upgrade         # Upgrade to latest template version
-./tika.sh template-upgrade --dry-run    # Preview upgrade changes
-./tika.sh template-upgrade --force      # Force upgrade ignoring conflicts
-./tika.sh template-rollback        # Git rollback to previous version
-./tika.sh template-releases        # List all available template releases
+./scripts/template-upgrade-git.sh status          # Check current template version
+./scripts/template-upgrade-git.sh check-upgrades  # Check for available upgrades
+./scripts/template-upgrade-git.sh upgrade         # Upgrade to latest template version
+./scripts/template-upgrade-git.sh check-upgrades  # Preview upgrade changes
+./scripts/template-upgrade-git.sh upgrade --force # Force upgrade ignoring conflicts
+./scripts/template-upgrade-git.sh rollback        # Git rollback to previous version
+./scripts/template-upgrade-git.sh history         # List all available template releases
 ```
 
 ---
@@ -128,10 +128,10 @@ mise run format                    # Format code
 ### Template Maintenance Pattern
 ```bash
 # Monthly template updates
-./tika.sh template-check           # Check for updates
-./tika.sh template-upgrade --dry-run    # Preview changes
-./tika.sh template-upgrade         # Apply upgrade
-mise run test                      # Validate after upgrade
+./scripts/template-upgrade-git.sh check-upgrades  # Check for updates
+./scripts/template-upgrade-git.sh check-upgrades  # Preview changes
+./scripts/template-upgrade-git.sh upgrade         # Apply upgrade
+mise run test                                      # Validate after upgrade
 ```
 
 ### Troubleshooting Pattern
@@ -156,7 +156,7 @@ mise run dev                       # Restart developmen
 ./tika.sh create --template <flutter|expo> --name <name> [--path <path>]
 
 # Template upgrade options
-./tika.sh template-upgrade [--dry-run] [--force] [--version <version>]
+./scripts/template-upgrade-git.sh [status|check-upgrades|upgrade|rollback|history] [--force] [--version <version>]
 ```
 
 ### Environment Variables
@@ -184,9 +184,9 @@ mise current                      # Show current tool versions
 ### Safe Command Patterns
 ```bash
 # Always verify before major operations
-./tika.sh template-upgrade --dry-run    # Preview before upgrade
-mise doctor                             # Check health before developmen
-mise run test                           # Test before commits
+./scripts/template-upgrade-git.sh check-upgrades  # Preview before upgrade
+mise doctor                                        # Check health before development
+mise run test                                      # Test before commits
 ```
 
 ### Avoid These Patterns
@@ -233,7 +233,7 @@ ls docs/                          # Available documentation
 ./tika.sh create --template flutter --name app    # Create projec
 cd app && mise run dev             # Start developmen
 mise run test                      # Run tests
-./tika.sh template-upgrade         # Update template
+./scripts/template-upgrade-git.sh upgrade         # Update template
 ```
 
 ---

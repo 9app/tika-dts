@@ -152,10 +152,10 @@ mise run test:integration  # Integration tests
 ./tika.sh template-check
 
 # Preview upgrade changes
-./tika.sh template-upgrade --dry-run
+./scripts/template-upgrade-git.sh check-upgrades
 
 # Apply template upgrade
-./tika.sh template-upgrade
+./scripts/template-upgrade-git.sh upgrade
 
 # Rollback if issues
 ./tika.sh template-rollback

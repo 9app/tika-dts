@@ -270,7 +270,7 @@ echo "org.gradle.jvmargs=-Xmx4g" >> android/gradle.properties
 ./tika.sh template-rollback
 
 # Try upgrade with conflict resolution
-./tika.sh template-upgrade --force
+./scripts/template-upgrade-git.sh upgrade --force
 
 # Manual conflict resolution
 git status
@@ -288,7 +288,7 @@ git add . && git commit -m "Resolve template conflicts"
 ./tika.sh template-releases
 
 # Upgrade to specific version
-./tika.sh template-upgrade --version 1.2.0
+./scripts/template-upgrade-git.sh upgrade --version 1.2.0
 
 # Force refresh template cache
 rm -rf ~/.cache/tika/templates
