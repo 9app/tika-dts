@@ -37,7 +37,7 @@ mise run ios                                        # iOS simulator (macOS)
 
 ## 🛠️ Phase 1: One-Time Setup (Tika CLI)
 
-### Step 1: Clone and Setup Environmen
+### Step 1: Clone and Setup Environment
 
 ```bash
 # Clone the repository
@@ -65,7 +65,7 @@ cd tika
 ./tika.sh setup-ios
 ```
 
-### Step 3: Create Your First Projec
+### Step 3: Create Your First Project
 
 ```bash
 # Flutter project with Material 3 + BLoC
@@ -92,16 +92,16 @@ cd tika
 
 **After creating your project, navigate to it and use mise for all development operations:**
 
-### Step 1: Navigate to Your Projec
+### Step 1: Navigate to Your Project
 
 ```bash
-# Navigate to your created projec
+# Navigate to your created project
 cd awesome-flutter-app
 # OR
 cd awesome-mobile-app
 ```
 
-### Step 2: Verify Environmen
+### Step 2: Verify Environment
 
 ```bash
 # Check that everything is working correctly
@@ -161,7 +161,7 @@ cd onboarding-test && mise run dev
 # 1. Create project from template
 ./tika.sh create --template flutter --name production-app --path ./projects/
 
-# 2. Initialize development environmen
+# 2. Initialize development environment
 cd projects/production-app
 mise run dev                       # Verify project works
 
@@ -182,7 +182,7 @@ mise run ios                       # Launch iOS for testing (macOS)
 # Code quality checks
 mise run lint                      # Check for issues
 mise run test                      # Run tests
-mise run format                    # Format code before commi
+mise run format                    # Format code before commit
 ```
 
 ### 🔧 **Template Maintenance**
@@ -248,7 +248,7 @@ lsof -i :8080                      # Check if port 8080 is in use (Flutter web)
 1. **Check documentation**: See `docs/` directory for detailed guides
 2. **Verify environment**: Run `mise doctor` to check tool installation
 3. **View available commands**: Run `mise list` in your project directory
-4. **Template-specific help**: Check the template's README in your projec
+4. **Template-specific help**: Check the template's README in your project
 
 ---
 
@@ -283,7 +283,7 @@ mise run build
 ## 💡 Key Concepts
 
 ### 🎯 Tika's Role
-- **One-time setup**: Configure development environmen
+- **One-time setup**: Configure development environment
 - **Project creation**: Generate new projects from templates
 - **Platform setup**: Configure Android/iOS development tools
 
@@ -299,15 +299,15 @@ mise run build
 ```bash
 ./tika.sh help                    # Show help
 ./tika.sh version                 # Show version
-./tika.sh setup                   # Setup environmen
-./tika.sh create [options]        # Create projec
+./tika.sh setup                   # Setup environment
+./tika.sh create [options]        # Create project
 ./tika.sh setup-android           # Android setup
 ./tika.sh setup-ios               # iOS setup (macOS)
 ```
 
 ### Mise Commands (In Project Directory)
 ```bash
-mise doctor                       # Verify environmen
+mise doctor                       # Verify environment
 mise run template:status          # Template version
 mise run template:check           # Check updates
 mise run template:upgrade         # Upgrade template
@@ -396,13 +396,13 @@ mise run project:create
 ./scripts/create-new-project.sh --template flutter --name my_custom_flutter_app
 ./scripts/create-new-project.sh --template expo --name my-custom-expo-app
 
-# Then setup the projec
+# Then setup the project
 cd my_flutter_app  # or my-expo-app
 mise install
 mise run doctor
 ```
 
-### Template Managemen
+### Template Management
 ```bash
 # List available templates
 mise run template:lis

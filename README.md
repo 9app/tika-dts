@@ -8,7 +8,7 @@
 # 1. Setup (one-time)
 git clone <repo-url> tika && cd tika && ./tika.sh setup
 
-# 2. Create projec
+# 2. Create project
 ./tika.sh create --template flutter --name my-app    # Flutter
 ./tika.sh create --template expo --name my-app      # React Native
 
