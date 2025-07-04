@@ -79,7 +79,7 @@ Clean up and optimize the entire workspace by removing duplicate content, empty 
 
 ### Scripts to Check:
 - [ ] `scripts/create-new-project.sh`
-- [ ] `scripts/template-upgrade.sh`
+- [ ] `scripts/template-upgrade-git.sh`
 - [ ] `scripts/setup.sh`
 - [ ] `scripts/verify.sh`
 - [ ] `scripts/build.sh`
