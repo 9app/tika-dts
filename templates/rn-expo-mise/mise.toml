@@ -37,17 +37,16 @@ run = "./scripts/setup-rn.sh"
 
 [tasks.verify]
 description = "Verify React Native/Expo development environment"
-run = "./scripts/verify-rn.sh"
+run = "mise doctor"
 
 [tasks.doctor]
 description = "Check React Native/Expo environment health"
 run = """
-echo "🔍 Checking React Native/Expo development environment..."
-npx expo-doctor || echo "Expo doctor not available - installing..."
-npx @expo/cli@latest doctor || echo "Expo CLI doctor not available"
-node --version
-npm --version
-java -version
+echo "🔍 Checking development environment..."
+mise doctor
+echo "🔍 Checking React Native/Expo specific setup..."
+npx expo doctor || echo "Expo doctor not available"
+npx react-native doctor || echo "React Native doctor not available"
 echo "✅ Environment check complete"
 """
 

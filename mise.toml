@@ -50,20 +50,23 @@ run = "./scripts/setup.sh"
 
 [tasks.verify]
 description = "Verify development environment setup"
-run = "./scripts/verify.sh"
+run = """
+echo "🔍 Running mise doctor..."
+mise doctor
+echo "🔍 Running custom verification..."
+./scripts/verify.sh
+"""
 
 [tasks.doctor]
 description = "Check development environment health"
 run = """
-echo "🔍 Checking development environment..."
-flutter doctor
-echo "📱 Checking Expo environment..."
-cd apps/mobile-app
-npx expo-doctor || echo "Expo doctor not available"
-cd ../..
-node --version
-npm --version
-java -version
+echo "🔍 Checking mise environment..."
+mise doctor
+echo "🔍 Checking additional tools..."
+flutter doctor || echo "Flutter not available"
+echo "📱 Checking Expo in playground..."
+cd playground/apps/mobile-app 2>/dev/null && npx expo doctor || echo "Expo not available in playground"
+cd - 2>/dev/null || true
 echo "✅ Environment check complete"
 """
 

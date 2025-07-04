@@ -33,14 +33,15 @@ run = "./scripts/setup-flutter.sh"
 
 [tasks.verify]
 description = "Verify Flutter development environment"
-run = "./scripts/verify-flutter.sh"
+run = "mise doctor"
 
 [tasks.doctor]
 description = "Check Flutter environment health"
 run = """
-echo "🔍 Checking Flutter development environment..."
+echo "🔍 Checking development environment..."
+mise doctor
+echo "🔍 Checking Flutter-specific setup..."
 flutter doctor -v
-java -version
 echo "✅ Environment check complete"
 """
 
