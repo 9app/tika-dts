@@ -13,7 +13,10 @@ git clone <repo-url> tika && cd tika && ./tika.sh setup
 ./tika.sh create --template expo --name my-app      # React Native
 
 # 3. Start developing
-cd my-app && mise run dev
+cd my-app && mi#### 📦 Template Management
+```bash
+# Template upgrades (git-integrated, zero dependencies)
+./scripts/template-upgrade-git.sh status # Check current template statusun dev
 ```
 
 **✅ Done!** Your development environment is ready with hot reload, debugging, and platform tools.
@@ -112,8 +115,8 @@ mise run test                      # Run all tests
 
 ### **Template Management**
 ```bash
-./tika.sh template-upgrade         # Upgrade to latest template
-./tika.sh template-rollback        # Rollback if issues occur
+./scripts/template-upgrade-git.sh upgrade --latest # Upgrade to latest template
+./scripts/template-upgrade-git.sh rollback         # Rollback if issues occur
 ```
 
 > **Complete command reference**: See [CLI Documentation](./docs/CLI.md)
@@ -130,10 +133,10 @@ mise run test                      # Run all tests
 
 ### **Upgrade Workflow**
 ```bash
-./tika.sh template-check           # Check for updates
-./tika.sh template-upgrade --dry-run    # Preview changes
-./tika.sh template-upgrade         # Apply upgrade (creates git commit)
-./tika.sh template-rollback        # Rollback if needed
+./scripts/template-upgrade-git.sh check-upgrades        # Check for updates
+./scripts/template-upgrade-git.sh upgrade --dry-run     # Preview changes
+./scripts/template-upgrade-git.sh upgrade --latest      # Apply upgrade (creates git commit)
+./scripts/template-upgrade-git.sh rollback              # Rollback if needed
 ```
 
 > **Detailed upgrade workflows**: See [Development Workflows](./docs/WORKFLOWS.md)
@@ -239,9 +242,9 @@ mise run ios                       # Launch on iOS (macOS only)
 ./tika.sh create --template expo --name my-expo-app --path ./mobile-apps/
 
 # TEMPLATE MANAGEMENT
-./tika.sh template-status          # Check current template version
-./tika.sh template-upgrade         # Upgrade to latest template version
-./tika.sh template-rollback        # Git-based rollback to previous version
+./scripts/template-upgrade-git.sh status           # Check current template version
+./scripts/template-upgrade-git.sh upgrade --latest # Upgrade to latest template version
+./scripts/template-upgrade-git.sh rollback         # Git-based rollback to previous version
 ```
 
 ### 🔧 Phase 2: Daily Development (Mise in Project Directory)
@@ -277,7 +280,7 @@ mise run template:rollback         # Rollback template changes using gi
 |------|------|-----------------|
 | **Environment Setup** | Tika CLI | `./tika.sh setup` |
 | **Create New Project** | Tika CLI | `./tika.sh create --template flutter` |
-| **Template Management** | Tika CLI or Mise | `./tika.sh template-upgrade` or `mise run template:upgrade` |
+| **Template Management** | Git Script or Mise | `./scripts/template-upgrade-git.sh upgrade --latest` or `mise run template:upgrade` |
 | **Daily Development** | Mise | `mise run dev`, `mise run android` |
 | **Build & Deploy** | Mise | `mise run build`, `mise run test` |
 
@@ -488,17 +491,17 @@ mise doctor
 ./tika.sh create --template flutter --name my-app --path ./projects/
 ```
 
-#### 🔄 Template Managemen
+#### 🔄 Template Management
 ```bash
-./tika.sh template-status          # Check current template version
-./tika.sh template-check           # Check for available template upgrades
-./tika.sh template-upgrade         # Upgrade to latest template version
-./tika.sh template-rollback        # Git rollback to previous version
-./tika.sh template-releases        # List all available template releases
+./scripts/template-upgrade-git.sh status           # Check current template version
+./scripts/template-upgrade-git.sh check-upgrades   # Check for available template upgrades
+./scripts/template-upgrade-git.sh upgrade --latest # Upgrade to latest template version
+./scripts/template-upgrade-git.sh rollback         # Git rollback to previous version
+./scripts/template-upgrade-git.sh history          # List all available template releases
 
 # Advanced template operations
-./tika.sh template-upgrade --dry-run    # Preview upgrade changes
-./tika.sh template-upgrade --force      # Force upgrade ignoring conflicts
+./scripts/template-upgrade-git.sh upgrade --dry-run # Preview upgrade changes
+./scripts/template-upgrade-git.sh upgrade --auto-branch # Force upgrade ignoring conflicts
 ```
 ./tika.sh verify                   # Verify project configuration
 ./tika.sh build                    # Build projec
@@ -507,11 +510,11 @@ mise doctor
 #### 📦 Template Managemen
 ```bash
 # Template upgrades (git-integrated, zero dependencies)
-./tika.sh template-status          # Check current template status
-./tika.sh template-check           # Check for available upgrades
-./tika.sh template-upgrade         # Upgrade to latest template version
-./tika.sh template-rollback        # Git rollback to previous version
-./tika.sh template-releases        # List all available template releases
+./scripts/template-upgrade-git.sh status          # Check current template status
+./scripts/template-upgrade-git.sh check-upgrades # Check for available upgrades
+./scripts/template-upgrade-git.sh upgrade --latest # Upgrade to latest template version
+./scripts/template-upgrade-git.sh rollback        # Git rollback to previous version
+./scripts/template-upgrade-git.sh history         # List all available template releases
 
 # Using mise tasks from within projec
 mise run template:status           # Check template status
@@ -550,19 +553,19 @@ mise run template:rollback         # Rollback using gi
 #### Check and Upgrade Templates (Git-Integrated)
 ```bash
 # Check current status
-./tika.sh template-status
+./scripts/template-upgrade-git.sh status
 
 # Check for available upgrades
-./tika.sh template-check
+./scripts/template-upgrade-git.sh check-upgrades
 
 # Upgrade with dry-run preview
-./tika.sh template-upgrade --dry-run
+./scripts/template-upgrade-git.sh upgrade --dry-run
 
 # Upgrade to latest version (creates git commit)
-./tika.sh template-upgrade
+./scripts/template-upgrade-git.sh upgrade --latest
 
 # Rollback using git (no backup directories needed)
-./tika.sh template-rollback
+./scripts/template-upgrade-git.sh rollback
 
 # View available releases
 ./tika.sh template-releases

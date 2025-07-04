@@ -269,11 +269,19 @@ flutter pub get
 # Setup tasks
 [tasks."setup:android"]
 description = "Setup Android development environment"
-run = "./scripts/setup-android.sh"
+run = """
+echo "⚠️  Android setup should be done in individual projects"
+echo "Run in Flutter project: mise run setup"
+echo "Run in React Native project: mise run setup"
+"""
 
 [tasks."setup:ios"]
 description = "Setup iOS development environment (macOS only)"
-run = "./scripts/setup-ios.sh"
+run = """
+echo "⚠️  iOS setup should be done in individual projects"
+echo "Run in Flutter project: mise run setup"
+echo "Run in React Native project: mise run setup"
+"""
 
 [tasks."setup:flutter"]
 description = "Setup Flutter development"

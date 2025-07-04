@@ -33,7 +33,7 @@ run = "./scripts/setup-flutter.sh"
 
 [tasks.verify]
 description = "Verify Flutter development environment"
-run = "flutter doctor"
+run = "./scripts/verify-flutter.sh"
 
 [tasks.doctor]
 description = "Check Flutter environment health"
