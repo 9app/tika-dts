@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for outpu
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -14,7 +14,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-# Print colored outpu
+# Print colored output
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -102,7 +102,7 @@ parse_nested_yaml_value() {
 
         if [[ "$line" =~ ^[[:space:]]*${section}:[[:space:]]*$ ]]; then
             in_section=true
-            section_indent=$line_inden
+            section_indent=$line_indent
             continue
         fi
 
@@ -160,7 +160,7 @@ get_project_path() {
     echo "$(cd "$path" && pwd)"
 }
 
-# Check if directory is a template-based projec
+# Check if directory is a template-based project
 is_template_project() {
     local project_path="$1"
     [[ -f "$project_path/.template-metadata" ]]
@@ -503,7 +503,7 @@ git_rollback() {
     print_header "Git-based Template Rollback"
     print_info "Target version: $target_version"
 
-    # Find upgrade commi
+    # Find upgrade commit
     local upgrade_commits=$(git log --oneline --grep="upgrade template" --grep="feat: upgrade" | head -10)
 
     if [[ -z "$upgrade_commits" ]]; then
@@ -667,7 +667,7 @@ main() {
     fi
 
     local command="$1"
-    shif
+    shift
 
     case "$command" in
         status)
@@ -691,15 +691,15 @@ main() {
                         ;;
                     --latest)
                         target_version="latest"
-                        shif
+                        shift
                         ;;
                     --dry-run)
                         dry_run="true"
-                        shif
+                        shift
                         ;;
                     --auto-branch)
                         auto_branch="true"
-                        shif
+                        shift
                         ;;
                     --branch)
                         custom_branch="$2"
@@ -707,7 +707,7 @@ main() {
                         ;;
                     --no-git)
                         no_git="true"
-                        shif
+                        shift
                         ;;
                     *)
                         print_error "Unknown option: $1"

@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for outpu
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -14,7 +14,7 @@ NC='\033[0m' # No Color
 
 echo -e "${BLUE}🔄 Converting deprecated documentation files to stubs...${NC}"
 
-# Function to create stub conten
+# Function to create stub content
 create_stub() {
     local file="$1"
     local title="$2"

@@ -307,7 +307,7 @@ main() {
     fi
 
     command="$1"
-    shif
+    shift
 
     case "$command" in
         list)

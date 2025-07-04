@@ -303,23 +303,23 @@ main() {
         case $1 in
             --skip-tests)
                 SKIP_TESTS=true
-                shif
+                shift
                 ;;
             --android-only)
                 BUILD_TARGET="android"
-                shif
+                shift
                 ;;
             --ios-only)
                 BUILD_TARGET="ios"
-                shif
+                shift
                 ;;
             --flutter-only)
                 BUILD_TARGET="flutter"
-                shif
+                shift
                 ;;
             --rn-only)
                 BUILD_TARGET="react-native"
-                shif
+                shift
                 ;;
             --help|-h)
                 echo "🏗️ Production Build Script"

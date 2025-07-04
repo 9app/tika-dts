@@ -82,7 +82,7 @@ get_yaml_value() {
                 in_target_section=true
             elif [[ "$section_name" == "$target_section" ]]; then
                 in_target_section=true
-                indent_level=$current_inden
+                indent_level=$current_indent
             elif [[ $current_indent -le $indent_level ]]; then
                 in_target_section=false
             fi

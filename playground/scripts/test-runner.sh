@@ -64,7 +64,7 @@ while [[ $# -gt 0 ]]; do
             ;;
         --quick)
             QUICK_MODE=true
-            shif
+            shift
             ;;
         --help|-h)
             show_help

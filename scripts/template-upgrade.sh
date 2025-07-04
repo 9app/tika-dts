@@ -5,7 +5,7 @@
 
 set -e
 
-# Colors for outpu
+# Colors for output
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
@@ -20,7 +20,7 @@ TEMPLATES_DIR="$WORKSPACE_ROOT/templates"
 REGISTRY_FILE="$TEMPLATES_DIR/.templates-registry.yaml"
 BACKUPS_DIR="$WORKSPACE_ROOT/backups"
 
-# Print colored outpu
+# Print colored output
 print_info() {
     echo -e "${BLUE}ℹ️  $1${NC}"
 }
@@ -79,7 +79,7 @@ show_usage() {
 Usage: ./scripts/template-upgrade.sh <command> [options]
 
 Commands:
-  init <path>               Initialize template metadata for existing projec
+  init <path>               Initialize template metadata for existing project
   status [path]             Show current template status
   check-upgrades [path]     Check for available template upgrades
   upgrade [options]         Upgrade template to newer version
@@ -103,11 +103,11 @@ Registry Commands:
   registry add-version     Add new version to template
 
 Examples:
-  # Initialize metadata for existing projec
-  ./scripts/template-upgrade.sh init ./my-flutter-projec
+  # Initialize metadata for existing project
+  ./scripts/template-upgrade.sh init ./my-flutter-project
 
   # Check upgrade status
-  cd my-flutter-projec
+  cd my-flutter-project
   ../../scripts/template-upgrade.sh status
 
   # Check available upgrades
@@ -131,7 +131,7 @@ get_project_path() {
     echo "$(cd "$path" && pwd)"
 }
 
-# Check if directory is a template-based projec
+# Check if directory is a template-based project
 is_template_project() {
     local project_path="$1"
     [[ -f "$project_path/.template-metadata" ]]
@@ -162,7 +162,7 @@ get_template_from_registry() {
     yq eval ".templates.$template_name" "$REGISTRY_FILE"
 }
 
-# Initialize template metadata for existing projec
+# Initialize template metadata for existing project
 init_template_metadata() {
     local project_path="$(get_project_path "$1")"
 
@@ -362,7 +362,7 @@ check_upgrades() {
     echo "📦 Available Upgrades:"
     echo
 
-    # Find versions newer than curren
+    # Find versions newer than current
     local found_newer=false
     while IFS= read -r version; do
         if [[ "$found_newer" == "true" ]] || [[ "$version" == "$current_version" ]]; then
@@ -411,19 +411,19 @@ perform_upgrade() {
                 ;;
             --latest)
                 target_version="latest"
-                shif
+                shift
                 ;;
             --interactive)
                 interactive=true
-                shif
+                shift
                 ;;
             --dry-run)
                 dry_run=true
-                shif
+                shift
                 ;;
             --preserve-custom)
                 preserve_custom=true
-                shif
+                shift
                 ;;
             --no-backup)
                 create_backup=false
@@ -431,7 +431,7 @@ perform_upgrade() {
                 ;;
             --force)
                 force=true
-                shif
+                shift
                 ;;
             *)
                 print_error "Unknown option: $1"
@@ -616,7 +616,7 @@ main() {
     fi
 
     local command="$1"
-    shif
+    shift
 
     case "$command" in
         init)
