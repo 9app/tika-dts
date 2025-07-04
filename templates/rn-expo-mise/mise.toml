@@ -33,7 +33,7 @@ _.path = [
 
 [tasks.setup]
 description = "Initial React Native/Expo project setup"
-run = "./scripts/setup-rn.sh"
+run = "./scripts/setup.sh"
 
 [tasks.verify]
 description = "Verify React Native/Expo development environment"

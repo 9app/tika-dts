@@ -29,7 +29,7 @@ _.path = [
 
 [tasks.setup]
 description = "Initial Flutter project setup"
-run = "./scripts/setup-flutter.sh"
+run = "./scripts/setup.sh"
 
 [tasks.verify]
 description = "Verify Flutter development environment"
