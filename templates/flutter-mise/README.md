@@ -36,53 +36,55 @@ This template provides a complete mise configuration for Flutter development.
 
 3. Setup Flutter development environment:
    ```bash
-   mise run setup:android  # For Android developmen
-   mise run setup:ios      # For iOS development (macOS only)
-   mise run setup:web      # For web developmen
+   mise setup:android      # For Android development
+   mise setup:ios          # For iOS development (macOS only)
+   mise setup:web          # For web development
    ```
 
 4. Verify your setup:
    ```bash
-   mise run doctor
+   mise doctor
    ```
 
 ## Available Tasks
 
-### Developmen
-- `mise run dev` - Run Flutter app in development mode
-- `mise run android` - Run on Android device/emulator
-- `mise run ios` - Run on iOS device/simulator (macOS only)
-- `mise run web` - Run on web browser
+### Development
+- `mise dev` - Run Flutter app in development mode
+- `mise android` - Run on Android device/emulator
+- `mise ios` - Run on iOS device/simulator (macOS only)
+- `mise web` - Run on web browser
 
 ### Testing
-- `mise run test` - Run all tests
-- `mise run test:unit` - Run unit tests only
-- `mise run test:widget` - Run widget tests only
-- `mise run test:integration` - Run integration tests only
+- `mise test` - Run all tests
+- `mise test:unit` - Run unit tests only
+- `mise test:widget` - Run widget tests only
+- `mise test:integration` - Run integration tests only
 
 ### Building
-- `mise run build:apk` - Build Android APK
-- `mise run build:appbundle` - Build Android App Bundle
-- `mise run build:ios` - Build iOS app
-- `mise run build:web` - Build web app
+- `mise build:apk` - Build Android APK
+- `mise build:appbundle` - Build Android App Bundle
+- `mise build:ios` - Build iOS app
+- `mise build:web` - Build web app
 
 ### Maintenance
-- `mise run clean` - Clean build artifacts and reinstall dependencies
-- `mise run deps` - Install/update dependencies
-- `mise run deps:upgrade` - Upgrade dependencies to latest versions
+- `mise clean` - Clean build artifacts and reinstall dependencies
+- `mise deps` - Install/update dependencies
+- `mise deps:upgrade` - Upgrade dependencies to latest versions
 
 ### Development Tools
-- `mise run lint` - Run Flutter analyzer
-- `mise run format` - Format code with dart forma
-- `mise run simulator` - Open iOS Simulator (macOS only)
-- `mise run emulator` - Start Android emulator
+- `mise lint` - Run Flutter analyzer
+- `mise format` - Format code with dart format
+- `mise simulator` - Open iOS Simulator (macOS only)
+- `mise emulator` - Start Android emulator
 
 ### Setup & Configuration
-- `mise run setup:android` - Configure Android developmen
-- `mise run setup:ios` - Configure iOS development (macOS only)
-- `mise run setup:web` - Configure web developmen
-- `mise run precache` - Precache Flutter binaries
-- `mise run upgrade` - Upgrade Flutter SDK
+- `mise setup:android` - Configure Android development
+- `mise setup:ios` - Configure iOS development (macOS only)
+- `mise setup:web` - Configure web development
+- `mise precache` - Precache Flutter binaries
+- `mise upgrade` - Upgrade Flutter SDK
+
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
 
 ## Project Structure
 

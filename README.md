@@ -13,10 +13,7 @@ git clone <repo-url> tika && cd tika && ./tika.sh setup
 ./tika.sh create --template expo --name my-app      # React Native
 
 # 3. Start developing
-cd my-app && mi#### 📦 Template Management
-```bash
-# Template upgrades (git-integrated, zero dependencies)
-./scripts/template-upgrade-git.sh status # Check current template statusun dev
+cd my-app && mise dev
 ```
 
 **✅ Done!** Your development environment is ready with hot reload, debugging, and platform tools.
@@ -73,7 +70,7 @@ Phase 1: Bootstrap (Tika CLI) → Phase 2: Development (Mise)
 | Phase | Tool | Commands | Purpose |
 |-------|------|----------|---------|
 | **Bootstrap** | `./tika.sh` | `setup`, `create` | System setup, project creation |
-| **Development** | `mise run` | `dev`, `android`, `ios` | Daily development, builds, tests |
+| **Development** | `mise` | `dev`, `android`, `ios` | Daily development, builds, tests |
 
 ### **Repository Structure**
 ```
@@ -107,11 +104,13 @@ tika/
 
 ### **Daily Development** (in project directory)
 ```bash
-mise run dev                       # Start development server
-mise run android                   # Launch Android emulator
-mise run ios                       # Launch iOS simulator
-mise run test                      # Run all tests
+mise dev                           # Start development server
+mise android                       # Launch Android emulator
+mise ios                           # Launch iOS simulator
+mise test                          # Run all tests
 ```
+
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
 
 ### **Template Management**
 ```bash

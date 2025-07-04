@@ -22,7 +22,7 @@ Phase 1: Bootstrap (Tika CLI) → Phase 2: Development (Mise)
 | Phase | Tool | Purpose | Commands |
 |-------|------|---------|----------|
 | **Bootstrap** | Tika CLI | System setup, project creation | `./tika.sh setup`, `./tika.sh create` |
-| **Development** | Mise | Daily development, builds, tests | `mise run dev`, `mise run android` |
+| **Development** | Mise | Daily development, builds, tests | `mise dev`, `mise android` |
 
 ---
 
@@ -59,27 +59,29 @@ mise doctor
 
 ## 🔧 Daily Development Workflows
 
-### Flutter Developmen
+### Flutter Development
 ```bash
 # In project directory
-mise run dev                # Start development server
-mise run android            # Launch Android emulator
-mise run ios               # Launch iOS simulator (macOS)
-mise run web               # Launch web browser
-mise run test              # Run all tests
-mise run build             # Build for production
+mise dev                    # Start development server
+mise android                # Launch Android emulator
+mise ios                   # Launch iOS simulator (macOS)
+mise web                   # Launch web browser
+mise test                  # Run all tests
+mise build                 # Build for production
 ```
 
-### React Native Developmen
+### React Native Development
 ```bash
 # In project directory
-mise run dev                # Start Expo development server
-mise run android            # Launch Android emulator
-mise run ios               # Launch iOS simulator (macOS)
-mise run web               # Launch web browser
-mise run test              # Run all tests
-mise run build             # Build for production
+mise dev                    # Start Expo development server
+mise android                # Launch Android emulator
+mise ios                   # Launch iOS simulator (macOS)
+mise web                   # Launch web browser
+mise test                  # Run all tests
+mise build                 # Build for production
 ```
+
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
 
 ---
 
@@ -89,19 +91,19 @@ mise run build             # Build for production
 ```bash
 # Check current template status
 ./tika.sh template-status
-mise run template:status
+mise template:status
 
 # Check for available upgrades
 ./tika.sh template-check
-mise run template:check
+mise template:check
 
 # Upgrade to latest version
 ./tika.sh template-upgrade
-mise run template:upgrade
+mise template:upgrade
 
 # Rollback if issues occur
 ./tika.sh template-rollback
-mise run template:rollback
+mise template:rollback
 ```
 
 ### Template Upgrade Process
@@ -133,7 +135,7 @@ git add -A && git commit -m "feat: save state before template upgrade"
 # 4. Apply template changes
 ./scripts/template-upgrade-git.sh upgrade
 # Or use mise task
-mise run template:upgrade
+mise template:upgrade
 
 # 5. Resolve any conflicts using git tools
 git status  # Shows conflicted files

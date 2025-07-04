@@ -13,9 +13,9 @@ git clone <repo-url> tika && cd tika && ./tika.sh setup
 ./tika.sh create --template expo --name my-app      # React Native + Expo
 
 # 3. Start developing immediately
-cd my-app && mise run dev                           # Development server
-mise run android                                    # Android emulator
-mise run ios                                        # iOS simulator (macOS)
+cd my-app && mise dev                           # Development server
+mise android                                    # Android emulator
+mise ios                                        # iOS simulator (macOS)
 ```
 
 **That's it!** Your mobile development environment is ready with hot reload, debugging, and platform tools.
@@ -113,26 +113,28 @@ mise list                          # Show all available tasks
 
 ```bash
 # Core development commands
-mise run dev                       # Start development server with hot reload
-mise run android                   # Launch on Android emulator/device
-mise run ios                       # Launch on iOS simulator (macOS only)
-mise run web                       # Launch in web browser
+mise dev                           # Start development server with hot reload
+mise android                       # Launch on Android emulator/device
+mise ios                           # Launch on iOS simulator (macOS only)
+mise web                           # Launch in web browser
 
 # Additional development tools
-mise run test                      # Run all tests (unit, widget, integration)
-mise run lint                      # Run code analysis and linting
-mise run format                    # Format code according to project standards
-mise run build                     # Build for production
+mise test                          # Run all tests (unit, widget, integration)
+mise lint                          # Run code analysis and linting
+mise format                        # Format code according to project standards
+mise build                         # Build for production
 ```
+
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
 
 ### Step 4: Template Management (Optional)
 
 ```bash
 # Keep your project up-to-date with latest template improvements
-mise run template:status           # Check current template version
-mise run template:check            # Check for available updates
-mise run template:upgrade          # Upgrade to latest template (creates git commit)
-mise run template:rollback         # Git-based rollback if issues occur
+mise template:status               # Check current template version
+mise template:check                # Check for available updates
+mise template:upgrade              # Upgrade to latest template (creates git commit)
+mise template:rollback             # Git-based rollback if issues occur
 ```
 
 ---

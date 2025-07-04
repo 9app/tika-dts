@@ -37,79 +37,81 @@ This template provides a complete mise configuration for React Native and Expo d
 
 3. Install dependencies:
    ```bash
-   mise run deps
+   mise deps
    ```
 
 4. Setup development environment:
    ```bash
-   mise run setup:android  # For Android developmen
-   mise run setup:ios      # For iOS development (macOS only)
-   mise run setup:eas      # For EAS Build & Submi
+   mise setup:android      # For Android development
+   mise setup:ios          # For iOS development (macOS only)
+   mise setup:eas          # For EAS Build & Submit
    ```
 
 5. Verify your setup:
    ```bash
-   mise run doctor
+   mise doctor
    ```
 
 ## Available Tasks
 
-### Developmen
-- `mise run dev` - Start Metro bundler
-- `mise run android` - Run on Android device/emulator
-- `mise run ios` - Run on iOS device/simulator (macOS only)
-- `mise run web` - Run on web browser
-- `mise run tunnel` - Start development server with tunnel
-- `mise run localhost` - Start development server on localhos
+### Development
+- `mise dev` - Start Metro bundler
+- `mise android` - Run on Android device/emulator
+- `mise ios` - Run on iOS device/simulator (macOS only)
+- `mise web` - Run on web browser
+- `mise tunnel` - Start development server with tunnel
+- `mise localhost` - Start development server on localhost
 
 ### Testing
-- `mise run test` - Run all tests
-- `mise run test:watch` - Run tests in watch mode
-- `mise run test:coverage` - Run tests with coverage repor
-- `mise run test:android` - Run Android instrumentation tests
-- `mise run test:ios` - Run iOS tests (macOS only)
+- `mise test` - Run all tests
+- `mise test:watch` - Run tests in watch mode
+- `mise test:coverage` - Run tests with coverage report
+- `mise test:android` - Run Android instrumentation tests
+- `mise test:ios` - Run iOS tests (macOS only)
 
 ### EAS Build (Cloud)
-- `mise run build:eas:android` - Build Android with EAS
-- `mise run build:eas:ios` - Build iOS with EAS (macOS only)
-- `mise run build:eas:all` - Build for all platforms with EAS
-- `mise run build:eas:preview` - Build preview version
-- `mise run build:eas:production` - Build production version
+- `mise build:eas:android` - Build Android with EAS
+- `mise build:eas:ios` - Build iOS with EAS (macOS only)
+- `mise build:eas:all` - Build for all platforms with EAS
+- `mise build:eas:preview` - Build preview version
+- `mise build:eas:production` - Build production version
 
 ### Local Build
-- `mise run build:android` - Build Android APK locally
-- `mise run build:ios` - Build iOS app locally (macOS only)
+- `mise build:android` - Build Android APK locally
+- `mise build:ios` - Build iOS app locally (macOS only)
 
-### EAS Submi
-- `mise run submit:eas:android` - Submit to Google Play Store
-- `mise run submit:eas:ios` - Submit to Apple App Store
+### EAS Submit
+- `mise submit:eas:android` - Submit to Google Play Store
+- `mise submit:eas:ios` - Submit to Apple App Store
 
 ### Maintenance
-- `mise run clean` - Clean all build artifacts and dependencies
-- `mise run clean:cache` - Clean all caches (npm, Expo, Metro)
-- `mise run clean:android` - Clean Android build artifacts
-- `mise run clean:ios` - Clean iOS build artifacts
+- `mise clean` - Clean all build artifacts and dependencies
+- `mise clean:cache` - Clean all caches (npm, Expo, Metro)
+- `mise clean:android` - Clean Android build artifacts
+- `mise clean:ios` - Clean iOS build artifacts
 
 ### Development Tools
-- `mise run lint` - Run ESLin
-- `mise run lint:fix` - Run ESLint with auto-fix
-- `mise run format` - Format code with Prettier
-- `mise run simulator` - Open iOS Simulator (macOS only)
-- `mise run emulator` - Start Android emulator
+- `mise lint` - Run ESLint
+- `mise lint:fix` - Run ESLint with auto-fix
+- `mise format` - Format code with Prettier
+- `mise simulator` - Open iOS Simulator (macOS only)
+- `mise emulator` - Start Android emulator
 
 ### Dependencies
-- `mise run deps` - Install/update dependencies
-- `mise run deps:upgrade` - Upgrade dependencies to latest versions
+- `mise deps` - Install/update dependencies
+- `mise deps:upgrade` - Upgrade dependencies to latest versions
 
 ### Expo Specific
-- `mise run expo:eject` - Eject from Expo managed workflow
-- `mise run expo:prebuild` - Generate native code with prebuild
-- `mise run expo:install` - Install and configure native dependencies
-- `mise run expo:upgrade` - Upgrade Expo SDK
+- `mise expo:eject` - Eject from Expo managed workflow
+- `mise expo:prebuild` - Generate native code with prebuild
+- `mise expo:install` - Install and configure native dependencies
+- `mise expo:upgrade` - Upgrade Expo SDK
 
 ### EAS Update
-- `mise run update:publish` - Publish over-the-air update
-- `mise run update:configure` - Configure EAS Update
+- `mise update:publish` - Publish over-the-air update
+- `mise update:configure` - Configure EAS Update
+
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
 
 ## Project Structure
 

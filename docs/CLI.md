@@ -41,56 +41,58 @@
 
 ### Development Tasks (In Project Directory)
 ```bash
-# Core developmen
-mise run dev                       # Start development server
-mise run android                   # Run on Android device/emulator
-mise run ios                       # Run on iOS simulator (macOS only)
-mise run web                       # Run on web browser
+# Core development
+mise dev                           # Start development server
+mise android                       # Run on Android device/emulator
+mise ios                           # Run on iOS simulator (macOS only)
+mise web                           # Run on web browser
 
 # Build & Testing
-mise run build                     # Build for production
-mise run test                      # Run all tests
-mise run test:unit                 # Run unit tests only
-mise run test:integration          # Run integration tests
-mise run test:e2e                  # Run end-to-end tests
+mise build                         # Build for production
+mise test                          # Run all tests
+mise test:unit                     # Run unit tests only
+mise test:integration              # Run integration tests
+mise test:e2e                      # Run end-to-end tests
 
 # Code Quality
-mise run lint                      # Code linting and analysis
-mise run format                    # Code formatting
-mise run analyze                   # Static code analysis
-mise run clean                     # Clean build artifacts
+mise lint                          # Code linting and analysis
+mise format                        # Code formatting
+mise analyze                       # Static code analysis
+mise clean                         # Clean build artifacts
 
-# Environmen
+# Environment
 mise doctor                        # Verify environment health
 mise install                       # Install/update tools
 mise list                          # Show all available tasks
 ```
 
+> **Note**: `mise <task>` is shorthand for `mise run <task>`
+
 ### Template Tasks (In Project Directory)
 ```bash
-# Template management from within projec
-mise run template:status           # Check template version status
-mise run template:check            # Check for available updates
-mise run template:upgrade          # Upgrade template
-mise run template:rollback         # Rollback template changes
-mise run template:history          # View template upgrade history
+# Template management from within project
+mise template:status               # Check template version status
+mise template:check                # Check for available updates
+mise template:upgrade              # Upgrade template
+mise template:rollback             # Rollback template changes
+mise template:history              # View template upgrade history
 ```
 
 ### Platform-Specific Tasks
 ```bash
 # Android
-mise run emulator                  # Start Android emulator
-mise run android:build            # Build Android APK
-mise run android:release          # Build Android release
+mise emulator                      # Start Android emulator
+mise android:build                # Build Android APK
+mise android:release              # Build Android release
 
 # iOS (macOS only)
-mise run simulator                 # Start iOS simulator
-mise run ios:build                # Build iOS app
-mise run ios:release              # Build iOS release
+mise simulator                     # Start iOS simulator
+mise ios:build                    # Build iOS app
+mise ios:release                   # Build iOS release
 
 # Web
-mise run web:build                 # Build web version
-mise run web:serve                # Serve web build locally
+mise web:build                     # Build web version
+mise web:serve                     # Serve web build locally
 ```
 
 ---
@@ -103,25 +105,25 @@ mise run web:serve                # Serve web build locally
 git clone <repo-url> tika && cd tika
 ./tika.sh setup
 ./tika.sh create --template flutter --name my-app
-cd my-app && mise run dev
+cd my-app && mise dev
 ```
 
 ### Daily Development Pattern
 ```bash
 # In project directory
-mise run dev                       # Start developmen
+mise dev                           # Start development
 # In separate terminals:
-mise run android                   # Test on Android
-mise run ios                       # Test on iOS
-mise run test                      # Run tests
+mise android                       # Test on Android
+mise ios                           # Test on iOS
+mise test                          # Run tests
 ```
 
 ### Quality Assurance Pattern
 ```bash
 # Before committing
-mise run lint                      # Check code quality
-mise run test                      # Run all tests
-mise run format                    # Format code
+mise lint                          # Check code quality
+mise test                          # Run all tests
+mise format                        # Format code
 # git add . && git commit -m "..."
 ```
 
@@ -131,16 +133,16 @@ mise run format                    # Format code
 ./scripts/template-upgrade-git.sh check-upgrades  # Check for updates
 ./scripts/template-upgrade-git.sh check-upgrades  # Preview changes
 ./scripts/template-upgrade-git.sh upgrade         # Apply upgrade
-mise run test                                      # Validate after upgrade
+mise test                                          # Validate after upgrade
 ```
 
 ### Troubleshooting Pattern
 ```bash
 # When things break
-mise doctor                        # Check environmen
+mise doctor                        # Check environment
 ./tika.sh template-status          # Check template state
-mise run clean                     # Clean build
-mise run dev                       # Restart developmen
+mise clean                         # Clean build
+mise dev                           # Restart development
 ```
 
 ---
